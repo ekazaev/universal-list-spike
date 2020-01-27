@@ -3,8 +3,8 @@
 // UniversalListController
 //
 
-import Foundation
 import DifferenceKit
+import Foundation
 
 struct City {
     var cityId: Int
@@ -14,7 +14,7 @@ struct City {
 
 extension City: Differentiable {
     public var differenceIdentifier: Int { return cityId }
-    
+
     public func isContentEqual(to source: City) -> Bool {
         return cityId == source.cityId
     }

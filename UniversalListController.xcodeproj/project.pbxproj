@@ -10,6 +10,7 @@
 		1BE540BAA82723CE48EBD567 /* CityTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54A958CDDB83B5B732504 /* CityTableCell.swift */; };
 		1BE541D4164F40F980F5F5C3 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5436B214129152E8F4A2A /* ReusableView.swift */; };
 		1BE54422EE3D1DE980A171A9 /* CityDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54FA5D14BD8BC0AD8BDE8 /* CityDataMock.swift */; };
+		1BE545A7CB680DE488F12F5F /* FlatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54FECB92B72C65153C5F4 /* FlatListViewController.swift */; };
 		1BE547ACE8A405FAADB57DA4 /* RandomDataEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545F87D717E7276B339CD /* RandomDataEventHandler.swift */; };
 		1BE547DC33915722A707574D /* ViewDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE547E64411141CE3F2F9DF /* ViewDisplay.swift */; };
 		1BE54C1D9F05DC28F17125EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54895EA7A72A5AADD2C63 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		1BE54895EA7A72A5AADD2C63 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1BE54A958CDDB83B5B732504 /* CityTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityTableCell.swift; sourceTree = "<group>"; };
 		1BE54FA5D14BD8BC0AD8BDE8 /* CityDataMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityDataMock.swift; sourceTree = "<group>"; };
+		1BE54FECB92B72C65153C5F4 /* FlatListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatListViewController.swift; sourceTree = "<group>"; };
 		451EBB5A23DF7FF500416407 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		45C9139E23DF3D830021602D /* UniversalListController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversalListController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45C913A123DF3D830021602D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				45C913B523DF482B0021602D /* CityTableCell.xib */,
 				1BE54A958CDDB83B5B732504 /* CityTableCell.swift */,
 				1BE547E64411141CE3F2F9DF /* ViewDisplay.swift */,
+				1BE54FECB92B72C65153C5F4 /* FlatListViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				1BE540BAA82723CE48EBD567 /* CityTableCell.swift in Sources */,
 				1BE547DC33915722A707574D /* ViewDisplay.swift in Sources */,
 				1BE547ACE8A405FAADB57DA4 /* RandomDataEventHandler.swift in Sources */,
+				1BE545A7CB680DE488F12F5F /* FlatListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

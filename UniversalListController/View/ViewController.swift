@@ -12,19 +12,19 @@ import UIKit
 protocol UniversalListViewControllerEventHandler {}
 
 protocol UniversalListView {
-    
+
     associatedtype Display
-    
+
     func update(with display: Display)
-    
+
 }
 
 class ViewController: UIViewController {
-    
+
     private var dataSource: TableViewDataSource<Void, SimpleCellSource<CityTableCell>>!
-    
+
     private var eventHandler: RandomDataEventHandler!
-    
+
     @IBOutlet private var tableView: UITableView! {
         didSet {
             dataSource = TableViewDataSource(tableView: tableView)
@@ -32,17 +32,17 @@ class ViewController: UIViewController {
             tableView.dataSource = dataSource
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         eventHandler = RandomDataEventHandler(view: self)
         tableView.reloadData()
     }
-    
+
 }
 
 extension ViewController: UniversalListView {
-    
+
     func update(with citiesList: [City]) {
         switch dataSource.data.sections.count {
         case 0:

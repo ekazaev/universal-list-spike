@@ -1,0 +1,56 @@
+# enabled rules
+--rules braces,trailingCommas,typeSugar,isEmpty,yodaConditions,anyObjectProtocol,andOperator,isEmpty,blankLinesAroundMark,blankLinesBetweenScopes,braces,consecutiveBlankLines,consecutiveSpaces
+--rules duplicateImports,elseOnSameLine,emptyBraces,fileHeader,hoistPatternLet,leadingDelimiters,linebreakAtEndOfFile
+--rules linebreaks,numberFormatting,ranges
+--rules redundantBackticks,redundantBreak,redundantExtensionACL,redundantFileprivate
+--rules redundantInit,redundantGet,redundantLet,redundantLetError
+--rules redundantNilInit,redundantObjc,redundantParens,redundantPattern
+--rules redundantRawValues,redundantVoidReturnType,semicolons,spaceAroundBraces,spaceAroundBrackets,spaceAroundComments,spaceAroundGenerics
+--rules redundantSelf
+--rules spaceAroundParens,spaceInsideBraces,spaceInsideBrackets,spaceInsideComments
+--rules specifiers,strongOutlets,strongifiedSelf,todos,trailingClosures,trailingCommas,typeSugar,unusedArguments
+--rules void,wrap,wrapArguments
+--rules indent,trailingSpace
+--rules spaceInsideGenerics,spaceInsideParens
+--rules sortedImports
+
+# config
+--allman false
+--binarygrouping none
+--closingparen same-line
+--commas inline
+--conflictmarkers reject
+--decimalgrouping none
+--elseposition same-line
+--empty void
+--exponentcase lowercase
+--exponentgrouping disabled
+--fractiongrouping disabled
+--fragment false
+--header ignore
+--hexgrouping none
+--hexliteralcase uppercase
+--ifdef no-indent
+--importgrouping testable-bottom
+--indent 4
+--indentcase false
+--linebreaks lf
+--maxwidth none
+--nospaceoperators ...,..<,..>
+--octalgrouping none
+--operatorfunc spaced
+--patternlet hoist
+--self remove
+--selfrequired 
+--semicolons never
+--stripunusedargs closure-only
+--tabwidth unspecified
+--trailingclosures 
+--trimwhitespace always
+--wraparguments preserve
+--wrapcollections preserve
+--closingparen balanced
+--xcodeindentation enabled
+--disable redundantReturn,blankLinesAtEndOfScope,blankLinesAtStartOfScope
+--enable isEmpty
+--exclude Pods,Generated,Carthage,AppiumTests,fastlane,SnapshotTests,WireMock

@@ -19,6 +19,11 @@ protocol UniversalListView {
 
 }
 
+protocol UniversalListViewEventHandler {
+
+
+}
+
 class ViewController: UIViewController {
 
     private var dataSource: TableViewDataSource<Void, SimpleCellSource<CityTableCell>>!
@@ -27,9 +32,10 @@ class ViewController: UIViewController {
 
     @IBOutlet private var tableView: UITableView! {
         didSet {
-            dataSource = TableViewDataSource(tableView: tableView)
+            dataSource = TableViewDataSource()
             tableView.delegate = self
             tableView.dataSource = dataSource
+            dataSource.setup(for: tableView)
         }
     }
 

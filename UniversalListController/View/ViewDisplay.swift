@@ -85,21 +85,28 @@ extension SimpleCellSource: Differentiable where Cell.Data: Differentiable {
 
 }
 
-class TableViewDataSource<SectionContext, CellContext>: NSObject, UITableViewDataSource
+protocol TableViewConfigurable {
+
+    func setup(for tableView: UITableView)
+
+}
+
+class TableViewDataSource<SectionContext, CellContext>: NSObject, TableViewConfigurable, UITableViewDataSource
     where
     CellContext: CellSource,
     CellContext.Cell: UITableViewCell {
 
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let tableView: UITableView
-    private let cellDequeuer: TableReusableCellDequeuer
-
-    init(tableView: UITableView) {
-        self.tableView = tableView
-        cellDequeuer = TableReusableCellDequeuer(tableView: tableView)
+    private var cellDequeuer: TableReusableCellDequeuer?
+    
+    override init() { super.init()
     }
-
+    
+    func setup(for tableView: UITableView) {
+        self.cellDequeuer = TableReusableCellDequeuer(tableView: tableView)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.sections.count
     }
@@ -109,9 +116,18 @@ class TableViewDataSource<SectionContext, CellContext>: NSObject, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellDequeuer = cellDequeuer else {
+            assertionFailure("Data Source was not properly setup for use")
+            return UITableViewCell()
+        }
+        
         let cellBuilder = data.sections[indexPath.section].cells[indexPath.item]
         let cell = cellBuilder.context.getView(with: DequeuerBuilder(using: cellDequeuer, with: indexPath))
         return cell
     }
+
+}
+
+class ListDataTransformer<SectionContext, CellContext> {
 
 }

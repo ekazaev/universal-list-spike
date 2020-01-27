@@ -5,6 +5,4 @@
 
 import Foundation
 
-class FlatEventHandler {
-
-}
+class FlatEventHandler {}

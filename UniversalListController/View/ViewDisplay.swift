@@ -13,6 +13,16 @@ struct ListData<SectionContext, CellContext> {
 
 }
 
+extension ListData where SectionContext == Void, CellContext: Differentiable {
+
+    func getAsDifferentiableArray() -> [ArraySection<Int, CellContext>] {
+        return sections.enumerated().map {
+            ArraySection(model: $0.offset, elements: $0.element.cells.map { $0.context })
+        }
+    }
+
+}
+
 struct SectionData<SectionContext, CellContext> {
 
     let context: SectionContext
@@ -49,7 +59,7 @@ protocol CellSource {
 
 }
 
-protocol SimpleCellSourceCell: UITableViewCell {
+protocol InjectableReusableView: ReusableView {
 
     associatedtype Data
 
@@ -57,7 +67,7 @@ protocol SimpleCellSourceCell: UITableViewCell {
 
 }
 
-struct SimpleCellSource<Cell: SimpleCellSourceCell>: CellSource {
+struct SimpleCellSource<Cell: InjectableReusableView>: CellSource {
 
     public let data: Cell.Data
 
@@ -99,14 +109,15 @@ class TableViewDataSource<SectionContext, CellContext>: NSObject, TableViewConfi
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
     private var cellDequeuer: TableReusableCellDequeuer?
-    
-    override init() { super.init()
+
+    override init() {
+        super.init()
     }
-    
+
     func setup(for tableView: UITableView) {
-        self.cellDequeuer = TableReusableCellDequeuer(tableView: tableView)
+        cellDequeuer = TableReusableCellDequeuer(tableView: tableView)
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return data.sections.count
     }
@@ -120,7 +131,7 @@ class TableViewDataSource<SectionContext, CellContext>: NSObject, TableViewConfi
             assertionFailure("Data Source was not properly setup for use")
             return UITableViewCell()
         }
-        
+
         let cellBuilder = data.sections[indexPath.section].cells[indexPath.item]
         let cell = cellBuilder.context.getView(with: DequeuerBuilder(using: cellDequeuer, with: indexPath))
         return cell
@@ -128,6 +139,34 @@ class TableViewDataSource<SectionContext, CellContext>: NSObject, TableViewConfi
 
 }
 
-class ListDataTransformer<SectionContext, CellContext> {
+protocol ListDataConverter {
+
+    associatedtype List
+
+    associatedtype SectionContext
+
+    associatedtype CellContext
+
+    func transform(data: List) -> ListData<SectionContext, CellContext>
 
 }
+
+struct FlatDataConverter<List, Cell: InjectableReusableView>: ListDataConverter
+    where List: Collection, List.Element: Collection, List.Element.Element == Cell.Data {
+
+    typealias SectionContext = Void
+
+    typealias CellContext = SimpleCellSource<Cell>
+
+    func transform(data: List) -> ListData<SectionContext, CellContext> {
+        let listData = ListData(sections: data.map {
+            return SectionData(cells: $0.map {
+                CellData(context: SimpleCellSource<Cell>(with: $0))
+            })
+        })
+        return listData
+    }
+
+}
+
+extension Int: Differentiable {}

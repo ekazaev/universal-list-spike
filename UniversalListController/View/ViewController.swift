@@ -19,10 +19,7 @@ protocol UniversalListView {
 
 }
 
-protocol UniversalListViewEventHandler {
-
-
-}
+protocol UniversalListViewEventHandler {}
 
 class ViewController: UIViewController {
 
@@ -50,16 +47,11 @@ class ViewController: UIViewController {
 extension ViewController: UniversalListView {
 
     func update(with citiesList: [City]) {
-        switch dataSource.data.sections.count {
-        case 0:
-            dataSource.data = ListData(sections: [SectionData(cells: citiesList.map { CellData(context: SimpleCellSource<CityTableCell>(with: $0)) })])
-            tableView.reloadData()
-        default:
-            let source = dataSource.data.sections[0].cells.map { $0.context.data }
-            let changeSet = StagedChangeset(source: source, target: citiesList)
-            tableView.reload(using: changeSet, with: .fade) { data in
-                dataSource.data = ListData(sections: [SectionData(cells: data.map { CellData(context: SimpleCellSource<CityTableCell>(with: $0)) })])
-            }
+        let source = dataSource.data.getAsDifferentiableArray()
+        let changeSet = StagedChangeset(source: source, target: [ArraySection(model: 0, elements: citiesList.map { SimpleCellSource<CityTableCell>(with: $0) })])
+        tableView.reload(using: changeSet, with: .fade) { data in
+            let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
+            dataSource.data = ListData(sections: sections) // as ListData<Void, SimpleCellSource<CityTableCell>>
         }
     }
 

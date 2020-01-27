@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Second:
         let flatViewController = FlatListViewController(dataSourceType: TableViewDataSource<Void, SimpleCellSource<CityTableCell>>(), eventHandler: "")
-        
+
         tabBarController.viewControllers = [UINavigationController(rootViewController: controller), UINavigationController(rootViewController: flatViewController)]
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

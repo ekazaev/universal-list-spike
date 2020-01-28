@@ -15,7 +15,7 @@ protocol ReloadableViewController: UIViewController {
 class FlatListViewController<ViewUpdater: ReusableViewListUpdater & TableViewConfigurable, Cell: InjectableReusableView>: UIViewController
     where
     ViewUpdater.SectionContext == Void,
-    ViewUpdater.CellContext == SimpleCellSource<Cell>,
+    ViewUpdater.CellContext == FlatCellSource<Cell>,
     ViewUpdater.CellContext.Cell == Cell {
 
     private let eventHandler: Any
@@ -41,10 +41,6 @@ class FlatListViewController<ViewUpdater: ReusableViewListUpdater & TableViewCon
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-//        let cities = [CityDataMock.cities.shuffled()] as [ViewUpdater.CellContext.Cell.Data]
-//        let converter = FlatDataConverter<[[Cell.Data]], Cell>()
-//        let data = converter.transform(data: cities)
-//        viewUpdater.update(with: data)
     }
 
 }

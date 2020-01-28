@@ -6,22 +6,26 @@
 import Foundation
 import UIKit
 
-class FlatEventHandler<ViewUpdater: ReusableViewListUpdater>
+class FlatEventHandler<ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Cell: InjectableReusableView>
     where
     ViewUpdater.SectionContext == Void,
-    ViewUpdater.CellContext: CellSource,
-    ViewUpdater.CellContext.Cell: UITableViewCell {
+    ViewUpdater.CellContext == FlatCellSource<Cell>,
+    DP.Data == Cell.Data {
 
     private var viewUpdater: ViewUpdater
 
+    private var dataProvider: DP
+
     private var timer: Timer!
 
-    init(viewUpdater: ViewUpdater) {
+    init(viewUpdater: ViewUpdater, dataProvider: DP) {
         self.viewUpdater = viewUpdater
-//        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-//            let cities = CityDataMock.cities.shuffled()
-//            let data = ListData(sections: [SectionData(cells: cities.map { CellData(context: SimpleCellSource<CityTableCell>(with: $0)) })])
-//            self?.viewUpdater.update(with: data)
-//        }
+        self.dataProvider = dataProvider
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+            let entities = dataProvider.getData()
+            let converter = FlatDataConverter<[[DP.Data]], Cell>()
+            let data = converter.transform(data: [entities])
+            self?.viewUpdater.update(with: data)
+        }
     }
 }

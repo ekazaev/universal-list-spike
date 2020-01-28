@@ -67,7 +67,7 @@ protocol InjectableReusableView: ReusableView {
 
 }
 
-struct SimpleCellSource<Cell: InjectableReusableView>: CellSource {
+struct FlatCellSource<Cell: InjectableReusableView>: CellSource {
 
     public let data: Cell.Data
 
@@ -83,13 +83,13 @@ struct SimpleCellSource<Cell: InjectableReusableView>: CellSource {
 
 }
 
-extension SimpleCellSource: Differentiable where Cell.Data: Differentiable {
+extension FlatCellSource: Differentiable where Cell.Data: Differentiable {
 
     var differenceIdentifier: Cell.Data.DifferenceIdentifier {
         return data.differenceIdentifier
     }
 
-    func isContentEqual(to source: SimpleCellSource<Cell>) -> Bool {
+    func isContentEqual(to source: FlatCellSource<Cell>) -> Bool {
         return data.isContentEqual(to: source.data)
     }
 
@@ -152,16 +152,19 @@ protocol ListDataConverter {
 }
 
 struct FlatDataConverter<List, Cell: InjectableReusableView>: ListDataConverter
-    where List: Collection, List.Element: Collection, List.Element.Element == Cell.Data {
+    where
+    List: Collection,
+    List.Element: Collection,
+    List.Element.Element == Cell.Data {
 
     typealias SectionContext = Void
 
-    typealias CellContext = SimpleCellSource<Cell>
+    typealias CellContext = FlatCellSource<Cell>
 
     func transform(data: List) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
             return SectionData(cells: $0.map {
-                CellData(context: SimpleCellSource<Cell>(with: $0))
+                CellData(context: FlatCellSource<Cell>(with: $0))
             })
         })
         return listData
@@ -223,13 +226,14 @@ class DifferentiableTableViewUpdater<CellContext>: ReusableViewListUpdater, Tabl
         let changeSet = StagedChangeset(source: source, target: target)
         tableView?.reload(using: changeSet, with: .fade) { data in
             let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
-            dataSource.data = ListData(sections: sections) // as ListData<Void, SimpleCellSource<CityTableCell>>
+            dataSource.data = ListData(sections: sections)
         }
     }
 
     func setup(for tableView: UITableView) {
         self.tableView = tableView
         dataSource.setup(for: tableView)
+        tableView.dataSource = dataSource
     }
 }
 

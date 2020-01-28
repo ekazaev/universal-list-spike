@@ -23,11 +23,11 @@ protocol UniversalListViewEventHandler {}
 
 class ViewController: UIViewController {
 
-    private var dataSource: TableViewDataSource<Void, SimpleCellSource<CityTableCell>>!
+    private var dataSource: TableViewDataSource<Void, FlatCellSource<CityTableCell>>!
 
     private var eventHandler: RandomDataEventHandler!
 
-    private var viewUpdater: DifferentiableTableViewUpdater<SimpleCellSource<CityTableCell>>!
+    private var viewUpdater: DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>>!
 
     @IBOutlet private var tableView: UITableView! {
         didSet {

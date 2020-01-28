@@ -6,26 +6,23 @@
 import Foundation
 import UIKit
 
-class TableViewUpdater<SectionContext, CellContext>: ReusableViewListUpdater, TableViewConfigurable
+class TableViewUpdater<SectionContext, CellContext>: ReusableViewListUpdater
     where
     CellContext: CellSource,
     CellContext.Cell: UITableViewCell {
 
     private let dataSource: TableViewDataSource<SectionContext, CellContext>
 
-    private var tableView: UITableView?
+    private let tableView: UITableView
 
-    init(dataSource: TableViewDataSource<SectionContext, CellContext>) {
+    init<VP: ListViewProvider>(viewProvider: VP, dataSource: TableViewDataSource<SectionContext, CellContext>) where VP.ListView: UITableView {
         self.dataSource = dataSource
+        tableView = viewProvider.listView
     }
 
     func update(with data: ListData<SectionContext, CellContext>) {
         dataSource.data = data
-        tableView?.reloadData()
+        tableView.reloadData()
     }
 
-    func setup(for tableView: UITableView) {
-        self.tableView = tableView
-        dataSource.setup(for: tableView)
-    }
 }

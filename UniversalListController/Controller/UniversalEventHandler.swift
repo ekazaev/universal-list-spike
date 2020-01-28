@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class FlatEventHandler<ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Cell: InjectableReusableView>
+class UniversalEventHandler<ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Cell: InjectableReusableView>
     where
     ViewUpdater.SectionContext == Void,
     ViewUpdater.CellContext == FlatCellSource<Cell>,

@@ -7,7 +7,7 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-class DifferentiableTableViewUpdater<CellContext>: ReusableViewListUpdater, TableViewConfigurable
+class DifferentiableTableViewUpdater<CellContext>: ReusableViewListUpdater
     where
     CellContext: CellSource,
     CellContext: Differentiable,
@@ -15,25 +15,21 @@ class DifferentiableTableViewUpdater<CellContext>: ReusableViewListUpdater, Tabl
 
     private let dataSource: TableViewDataSource<Void, CellContext>
 
-    private var tableView: UITableView?
+    private let tableView: UITableView
 
-    init(dataSource: TableViewDataSource<Void, CellContext>) {
+    init<VP: ListViewProvider>(viewProvider: VP, dataSource: TableViewDataSource<Void, CellContext>) where VP.ListView: UITableView {
         self.dataSource = dataSource
+        tableView = viewProvider.listView
     }
 
     func update(with data: ListData<Void, CellContext>) {
         let source = dataSource.data.getAsDifferentiableArray()
         let target = data.getAsDifferentiableArray()
         let changeSet = StagedChangeset(source: source, target: target)
-        tableView?.reload(using: changeSet, with: .fade) { data in
+        tableView.reload(using: changeSet, with: .fade) { data in
             let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
             dataSource.data = ListData(sections: sections)
         }
     }
 
-    func setup(for tableView: UITableView) {
-        self.tableView = tableView
-        dataSource.setup(for: tableView)
-        tableView.dataSource = dataSource
-    }
 }

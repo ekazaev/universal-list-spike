@@ -6,21 +6,23 @@
 import Foundation
 import UIKit
 
-class TableViewDataSource<SectionContext, CellContext>: NSObject, TableViewConfigurable, UITableViewDataSource
+class TableViewDataSource<SectionContext, CellContext>: NSObject, UITableViewDataSource
     where
     CellContext: CellSource,
     CellContext.Cell: UITableViewCell {
 
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private var cellDequeuer: TableReusableCellDequeuer?
+    private let tableView: UITableView
+    private let cellDequeuer: TableReusableCellDequeuer
 
-    override init() {
-        super.init()
-    }
-
-    func setup(for tableView: UITableView) {
+    init<VP: ListViewProvider>(viewProvider: VP) where VP.ListView == UITableView {
+        tableView = viewProvider.listView
         cellDequeuer = TableReusableCellDequeuer(tableView: tableView)
+
+        super.init()
+
+        tableView.dataSource = self
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -32,11 +34,6 @@ class TableViewDataSource<SectionContext, CellContext>: NSObject, TableViewConfi
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellDequeuer = cellDequeuer else {
-            assertionFailure("Data Source was not properly setup for use")
-            return UITableViewCell()
-        }
-
         let cellBuilder = data.sections[indexPath.section].cells[indexPath.item]
         let cell = cellBuilder.context.getView(with: DequeuerBuilder(using: cellDequeuer, with: indexPath))
         return cell

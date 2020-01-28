@@ -22,18 +22,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let tabBarController = UITabBarController()
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController()!
-
+        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //        let controller = storyboard.instantiateInitialViewController()!
+        //
         // Second:
-        let dataSource = TableViewDataSource<Void, FlatCellSource<CityTableCell>>()
+        let viewProvider = TableViewProvider()
+        let dataSource = TableViewDataSource<Void, FlatCellSource<CityTableCell>>(viewProvider: viewProvider)
 
-        let viewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>>(dataSource: dataSource)
+        let viewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>>(viewProvider: viewProvider, dataSource: dataSource)
         let dataProvider = CityDataProvider()
-        let eventHandler = FlatEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider)
-        let flatViewController = FlatListViewController(viewUpdater: viewUpdater, eventHandler: eventHandler)
+        let eventHandler = UniversalEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider)
+        let flatViewController = UniversalListController(viewProvider: viewProvider, eventHandler: eventHandler)
 
-        tabBarController.viewControllers = [UINavigationController(rootViewController: controller), UINavigationController(rootViewController: flatViewController)]
+        tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */ UINavigationController(rootViewController: flatViewController)]
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 

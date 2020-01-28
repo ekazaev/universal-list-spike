@@ -9,13 +9,13 @@ protocol DataProvider {
 
     associatedtype Data
 
-    func getData() -> [Data]
+    func getData() -> Data
 
 }
 
 struct CityDataProvider: DataProvider {
-    func getData() -> [City] {
+    func getData() -> [[City]] {
         let cities = CityDataMock.cities.shuffled()
-        return cities
+        return [cities]
     }
 }

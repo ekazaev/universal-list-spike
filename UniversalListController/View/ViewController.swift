@@ -27,12 +27,15 @@ class ViewController: UIViewController {
 
     private var eventHandler: RandomDataEventHandler!
 
+    private var viewUpdater: DifferentiableTableViewUpdater<SimpleCellSource<CityTableCell>>!
+
     @IBOutlet private var tableView: UITableView! {
         didSet {
             dataSource = TableViewDataSource()
             tableView.delegate = self
             tableView.dataSource = dataSource
             dataSource.setup(for: tableView)
+            viewUpdater = DifferentiableTableViewUpdater(tableView: tableView, dataSource: dataSource)
         }
     }
 
@@ -47,12 +50,7 @@ class ViewController: UIViewController {
 extension ViewController: UniversalListView {
 
     func update(with citiesList: [City]) {
-        let source = dataSource.data.getAsDifferentiableArray()
-        let changeSet = StagedChangeset(source: source, target: [ArraySection(model: 0, elements: citiesList.map { SimpleCellSource<CityTableCell>(with: $0) })])
-        tableView.reload(using: changeSet, with: .fade) { data in
-            let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
-            dataSource.data = ListData(sections: sections) // as ListData<Void, SimpleCellSource<CityTableCell>>
-        }
+        viewUpdater.update(with: ListData(sections: [SectionData(cells: citiesList.map { CellData(context: SimpleCellSource<CityTableCell>(with: $0)) })]))
     }
 
 }

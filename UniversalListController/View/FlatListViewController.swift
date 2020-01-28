@@ -6,17 +6,7 @@
 import Foundation
 import UIKit
 
-protocol ReloadableViewController: UIViewController {
-
-    func reloadData()
-
-}
-
-class FlatListViewController<ViewUpdater: ReusableViewListUpdater & TableViewConfigurable, Cell: InjectableReusableView>: UIViewController
-    where
-    ViewUpdater.SectionContext == Void,
-    ViewUpdater.CellContext == FlatCellSource<Cell>,
-    ViewUpdater.CellContext.Cell == Cell {
+class FlatListViewController: UIViewController {
 
     private let eventHandler: Any
     private lazy var tableView: UITableView = {
@@ -25,14 +15,14 @@ class FlatListViewController<ViewUpdater: ReusableViewListUpdater & TableViewCon
         return tableView
     }()
 
-    private let viewUpdater: ViewUpdater
+    private let viewUpdater: TableViewConfigurable
 
     @available(*, unavailable, message: "Use programmatic init instead")
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(viewUpdater: ViewUpdater, eventHandler: Any) {
+    init(viewUpdater: TableViewConfigurable, eventHandler: Any) {
         self.eventHandler = eventHandler
         self.viewUpdater = viewUpdater
         super.init(nibName: nil, bundle: nil)
@@ -43,10 +33,6 @@ class FlatListViewController<ViewUpdater: ReusableViewListUpdater & TableViewCon
         setupView()
     }
 
-}
-
-extension FlatListViewController: ReloadableViewController {
-    func reloadData() {}
 }
 
 private extension FlatListViewController {

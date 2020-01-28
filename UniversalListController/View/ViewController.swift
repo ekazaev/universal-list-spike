@@ -9,8 +9,6 @@
 import DifferenceKit
 import UIKit
 
-protocol UniversalListViewControllerEventHandler {}
-
 protocol UniversalListView {
 
     associatedtype Display

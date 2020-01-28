@@ -5,7 +5,7 @@
 
 import Foundation
 
-class RandomDataEventHandler: UniversalListViewControllerEventHandler {
+class RandomDataEventHandler {
 
     private weak var view: ViewController?
 

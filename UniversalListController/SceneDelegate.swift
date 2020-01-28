@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>>(dataSource: dataSource)
         let dataProvider = CityDataProvider()
         let eventHandler = FlatEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider)
-        let flatViewController = FlatListViewController<DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>>, CityTableCell>(viewUpdater: viewUpdater, eventHandler: eventHandler)
+        let flatViewController = FlatListViewController(viewUpdater: viewUpdater, eventHandler: eventHandler)
 
         tabBarController.viewControllers = [UINavigationController(rootViewController: controller), UINavigationController(rootViewController: flatViewController)]
         window?.rootViewController = tabBarController

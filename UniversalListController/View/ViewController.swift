@@ -34,8 +34,9 @@ class ViewController: UIViewController {
             dataSource = TableViewDataSource()
             tableView.delegate = self
             tableView.dataSource = dataSource
+            viewUpdater = DifferentiableTableViewUpdater(dataSource: dataSource)
             dataSource.setup(for: tableView)
-            viewUpdater = DifferentiableTableViewUpdater(tableView: tableView, dataSource: dataSource)
+            viewUpdater.setup(for: tableView)
         }
     }
 
@@ -50,7 +51,9 @@ class ViewController: UIViewController {
 extension ViewController: UniversalListView {
 
     func update(with citiesList: [City]) {
-        viewUpdater.update(with: ListData(sections: [SectionData(cells: citiesList.map { CellData(context: SimpleCellSource<CityTableCell>(with: $0)) })]))
+        let converter = FlatDataConverter<[[City]], CityTableCell>()
+        let data = converter.transform(data: [citiesList])
+        viewUpdater.update(with: data)
     }
 
 }

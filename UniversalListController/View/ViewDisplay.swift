@@ -179,27 +179,31 @@ protocol ReusableViewListUpdater {
 
 }
 
-class TableViewUpdater<SectionContext, CellContext>
+class TableViewUpdater<SectionContext, CellContext>: ReusableViewListUpdater, TableViewConfigurable
     where
     CellContext: CellSource,
     CellContext.Cell: UITableViewCell {
 
     private let dataSource: TableViewDataSource<SectionContext, CellContext>
 
-    private let tableView: UITableView
+    private var tableView: UITableView?
 
-    init(tableView: UITableView, dataSource: TableViewDataSource<SectionContext, CellContext>) {
-        self.tableView = tableView
+    init(dataSource: TableViewDataSource<SectionContext, CellContext>) {
         self.dataSource = dataSource
     }
 
     func update(with data: ListData<SectionContext, CellContext>) {
         dataSource.data = data
-        tableView.reloadData()
+        tableView?.reloadData()
+    }
+
+    func setup(for tableView: UITableView) {
+        self.tableView = tableView
+        dataSource.setup(for: tableView)
     }
 }
 
-class DifferentiableTableViewUpdater<CellContext>
+class DifferentiableTableViewUpdater<CellContext>: ReusableViewListUpdater, TableViewConfigurable
     where
     CellContext: CellSource,
     CellContext: Differentiable,
@@ -207,10 +211,9 @@ class DifferentiableTableViewUpdater<CellContext>
 
     private let dataSource: TableViewDataSource<Void, CellContext>
 
-    private let tableView: UITableView
+    private var tableView: UITableView?
 
-    init(tableView: UITableView, dataSource: TableViewDataSource<Void, CellContext>) {
-        self.tableView = tableView
+    init(dataSource: TableViewDataSource<Void, CellContext>) {
         self.dataSource = dataSource
     }
 
@@ -218,10 +221,15 @@ class DifferentiableTableViewUpdater<CellContext>
         let source = dataSource.data.getAsDifferentiableArray()
         let target = data.getAsDifferentiableArray()
         let changeSet = StagedChangeset(source: source, target: target)
-        tableView.reload(using: changeSet, with: .fade) { data in
+        tableView?.reload(using: changeSet, with: .fade) { data in
             let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
             dataSource.data = ListData(sections: sections) // as ListData<Void, SimpleCellSource<CityTableCell>>
         }
+    }
+
+    func setup(for tableView: UITableView) {
+        self.tableView = tableView
+        dataSource.setup(for: tableView)
     }
 }
 

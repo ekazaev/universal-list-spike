@@ -69,22 +69,21 @@ protocol ReusableViewDequeuer {
 
 }
 
-class TableReusableCellDequeuer: ReusableViewDequeuer {
+class TableReusableCellDequeuer<VS: ViewSource>: ReusableViewDequeuer where VS.View: UITableView {
 
-    private let tableView: UITableView
-
+    private let viewSource: VS
     private var reusableIdentifiers: Set<String> = Set()
 
-    init(tableView: UITableView) {
-        self.tableView = tableView
+    init(viewSource: VS) {
+        self.viewSource = viewSource
     }
 
     func dequeueView<V: ReusableView>(for indexPath: IndexPath) -> V {
         if !reusableIdentifiers.contains(V.reuseIdentifier) {
             if V.self is ReusableViewWithNoXib.Type {
-                tableView.register(V.self, forCellReuseIdentifier: V.reuseIdentifier)
+                viewSource.view.register(V.self, forCellReuseIdentifier: V.reuseIdentifier)
             } else if !(V.self is ReusableViewWithinContainer.Type) {
-                tableView.register(UINib(nibName: V.reuseIdentifier, bundle: nil), forCellReuseIdentifier: V.reuseIdentifier)
+                viewSource.view.register(UINib(nibName: V.reuseIdentifier, bundle: nil), forCellReuseIdentifier: V.reuseIdentifier)
             }
             reusableIdentifiers.insert(V.reuseIdentifier)
         }
@@ -92,7 +91,7 @@ class TableReusableCellDequeuer: ReusableViewDequeuer {
     }
 
     private func dequeueReusableCell<V: ReusableView>(forIndexPath indexPath: IndexPath) -> V {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: V.reuseIdentifier, for: indexPath) as? V else {
+        guard let cell = viewSource.view.dequeueReusableCell(withIdentifier: V.reuseIdentifier, for: indexPath) as? V else {
             fatalError("No collection view cell could be dequeued with identifier \(V.reuseIdentifier)")
         }
 

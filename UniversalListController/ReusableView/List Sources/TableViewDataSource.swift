@@ -6,23 +6,22 @@
 import Foundation
 import UIKit
 
-class TableViewDataSource<SectionContext, CellContext>: NSObject, UITableViewDataSource
+class TableViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSObject, UITableViewDataSource
     where
+    VS.View: UITableView,
     CellContext: CellSource,
     CellContext.Cell: UITableViewCell {
 
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let tableView: UITableView
-    private let cellDequeuer: TableReusableCellDequeuer
+    private let viewSource: VS
+    private let cellDequeuer: TableReusableCellDequeuer<VS>
 
-    init<VP: ListViewProvider>(viewProvider: VP) where VP.ListView == UITableView {
-        tableView = viewProvider.listView
-        cellDequeuer = TableReusableCellDequeuer(tableView: tableView)
+    init(viewSource: VS) {
+        self.viewSource = viewSource
+        cellDequeuer = TableReusableCellDequeuer(viewSource: viewSource)
 
         super.init()
-
-        tableView.dataSource = self
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -6,35 +6,9 @@
 import Foundation
 import UIKit
 
-protocol ListViewProvider {
-
-    associatedtype ListView: UIView
-
-    var listView: ListView { get }
-
-}
-
-class TableViewProvider: ListViewProvider {
-
-    lazy var listView: UITableView = {
-        return UITableView()
-    }()
-
-    init() {}
-
-}
-
-struct AnyViewProvider: ListViewProvider {
-    private(set) var listView: UIView
-
-    init<VP: ListViewProvider>(for viewProvider: VP) {
-        listView = viewProvider.listView
-    }
-}
-
 class UniversalListController: UIViewController {
 
-    private let viewProvider: AnyViewProvider
+    private let viewFactory: AnyViewFactory
     private let eventHandler: Any
 
     @available(*, unavailable, message: "Use programmatic init instead")
@@ -42,9 +16,9 @@ class UniversalListController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init<VP: ListViewProvider>(viewProvider: VP, eventHandler: Any) {
+    init<VP: ViewFactory>(factory: VP, eventHandler: Any) {
         self.eventHandler = eventHandler
-        self.viewProvider = AnyViewProvider(for: viewProvider)
+        viewFactory = AnyViewFactory(with: factory)
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -58,7 +32,7 @@ class UniversalListController: UIViewController {
 private extension UniversalListController {
 
     private func setupView() {
-        let listView = viewProvider.listView
+        let listView = viewFactory.build()
         listView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(listView)
         listView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

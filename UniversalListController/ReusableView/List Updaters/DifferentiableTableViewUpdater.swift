@@ -7,19 +7,27 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-class DifferentiableTableViewUpdater<CellContext>: ReusableViewListUpdater
+class DifferentiableTableViewUpdater<CellContext, VS: ViewSource>: ReusableViewListUpdater
     where
+    VS.View: UITableView,
     CellContext: CellSource,
     CellContext: Differentiable,
     CellContext.Cell: UITableViewCell {
 
-    private let dataSource: TableViewDataSource<Void, CellContext>
+    private let dataSource: TableViewDataSource<Void, CellContext, VS>
 
-    private let tableView: UITableView
+    private let viewSource: VS
 
-    init<VP: ListViewProvider>(viewProvider: VP, dataSource: TableViewDataSource<Void, CellContext>) where VP.ListView: UITableView {
+    private lazy var tableView: VS.View = {
+        let tableView = viewSource.view
+        tableView.dataSource = dataSource
+        tableView.reloadData()
+        return tableView
+    }()
+
+    init(viewProvider: VS, dataSource: TableViewDataSource<Void, CellContext, VS>) {
         self.dataSource = dataSource
-        tableView = viewProvider.listView
+        viewSource = viewProvider
     }
 
     func update(with data: ListData<Void, CellContext>) {

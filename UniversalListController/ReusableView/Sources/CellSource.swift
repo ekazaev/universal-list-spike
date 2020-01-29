@@ -10,6 +10,6 @@ protocol CellSource {
 
     associatedtype Cell: ReusableView
 
-    func getView(with builder: ReusableViewBuilder) -> Cell
+    func getView(with factory: ReusableViewFactory) -> Cell
 
 }

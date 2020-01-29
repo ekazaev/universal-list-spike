@@ -14,8 +14,8 @@ struct FlatCellSource<Cell: InjectableReusableView>: CellSource {
         self.data = data
     }
 
-    func getView(with builder: ReusableViewBuilder) -> Cell {
-        let cell: Cell = builder.build()
+    func getView(with factory: ReusableViewFactory) -> Cell {
+        let cell: Cell = factory.build()
         cell.setup(with: data)
         return cell
     }

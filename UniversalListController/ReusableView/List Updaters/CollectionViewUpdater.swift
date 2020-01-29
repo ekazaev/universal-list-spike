@@ -19,6 +19,7 @@ class CollectionViewUpdater<SectionContext, CellContext, VS: ViewSource>: Reusab
     private lazy var collectionView: VS.View = {
         let collectionView = viewSource.view
         collectionView.dataSource = dataSource
+        collectionView.reloadData()
         return collectionView
     }()
 

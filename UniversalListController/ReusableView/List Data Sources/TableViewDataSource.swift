@@ -39,8 +39,8 @@ class TableViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSObject
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellBuilder = data.sections[indexPath.section].cells[indexPath.item]
-        let cell = cellBuilder.context.getView(with: DequeuerBuilder(using: cellDequeuer, with: indexPath))
+        let cellSource = data.sections[indexPath.section].cells[indexPath.item]
+        let cell = cellSource.context.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
         return cell
     }
 

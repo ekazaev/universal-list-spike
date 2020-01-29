@@ -14,7 +14,13 @@ class CollectionViewFactory: ViewSource, ViewFactory {
 
     lazy var view: UICollectionView = {
         guard let collectionView = collectionView else {
-            assertionFailure("Factory method was not called in a correct order")
+            assertionFailure(
+                """
+                Factory method build was not called before. Probably view controller 
+                has not integrated the view into the stack. You can face potential
+                side effects
+                """
+            )
             return build()
         }
         return collectionView

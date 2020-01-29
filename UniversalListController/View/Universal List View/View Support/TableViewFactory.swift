@@ -14,15 +14,24 @@ class TableViewFactory: ViewSource, ViewFactory {
 
     lazy var view: UITableView = {
         guard let tableView = tableView else {
-            assertionFailure("Factory method was not called in a correct order")
+            assertionFailure(
+                """
+                Factory method build was not called before. Probably view controller 
+                has not integrated the view into the stack. You can face potential
+                side effects
+                """
+            )
             return build()
         }
         return tableView
     }()
 
     private var tableView: UITableView?
+    private let style: UITableView.Style
 
-    init() {}
+    init(style: UITableView.Style = .plain) {
+        self.style = style
+    }
 
     func build() -> UITableView {
         if let tableView = tableView {
@@ -30,7 +39,7 @@ class TableViewFactory: ViewSource, ViewFactory {
             return tableView
         }
 
-        let tableView = UITableView(frame: UIScreen.main.bounds)
+        let tableView = UITableView(frame: UIScreen.main.bounds, style: style)
         self.tableView = tableView
         return tableView
     }

@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class UniversalEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: DataProvider, Transformer: DataTransformer>
+class RandomizingEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: DataProvider, Transformer: DataTransformer>
     where
     Transformer.SectionContext == ViewUpdater.SectionContext,
     Transformer.CellContext == ViewUpdater.CellContext,
@@ -26,7 +26,7 @@ class UniversalEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: Data
         self.dataTransformer = dataTransformer
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             let entities = dataProvider.getData()
-            let data = dataTransformer.transform(data: entities)
+            let data = dataTransformer.transform(entities)
             self?.viewUpdater.update(with: data)
         }
     }

@@ -27,7 +27,7 @@ class UniversalListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        delegate?.viewDidLoad()
+        delegate?.listViewInstantiated()
     }
 
 }

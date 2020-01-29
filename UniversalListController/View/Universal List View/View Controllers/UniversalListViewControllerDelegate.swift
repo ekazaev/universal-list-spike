@@ -7,11 +7,13 @@ import Foundation
 
 protocol UniversalListViewControllerDelegate: AnyObject {
 
-    func viewDidLoad()
+    func listViewInstantiated()
 
 }
 
+/// Extension that makes implementation optional
 extension UniversalListViewControllerDelegate {
 
-    func viewDidLoad() {}
+    func listViewInstantiated() {}
+
 }

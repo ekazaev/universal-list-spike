@@ -23,7 +23,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
         self.dataTransformer = dataTransformer
     }
 
-    func viewDidLoad() {
+    func listViewInstantiated() {
         search(for: "")
     }
 

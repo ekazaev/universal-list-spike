@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class TableViewFactory: ViewSource, ViewFactory {
+final class TableViewFactory: ViewSource, ViewFactory {
 
     var isViewLoaded: Bool {
         return tableView != nil
@@ -29,8 +29,18 @@ class TableViewFactory: ViewSource, ViewFactory {
     private var tableView: UITableView?
     private let style: UITableView.Style
 
-    init(style: UITableView.Style = .plain) {
+    weak var delegate: UITableViewDelegate? {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            view.delegate = delegate
+        }
+    }
+
+    init(style: UITableView.Style = .plain, delegate: UITableViewDelegate? = nil) {
         self.style = style
+        self.delegate = delegate
     }
 
     func build() -> UITableView {
@@ -40,6 +50,7 @@ class TableViewFactory: ViewSource, ViewFactory {
         }
 
         let tableView = UITableView(frame: UIScreen.main.bounds, style: style)
+        tableView.delegate = delegate
         self.tableView = tableView
         return tableView
     }

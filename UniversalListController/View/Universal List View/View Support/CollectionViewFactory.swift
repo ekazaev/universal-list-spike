@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class CollectionViewFactory: ViewSource, ViewFactory {
+final class CollectionViewFactory: ViewSource, ViewFactory {
 
     var isViewLoaded: Bool {
         return collectionView != nil
@@ -30,8 +30,18 @@ class CollectionViewFactory: ViewSource, ViewFactory {
 
     private(set) var layout: UICollectionViewLayout
 
-    init(collectionViewLayout layout: UICollectionViewLayout) {
+    weak var delegate: UICollectionViewDelegate? {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            view.delegate = delegate
+        }
+    }
+
+    init(collectionViewLayout layout: UICollectionViewLayout, delegate: UICollectionViewDelegate? = nil) {
         self.layout = layout
+        self.delegate = delegate
     }
 
     func build() -> UICollectionView {
@@ -42,6 +52,7 @@ class CollectionViewFactory: ViewSource, ViewFactory {
 
         let collectionView = UICollectionView(frame: UIScreen.main.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.delegate = delegate
         collectionView.backgroundColor = UIColor.white
         self.collectionView = collectionView
         return collectionView

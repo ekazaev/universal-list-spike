@@ -5,7 +5,8 @@
 
 import Foundation
 
-final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>: SearchBarControllerDelegate, UniversalListViewControllerDelegate
+final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>:
+    SearchBarControllerDelegate, UniversalListViewControllerDelegate, SearchListDelegateEventHandler
     where
     Transformer.SectionContext == ViewUpdater.SectionContext,
     Transformer.CellContext == ViewUpdater.CellContext,
@@ -17,6 +18,8 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
 
     private var dataTransformer: Transformer
 
+    private var selectedCityIds: [Int] = []
+
     init(viewUpdater: ViewUpdater, citiesProvider: CityDataProvider, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
         dataProvider = citiesProvider
@@ -25,6 +28,15 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
 
     func listViewInstantiated() {
         search(for: "")
+    }
+
+    func didSelect(city: City) {
+        switch selectedCityIds.contains(city.cityId) {
+        case true:
+            selectedCityIds.removeFirst(city.cityId)
+        case false:
+            selectedCityIds.append(city.cityId)
+        }
     }
 
     func search(for query: String) {

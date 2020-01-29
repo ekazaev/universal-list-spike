@@ -31,12 +31,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let viewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>, TableViewFactory>(viewProvider: tableViewFactory, dataSource: dataSource)
         let dataProvider = CityDataProvider()
-        let converter = FlatDataConverter<[[City]], CityTableCell>()
+        let tableDataConverter = FlatDataConverter<[[City]], CityTableCell>()
 
-        let eventHandler = UniversalEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider, dataConverter: converter)
-        let flatViewController = UniversalListController(factory: tableViewFactory, eventHandler: eventHandler)
+        let tableEventHandler = UniversalEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider, dataConverter: tableDataConverter)
+        let tableViewController = UniversalListController(factory: tableViewFactory, eventHandler: tableEventHandler)
 
-        tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */ UINavigationController(rootViewController: flatViewController)]
+        // Third:
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 150, height: 200)
+        let collectionViewFactory = CollectionViewFactory(collectionViewLayout: layout)
+        let collectionDataSource = CollectionViewDataSource<Void, FlatCellSource<CityCollectionCell>, CollectionViewFactory>(viewSource: collectionViewFactory)
+
+        let collectionViewUpdater = DifferentiableCollectionViewUpdater<FlatCellSource<CityCollectionCell>, CollectionViewFactory>(viewProvider: collectionViewFactory, dataSource: collectionDataSource)
+        let collectionDataConverter = FlatDataConverter<[[City]], CityCollectionCell>()
+
+        let collectionEventHandler = UniversalEventHandler(viewUpdater: collectionViewUpdater, dataProvider: dataProvider, dataConverter: collectionDataConverter)
+        let collectionViewController = UniversalListController(factory: collectionViewFactory, eventHandler: collectionEventHandler)
+
+        tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */
+            UINavigationController(rootViewController: tableViewController),
+            UINavigationController(rootViewController: collectionViewController)
+        ]
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
 

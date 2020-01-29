@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="euu-zb-VLt" customClass="CityCollectionCell" customModule="UniversalListController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="123" height="241"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Un0-VR-s6a">
+                <rect key="frame" x="0.0" y="0.0" width="123" height="241"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4cL-W4-8WD">
+                        <rect key="frame" x="8" y="8" width="107" height="36.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XQU-j5-gYl">
+                                <rect key="frame" x="0.0" y="0.0" width="107" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g4i-ph-nkO">
+                                <rect key="frame" x="0.0" y="20.5" width="107" height="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4cL-W4-8WD" firstAttribute="top" secondItem="Un0-VR-s6a" secondAttribute="top" constant="8" id="IB1-MX-2k0"/>
+                    <constraint firstAttribute="trailing" secondItem="4cL-W4-8WD" secondAttribute="trailing" constant="8" id="IvO-TJ-L11"/>
+                    <constraint firstItem="4cL-W4-8WD" firstAttribute="leading" secondItem="Un0-VR-s6a" secondAttribute="leading" constant="8" id="oDf-9t-Utn"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4cL-W4-8WD" secondAttribute="bottom" constant="8" id="rw4-pJ-EUs"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <size key="customSize" width="123" height="241"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="g4i-ph-nkO" id="oao-uv-sEd"/>
+                <outlet property="titleLabel" destination="XQU-j5-gYl" id="oEF-5n-Rq8"/>
+            </connections>
+            <point key="canvasLocation" x="-38.405797101449281" y="29.799107142857142"/>
+        </collectionViewCell>
+    </objects>
+</document>

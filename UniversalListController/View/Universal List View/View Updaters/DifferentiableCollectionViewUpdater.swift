@@ -32,6 +32,7 @@ class DifferentiableCollectionViewUpdater<CellContext, Source: ViewSource>: Reus
 
     func update(with data: ListData<Void, CellContext>) {
         guard viewSource.isViewLoaded else {
+            dataSource.data = data
             return
         }
 

@@ -14,6 +14,7 @@
 		1BE541C10E212BEE4C78DA58 /* SectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54FD20C53034D1919A131 /* SectionData.swift */; };
 		1BE54208F18D1F34303622E0 /* CollectionViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE543DBDBA8DF1F6D2AD237 /* CollectionViewUpdater.swift */; };
 		1BE542AAEE24802B91F89EA7 /* CollectionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE548B3B9312013DD9FF47A /* CollectionViewFactory.swift */; };
+		1BE542DA49B94C3B4799B630 /* UniversalListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */; };
 		1BE5431D61ABCC21EB0022CB /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */; };
 		1BE5431EF887E6FADB6C9EAD /* FlatCellSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54DE912EC142253D69D49 /* FlatCellSource.swift */; };
 		1BE5432DF14B3372AB70A8AE /* FlatCellSource+DifferenceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546245295D6F3FEBE817C /* FlatCellSource+DifferenceKit.swift */; };
@@ -27,7 +28,7 @@
 		1BE54651F2D44422583A3EB2 /* TableViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5446E59DA179F697DA9ED /* TableViewUpdater.swift */; };
 		1BE546F573FCB4EC3C411154 /* ListData+DifferenceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5411A3FAEAA928CC5D79C /* ListData+DifferenceKit.swift */; };
 		1BE5477BF9562C33D470E48E /* CityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54979DA47C603454EF36D /* CityCollectionCell.swift */; };
-		1BE547ACE8A405FAADB57DA4 /* SearchEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545F87D717E7276B339CD /* SearchEventHandler.swift */; };
+		1BE547ACE8A405FAADB57DA4 /* CitySearchEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */; };
 		1BE54803123A480197543F0B /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5497EE5B0FFC7C094986F /* CellData.swift */; };
 		1BE5489E070260618841BFA2 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5487579C3D63841DD72F3 /* CollectionViewDataSource.swift */; };
 		1BE5492B11A7E4F21D627E27 /* CityCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE54415A3516B042B5702AD /* CityCollectionCell.xib */; };
@@ -75,8 +76,9 @@
 		1BE544C4A2FC9F2E9CD242E8 /* RandomizingEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizingEventHandler.swift; sourceTree = "<group>"; };
 		1BE54518E16E12F590782E6B /* AnyViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyViewFactory.swift; sourceTree = "<group>"; };
 		1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
-		1BE545F87D717E7276B339CD /* SearchEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventHandler.swift; sourceTree = "<group>"; };
+		1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchEventHandler.swift; sourceTree = "<group>"; };
 		1BE546245295D6F3FEBE817C /* FlatCellSource+DifferenceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FlatCellSource+DifferenceKit.swift"; sourceTree = "<group>"; };
+		1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListViewControllerDelegate.swift; sourceTree = "<group>"; };
 		1BE546C6C6B6F8572FD65651 /* ConfigurableReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableReusableView.swift; sourceTree = "<group>"; };
 		1BE546D6F89DDE43F9192674 /* ViewSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewSource.swift; sourceTree = "<group>"; };
 		1BE5483A578EBFCA1A522658 /* DequeuingFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeuingFactory.swift; sourceTree = "<group>"; };
@@ -218,7 +220,7 @@
 		1BE54A98BE8DC662D217C246 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1BE545F87D717E7276B339CD /* SearchEventHandler.swift */,
+				1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */,
 				1BE544C4A2FC9F2E9CD242E8 /* RandomizingEventHandler.swift */,
 			);
 			path = Controller;
@@ -273,6 +275,7 @@
 			isa = PBXGroup;
 			children = (
 				1BE540D000C82B39CF8803EC /* UniversalListViewController.swift */,
+				1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -438,7 +441,7 @@
 				45C913A423DF3D830021602D /* SceneDelegate.swift in Sources */,
 				1BE54C1D9F05DC28F17125EE /* ViewController.swift in Sources */,
 				1BE54422EE3D1DE980A171A9 /* CityDataMock.swift in Sources */,
-				1BE547ACE8A405FAADB57DA4 /* SearchEventHandler.swift in Sources */,
+				1BE547ACE8A405FAADB57DA4 /* CitySearchEventHandler.swift in Sources */,
 				1BE54D742770685412B14E0D /* RandomizingEventHandler.swift in Sources */,
 				1BE54B6435E8F25EF971AE06 /* CityDataProvider.swift in Sources */,
 				1BE54994011F7F954267E9FE /* AnyViewFactory.swift in Sources */,
@@ -475,6 +478,7 @@
 				1BE5402BAC44EC1CB17A6728 /* TableViewFactory.swift in Sources */,
 				1BE5431D61ABCC21EB0022CB /* SearchContainerViewController.swift in Sources */,
 				1BE549FE5A615620849CBE5E /* SearchBarController.swift in Sources */,
+				1BE542DA49B94C3B4799B630 /* UniversalListViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

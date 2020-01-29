@@ -34,12 +34,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let dataProvider = CityDataProvider()
         let searchDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
-        let searchEventHandler = SearchEventHandler(viewUpdater: searchViewUpdater, citiesProvider: dataProvider, dataTransformer: searchDataTransformer)
+        let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater, citiesProvider: dataProvider, dataTransformer: searchDataTransformer)
         searchContainerController.searchBarController.delegate = searchEventHandler
 
         let searchTableViewController = UniversalListViewController(factory: searchTableViewFactory, eventHandler: searchEventHandler)
 
         searchContainerController.containingViewController = searchTableViewController
+        searchTableViewController.delegate = searchEventHandler
 
         // Second:
         let tableViewFactory = TableViewFactory(style: .grouped)

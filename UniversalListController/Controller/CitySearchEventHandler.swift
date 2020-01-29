@@ -5,7 +5,7 @@
 
 import Foundation
 
-final class SearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>: SearchBarControllerDelegate
+final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>: SearchBarControllerDelegate, UniversalListViewControllerDelegate
     where
     Transformer.SectionContext == ViewUpdater.SectionContext,
     Transformer.CellContext == ViewUpdater.CellContext,
@@ -23,8 +23,17 @@ final class SearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer
         self.dataTransformer = dataTransformer
     }
 
+    func viewDidLoad() {
+        search(for: "")
+    }
+
     func search(for query: String) {
         let entities = dataProvider.getData()
+        guard !query.isEmpty else {
+            let data = dataTransformer.transform(entities)
+            viewUpdater.update(with: data)
+            return
+        }
         let filtered = entities.first!.filter { $0.city.contains(query) || $0.description.contains(query) }
         let data = dataTransformer.transform([filtered])
         viewUpdater.update(with: data)

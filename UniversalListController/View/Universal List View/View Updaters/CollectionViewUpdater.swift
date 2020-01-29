@@ -29,11 +29,10 @@ class CollectionViewUpdater<SectionContext, CellContext, Source: ViewSource>: Re
     }
 
     func update(with data: ListData<SectionContext, CellContext>) {
+        dataSource.data = data
         guard viewSource.isViewLoaded else {
             return
         }
-
-        dataSource.data = data
         collectionView.reloadData()
     }
 

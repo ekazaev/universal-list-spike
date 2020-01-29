@@ -28,11 +28,10 @@ class TableViewUpdater<SectionContext, CellContext, Source: ViewSource>: Reusabl
     }
 
     func update(with data: ListData<SectionContext, CellContext>) {
+        dataSource.data = data
         guard viewSource.isViewLoaded else {
             return
         }
-
-        dataSource.data = data
         tableView.reloadData()
     }
 

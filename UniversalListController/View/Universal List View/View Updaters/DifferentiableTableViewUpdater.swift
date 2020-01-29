@@ -32,6 +32,7 @@ class DifferentiableTableViewUpdater<CellContext, Source: ViewSource>: ReusableV
 
     func update(with data: ListData<Void, CellContext>) {
         guard viewSource.isViewLoaded else {
+            dataSource.data = data
             return
         }
 

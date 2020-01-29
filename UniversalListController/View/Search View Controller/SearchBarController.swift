@@ -20,7 +20,7 @@ class SearchBarController: NSObject, UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(1)
+        let deadline = DispatchTime.now() + .milliseconds(500)
         mainQueue.asyncAfter(deadline: deadline) { [weak self] in
             guard let self = self,
                 let delegate = self.delegate,

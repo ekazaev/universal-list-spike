@@ -25,12 +25,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         //        let controller = storyboard.instantiateInitialViewController()!
         //
+        // First
+        let searchContainerController = SearchContainerViewController()
+        let searchTableViewFactory = TableViewFactory(style: .grouped)
+        let searchDataSource = TableViewDataSource<Void, FlatCellSource<CityTableCell>, TableViewFactory>(viewSource: searchTableViewFactory)
+
+        let searchViewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>, TableViewFactory>(viewProvider: searchTableViewFactory, dataSource: searchDataSource)
+        let dataProvider = CityDataProvider()
+        let searchDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
+
+        let searchEventHandler = RandomizingEventHandler(viewUpdater: searchViewUpdater, dataProvider: dataProvider, dataTransformer: searchDataTransformer)
+        let searchTableViewController = UniversalListViewController(factory: searchTableViewFactory, eventHandler: searchEventHandler)
+
+        searchContainerController.containingViewController = searchTableViewController
+
         // Second:
         let tableViewFactory = TableViewFactory(style: .grouped)
         let dataSource = TableViewDataSource<Void, FlatCellSource<CityTableCell>, TableViewFactory>(viewSource: tableViewFactory)
 
         let viewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>, TableViewFactory>(viewProvider: tableViewFactory, dataSource: dataSource)
-        let dataProvider = CityDataProvider()
         let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider, dataTransformer: tableDataTransformer)
@@ -49,6 +62,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory, eventHandler: collectionEventHandler)
 
         tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */
+            UINavigationController(rootViewController: searchContainerController),
             UINavigationController(rootViewController: tableViewController),
             UINavigationController(rootViewController: collectionViewController)
         ]

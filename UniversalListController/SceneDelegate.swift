@@ -34,7 +34,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let dataProvider = CityDataProvider()
         let searchDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
-        let searchEventHandler = RandomizingEventHandler(viewUpdater: searchViewUpdater, dataProvider: dataProvider, dataTransformer: searchDataTransformer)
+        let searchEventHandler = SearchEventHandler(viewUpdater: searchViewUpdater, citiesProvider: dataProvider, dataTransformer: searchDataTransformer)
+        searchContainerController.searchBarController.delegate = searchEventHandler
+
         let searchTableViewController = UniversalListViewController(factory: searchTableViewFactory, eventHandler: searchEventHandler)
 
         searchContainerController.containingViewController = searchTableViewController

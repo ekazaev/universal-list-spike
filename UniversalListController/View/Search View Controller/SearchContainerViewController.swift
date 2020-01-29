@@ -19,11 +19,16 @@ class SearchContainerViewController: UIViewController {
 
     private var containerView: UIView!
 
+    private(set) var searchBarController: SearchBarController = SearchBarController()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
+        let searchBar = UISearchBar()
+        navigationItem.titleView = searchBar
+        searchBar.delegate = searchBarController
         setupContainerView()
-        navigationItem.titleView = UISearchBar()
         setup(containingViewController: containingViewController)
     }
 
@@ -55,4 +60,5 @@ class SearchContainerViewController: UIViewController {
         containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
+
 }

@@ -11,6 +11,7 @@
 		1BE5413848CBFFBEF0A763BE /* AnyViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54B299835CB2885B054D9 /* AnyViewSource.swift */; };
 		1BE5414C80AA4E9D55405906 /* DifferentiableTableViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54212A2FC1E23418DC5F5 /* DifferentiableTableViewUpdater.swift */; };
 		1BE541F94602C3044D924702 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546CB7A3FA994E73BAD00 /* ViewFactory.swift */; };
+		1BE542BA99DECC460E0466F3 /* CollectionViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545E3BE77FC1E45E4BE38 /* CollectionViewUpdater.swift */; };
 		1BE5433203220CA1A51C14F1 /* CollectionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54F468F0384C387B86915 /* CollectionViewFactory.swift */; };
 		1BE543404EB61633BBEDBF52 /* ViewSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE542F849CA80D2839664A7 /* ViewSource.swift */; };
 		1BE5439011161AB982A829E0 /* InjectableReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54BF0F1321041C0C10D18 /* InjectableReusableView.swift */; };
@@ -58,6 +59,7 @@
 		1BE544C4A2FC9F2E9CD242E8 /* UniversalEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalEventHandler.swift; sourceTree = "<group>"; };
 		1BE544FD19576949BB5D0677 /* TableViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFactory.swift; sourceTree = "<group>"; };
 		1BE545CFB96E1ECB4FF6D4EE /* CityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityCollectionCell.swift; sourceTree = "<group>"; };
+		1BE545E3BE77FC1E45E4BE38 /* CollectionViewUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewUpdater.swift; sourceTree = "<group>"; };
 		1BE545F87D717E7276B339CD /* RandomDataEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomDataEventHandler.swift; sourceTree = "<group>"; };
 		1BE54653FAE0CB4C34870545 /* FlatCellSource+DifferenceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FlatCellSource+DifferenceKit.swift"; sourceTree = "<group>"; };
 		1BE54677148E5E37CA44E935 /* ListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				1BE54FDC7DC5859DAC824AD5 /* TableViewUpdater.swift */,
 				1BE54212A2FC1E23418DC5F5 /* DifferentiableTableViewUpdater.swift */,
 				1BE5426DC1A3F134D51B86A4 /* DifferentiableCollectionViewUpdater.swift */,
+				1BE545E3BE77FC1E45E4BE38 /* CollectionViewUpdater.swift */,
 			);
 			path = "List Updaters";
 			sourceTree = "<group>";
@@ -164,13 +167,13 @@
 			path = DifferenceKitExtensions;
 			sourceTree = "<group>";
 		};
-		1BE5468CC20CD8FEDC4D1819 /* List Sources */ = {
+		1BE5468CC20CD8FEDC4D1819 /* List Data Sources */ = {
 			isa = PBXGroup;
 			children = (
 				1BE54A5D5653CA687A7F0A14 /* TableViewDataSource.swift */,
 				1BE54930A39DC25C94F42B4F /* CollectionViewDataSource.swift */,
 			);
-			path = "List Sources";
+			path = "List Data Sources";
 			sourceTree = "<group>";
 		};
 		1BE547BD2286B0F40DC3215D /* ReusableView */ = {
@@ -178,7 +181,7 @@
 			children = (
 				1BE54948DA729DA409D308E4 /* ReusableView.swift */,
 				1BE544CA195327AC7569E362 /* Sources */,
-				1BE5468CC20CD8FEDC4D1819 /* List Sources */,
+				1BE5468CC20CD8FEDC4D1819 /* List Data Sources */,
 				1BE54514B59BBF4DED5E9104 /* List Updaters */,
 			);
 			path = ReusableView;
@@ -387,6 +390,7 @@
 				1BE5464E16E040D1F8CA9F3F /* CollectionViewDataSource.swift in Sources */,
 				1BE54D9D032C7954A0B75CC3 /* CityCollectionCell.swift in Sources */,
 				1BE54A47BA278D6E12504482 /* DifferentiableCollectionViewUpdater.swift in Sources */,
+				1BE542BA99DECC460E0466F3 /* CollectionViewUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

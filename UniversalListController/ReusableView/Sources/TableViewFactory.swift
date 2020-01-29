@@ -8,21 +8,25 @@ import UIKit
 
 class TableViewFactory: ViewSource, ViewFactory {
 
-    private var tableView: UITableView?
+    var isViewLoaded: Bool {
+        return tableView != nil
+    }
 
     lazy var view: UITableView = {
         guard let tableView = tableView else {
-            // assertionFailure("Factory method was not called in a correct order")
+            assertionFailure("Factory method was not called in a correct order")
             return build()
         }
         return tableView
     }()
 
+    private var tableView: UITableView?
+
     init() {}
 
     func build() -> UITableView {
         if let tableView = tableView {
-//            assertionFailure("Factory method called more then one time")
+            assertionFailure("Factory method called more then one time")
             return tableView
         }
 

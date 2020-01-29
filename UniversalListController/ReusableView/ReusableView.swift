@@ -79,6 +79,11 @@ class TableReusableCellDequeuer<VS: ViewSource>: ReusableViewDequeuer where VS.V
     }
 
     func dequeueView<V: ReusableView>(for indexPath: IndexPath) -> V {
+        guard viewSource.isViewLoaded else {
+            assertionFailure("View is not loaded yet")
+            return V()
+        }
+
         if !reusableIdentifiers.contains(V.reuseIdentifier) {
             if V.self is ReusableViewWithNoXib.Type {
                 viewSource.view.register(V.self, forCellReuseIdentifier: V.reuseIdentifier)
@@ -110,6 +115,11 @@ class CollectionReusableCellDequeuer<VS: ViewSource>: ReusableViewDequeuer where
     }
 
     func dequeueView<V: ReusableView>(for indexPath: IndexPath) -> V {
+        guard viewSource.isViewLoaded else {
+            assertionFailure("View is not loaded yet")
+            return V()
+        }
+
         if !reusableIdentifiers.contains(V.reuseIdentifier) {
             if V.self is ReusableViewWithNoXib.Type {
                 viewSource.view.register(V.self, forCellWithReuseIdentifier: V.reuseIdentifier)

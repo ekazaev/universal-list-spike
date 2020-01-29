@@ -25,10 +25,16 @@ class CollectionViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSO
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        guard viewSource.isViewLoaded else {
+            return 0
+        }
         return data.sections.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard viewSource.isViewLoaded else {
+            return 0
+        }
         return data.sections[section].cells.count
     }
 

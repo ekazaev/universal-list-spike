@@ -25,10 +25,16 @@ class TableViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSObject
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        guard viewSource.isViewLoaded else {
+            return 0
+        }
         return data.sections.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard viewSource.isViewLoaded else {
+            return 0
+        }
         return data.sections[section].cells.count
     }
 

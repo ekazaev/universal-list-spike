@@ -28,6 +28,10 @@ class TableViewUpdater<SectionContext, CellContext, VS: ViewSource>: ReusableVie
     }
 
     func update(with data: ListData<SectionContext, CellContext>) {
+        guard viewSource.isViewLoaded else {
+            return
+        }
+
         dataSource.data = data
         tableView.reloadData()
     }

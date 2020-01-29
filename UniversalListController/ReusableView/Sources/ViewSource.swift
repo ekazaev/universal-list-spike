@@ -10,6 +10,8 @@ protocol ViewSource {
 
     associatedtype View: UIView
 
+    var isViewLoaded: Bool { get }
+
     var view: View { get }
 
 }

@@ -8,17 +8,21 @@ import UIKit
 
 class CollectionViewFactory: ViewSource, ViewFactory {
 
-    private var collectionView: UICollectionView?
-
-    private(set) var layout: UICollectionViewLayout
+    var isViewLoaded: Bool {
+        return collectionView != nil
+    }
 
     lazy var view: UICollectionView = {
         guard let collectionView = collectionView else {
-//            assertionFailure("Factory method was not called in a correct order")
+            assertionFailure("Factory method was not called in a correct order")
             return build()
         }
         return collectionView
     }()
+
+    private var collectionView: UICollectionView?
+
+    private(set) var layout: UICollectionViewLayout
 
     init(collectionViewLayout layout: UICollectionViewLayout) {
         self.layout = layout
@@ -26,7 +30,7 @@ class CollectionViewFactory: ViewSource, ViewFactory {
 
     func build() -> UICollectionView {
         if let collectionView = collectionView {
-//            assertionFailure("Factory method called more then one time")
+            assertionFailure("Factory method called more then one time")
             return collectionView
         }
 

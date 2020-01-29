@@ -31,6 +31,10 @@ class DifferentiableTableViewUpdater<CellContext, VS: ViewSource>: ReusableViewL
     }
 
     func update(with data: ListData<Void, CellContext>) {
+        guard viewSource.isViewLoaded else {
+            return
+        }
+
         let source = dataSource.data.getAsDifferentiableArray()
         let target = data.getAsDifferentiableArray()
         let changeSet = StagedChangeset(source: source, target: target)

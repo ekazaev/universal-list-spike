@@ -6,27 +6,27 @@
 import Foundation
 import UIKit
 
-class UniversalEventHandler<ViewUpdater: ReusableViewListUpdater, DP: DataProvider, DC: DataConverter>
+class UniversalEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: DataProvider, Transformer: DataTransformer>
     where
-    DC.SectionContext == ViewUpdater.SectionContext,
-    DC.CellContext == ViewUpdater.CellContext,
-    DC.Data == DP.Data {
+    Transformer.SectionContext == ViewUpdater.SectionContext,
+    Transformer.CellContext == ViewUpdater.CellContext,
+    Transformer.Data == Provider.Data {
 
     private var viewUpdater: ViewUpdater
 
-    private var dataProvider: DP
+    private var dataProvider: Provider
 
-    private var dataConverter: DC
+    private var dataTransformer: Transformer
 
     private var timer: Timer!
 
-    init(viewUpdater: ViewUpdater, dataProvider: DP, dataConverter: DC) {
+    init(viewUpdater: ViewUpdater, dataProvider: Provider, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
         self.dataProvider = dataProvider
-        self.dataConverter = dataConverter
+        self.dataTransformer = dataTransformer
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
             let entities = dataProvider.getData()
-            let data = dataConverter.transform(data: entities)
+            let data = dataTransformer.transform(data: entities)
             self?.viewUpdater.update(with: data)
         }
     }

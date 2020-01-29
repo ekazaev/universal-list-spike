@@ -33,9 +33,9 @@ private protocol AnyViewSourceBox {
 
 }
 
-private final class ViewSourceBox<VS: ViewSource>: AnyViewSourceBox {
+private final class ViewSourceBox<Source: ViewSource>: AnyViewSourceBox {
 
-    private var viewSource: VS
+    private var viewSource: Source
 
     var isViewLoaded: Bool {
         return viewSource.isViewLoaded
@@ -45,7 +45,7 @@ private final class ViewSourceBox<VS: ViewSource>: AnyViewSourceBox {
         return viewSource.view
     }
 
-    init(with viewSource: VS) {
+    init(with viewSource: Source) {
         self.viewSource = viewSource
     }
 

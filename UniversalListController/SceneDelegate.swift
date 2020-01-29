@@ -31,10 +31,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let viewUpdater = DifferentiableTableViewUpdater<FlatCellSource<CityTableCell>, TableViewFactory>(viewProvider: tableViewFactory, dataSource: dataSource)
         let dataProvider = CityDataProvider()
-        let tableDataConverter = FlatDataConverter<[[City]], CityTableCell>()
+        let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
-        let tableEventHandler = UniversalEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider, dataConverter: tableDataConverter)
-        let tableViewController = UniversalListController(factory: tableViewFactory, eventHandler: tableEventHandler)
+        let tableEventHandler = UniversalEventHandler(viewUpdater: viewUpdater, dataProvider: dataProvider, dataTransformer: tableDataTransformer)
+        let tableViewController = UniversalListViewController(factory: tableViewFactory, eventHandler: tableEventHandler)
 
         // Third:
         let layout = UICollectionViewFlowLayout()
@@ -43,10 +43,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionDataSource = CollectionViewDataSource<Void, FlatCellSource<CityCollectionCell>, CollectionViewFactory>(viewSource: collectionViewFactory)
 
         let collectionViewUpdater = DifferentiableCollectionViewUpdater<FlatCellSource<CityCollectionCell>, CollectionViewFactory>(viewProvider: collectionViewFactory, dataSource: collectionDataSource)
-        let collectionDataConverter = FlatDataConverter<[[City]], CityCollectionCell>()
+        let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
 
-        let collectionEventHandler = UniversalEventHandler(viewUpdater: collectionViewUpdater, dataProvider: dataProvider, dataConverter: collectionDataConverter)
-        let collectionViewController = UniversalListController(factory: collectionViewFactory, eventHandler: collectionEventHandler)
+        let collectionEventHandler = UniversalEventHandler(viewUpdater: collectionViewUpdater, dataProvider: dataProvider, dataTransformer: collectionDataTransformer)
+        let collectionViewController = UniversalListViewController(factory: collectionViewFactory, eventHandler: collectionEventHandler)
 
         tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */
             UINavigationController(rootViewController: tableViewController),

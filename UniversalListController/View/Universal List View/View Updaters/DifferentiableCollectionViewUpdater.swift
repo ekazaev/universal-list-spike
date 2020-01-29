@@ -1,5 +1,5 @@
 //
-// DifferentiableTableViewUpdater.swift
+// DifferentiableCollectionViewUpdater.swift
 // UniversalListController
 //
 
@@ -7,25 +7,25 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-class DifferentiableTableViewUpdater<CellContext, VS: ViewSource>: ReusableViewListUpdater
+class DifferentiableCollectionViewUpdater<CellContext, Source: ViewSource>: ReusableViewListUpdater
     where
-    VS.View: UITableView,
+    Source.View: UICollectionView,
     CellContext: CellSource,
     CellContext: Differentiable,
-    CellContext.Cell: UITableViewCell {
+    CellContext.Cell: UICollectionViewCell {
 
-    private let dataSource: TableViewDataSource<Void, CellContext, VS>
+    private let dataSource: CollectionViewDataSource<Void, CellContext, Source>
 
-    private let viewSource: VS
+    private let viewSource: Source
 
-    private lazy var tableView: VS.View = {
-        let tableView = viewSource.view
-        tableView.dataSource = dataSource
-        tableView.reloadData()
-        return tableView
+    private lazy var collectionView: Source.View = {
+        let collection = viewSource.view
+        collection.dataSource = dataSource
+        collection.reloadData()
+        return collection
     }()
 
-    init(viewProvider: VS, dataSource: TableViewDataSource<Void, CellContext, VS>) {
+    init(viewProvider: Source, dataSource: CollectionViewDataSource<Void, CellContext, Source>) {
         self.dataSource = dataSource
         viewSource = viewProvider
     }
@@ -38,7 +38,7 @@ class DifferentiableTableViewUpdater<CellContext, VS: ViewSource>: ReusableViewL
         let source = dataSource.data.getAsDifferentiableArray()
         let target = data.getAsDifferentiableArray()
         let changeSet = StagedChangeset(source: source, target: target)
-        tableView.reload(using: changeSet, with: .fade) { data in
+        collectionView.reload(using: changeSet) { data in
             let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
             dataSource.data = ListData(sections: sections)
         }

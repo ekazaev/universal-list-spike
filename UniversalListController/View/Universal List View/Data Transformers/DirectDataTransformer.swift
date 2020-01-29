@@ -1,5 +1,5 @@
 //
-// ViewDisplay.swift
+// DirectDataTransformer.swift
 // UniversalListController
 //
 
@@ -7,19 +7,7 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-protocol DataConverter {
-
-    associatedtype Data
-
-    associatedtype SectionContext
-
-    associatedtype CellContext
-
-    func transform(data: Data) -> ListData<SectionContext, CellContext>
-
-}
-
-struct FlatDataConverter<Data, Cell: InjectableReusableView>: DataConverter
+struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
     where
     Data: Collection,
     Data.Element: Collection,
@@ -29,7 +17,7 @@ struct FlatDataConverter<Data, Cell: InjectableReusableView>: DataConverter
 
     typealias CellContext = FlatCellSource<Cell>
 
-    func transform(data: Data) -> ListData<SectionContext, CellContext> {
+    func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
             return SectionData(cells: $0.map {
                 CellData(context: FlatCellSource<Cell>(with: $0))

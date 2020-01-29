@@ -1,12 +1,12 @@
 //
-// InjectableReusableView.swift
+// ConfigurableReusableView.swift
 // UniversalListController
 //
 
 import Foundation
 import UIKit
 
-protocol InjectableReusableView: ReusableView {
+protocol ConfigurableReusableView: ReusableView {
 
     associatedtype Data
 

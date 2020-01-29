@@ -26,11 +26,11 @@ private protocol AnyViewFactoryBox {
 
 }
 
-private final class ViewFactoryBox<F: ViewFactory>: AnyViewFactoryBox {
+private final class ViewFactoryBox<Factory: ViewFactory>: AnyViewFactoryBox {
 
-    private var factory: F
+    private var factory: Factory
 
-    init(with factory: F) {
+    init(with factory: Factory) {
         self.factory = factory
     }
 

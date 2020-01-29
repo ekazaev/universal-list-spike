@@ -6,23 +6,23 @@
 import Foundation
 import UIKit
 
-class TableViewUpdater<SectionContext, CellContext, VS: ViewSource>: ReusableViewListUpdater
+class TableViewUpdater<SectionContext, CellContext, Source: ViewSource>: ReusableViewListUpdater
     where
-    VS.View: UITableView,
+    Source.View: UITableView,
     CellContext: CellSource,
     CellContext.Cell: UITableViewCell {
 
-    private let dataSource: TableViewDataSource<SectionContext, CellContext, VS>
+    private let dataSource: TableViewDataSource<SectionContext, CellContext, Source>
 
-    private let viewSource: VS
+    private let viewSource: Source
 
-    private lazy var tableView: VS.View = {
+    private lazy var tableView: Source.View = {
         let tableView = viewSource.view
         tableView.dataSource = dataSource
         return tableView
     }()
 
-    init(viewSource: VS, dataSource: TableViewDataSource<SectionContext, CellContext, VS>) {
+    init(viewSource: Source, dataSource: TableViewDataSource<SectionContext, CellContext, Source>) {
         self.dataSource = dataSource
         self.viewSource = viewSource
     }

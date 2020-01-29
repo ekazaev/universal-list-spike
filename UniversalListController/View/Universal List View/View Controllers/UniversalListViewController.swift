@@ -1,12 +1,12 @@
 //
-// CitiesViewController.swift
+// UniversalListViewController.swift
 // UniversalListController
 //
 
 import Foundation
 import UIKit
 
-class UniversalListController: UIViewController {
+class UniversalListViewController: UIViewController {
 
     private let viewFactory: AnyViewFactory
     private let eventHandler: Any
@@ -29,7 +29,7 @@ class UniversalListController: UIViewController {
 
 }
 
-private extension UniversalListController {
+private extension UniversalListViewController {
 
     private func setupView() {
         let listView = viewFactory.build()

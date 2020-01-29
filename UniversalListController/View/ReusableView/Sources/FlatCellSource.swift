@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-struct FlatCellSource<Cell: InjectableReusableView>: CellSource {
+struct FlatCellSource<Cell: ConfigurableReusableView>: CellSource {
 
     public let data: Cell.Data
 

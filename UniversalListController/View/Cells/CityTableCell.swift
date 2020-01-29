@@ -13,7 +13,7 @@ final class CityTableCell: UITableViewCell {
 
 }
 
-extension CityTableCell: InjectableReusableView {
+extension CityTableCell: ConfigurableReusableView {
 
     func setup(with cityModel: City) {
         titleLabel.text = cityModel.city

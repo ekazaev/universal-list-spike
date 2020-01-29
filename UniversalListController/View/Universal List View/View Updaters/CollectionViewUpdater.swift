@@ -6,24 +6,24 @@
 import Foundation
 import UIKit
 
-class CollectionViewUpdater<SectionContext, CellContext, VS: ViewSource>: ReusableViewListUpdater
+class CollectionViewUpdater<SectionContext, CellContext, Source: ViewSource>: ReusableViewListUpdater
     where
-    VS.View: UICollectionView,
+    Source.View: UICollectionView,
     CellContext: CellSource,
     CellContext.Cell: UICollectionViewCell {
 
-    private let dataSource: CollectionViewDataSource<SectionContext, CellContext, VS>
+    private let dataSource: CollectionViewDataSource<SectionContext, CellContext, Source>
 
-    private let viewSource: VS
+    private let viewSource: Source
 
-    private lazy var collectionView: VS.View = {
+    private lazy var collectionView: Source.View = {
         let collectionView = viewSource.view
         collectionView.dataSource = dataSource
         collectionView.reloadData()
         return collectionView
     }()
 
-    init(viewSource: VS, dataSource: CollectionViewDataSource<SectionContext, CellContext, VS>) {
+    init(viewSource: Source, dataSource: CollectionViewDataSource<SectionContext, CellContext, Source>) {
         self.dataSource = dataSource
         self.viewSource = viewSource
     }

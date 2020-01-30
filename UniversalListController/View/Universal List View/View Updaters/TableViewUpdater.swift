@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-final class TableViewUpdater<DataSource: ReusableViewListDataSource & UITableViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
+final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
     where
     ViewSource.View: UITableView,
     DataSource.View: UITableView,

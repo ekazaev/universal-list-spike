@@ -7,7 +7,7 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-final class DifferentiableCollectionViewUpdater<DataSource: ReusableViewListDataSource & UICollectionViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
+final class DifferentiableCollectionViewUpdater<DataSource: ReusableViewListDataSourceController & UICollectionViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
     where
     ViewSource.View: UICollectionView,
     DataSource.View: UICollectionView,

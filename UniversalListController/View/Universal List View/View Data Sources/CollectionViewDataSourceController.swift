@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-final class CollectionViewDataSource<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSource, UICollectionViewDataSource
+final class CollectionViewDataSourceController<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSourceController, UICollectionViewDataSource
     where
     ViewSource.View: UICollectionView,
     CellContext: CellSource,

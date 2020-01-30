@@ -6,24 +6,27 @@
 import Foundation
 import UIKit
 
-final class UniversalListViewController<Factory: ViewFactory, DataSource: ReusableViewListDataSource>: UIViewController
+final class UniversalListViewController<Factory: ViewFactory, DataSource: ReusableViewListDataSourceController, Delegate: ReusableViewListDelegateController>: UIViewController
     where
-    Factory.View == DataSource.View {
+    Factory.View == DataSource.View,
+    Factory.View == Delegate.View {
 
     weak var delegate: UniversalListViewControllerDelegate?
 
     private let factory: Factory
     private let eventHandler: Any
-    private let dataSource: DataSource
+    private let dataSourceController: DataSource
+    private let delegateController: Delegate
 
     @available(*, unavailable, message: "Use programmatic init instead")
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(factory: Factory, eventHandler: Any, dataSource: DataSource) {
+    init(factory: Factory, eventHandler: Any, dataSourceController: DataSource, delegateController: Delegate) {
         self.eventHandler = eventHandler
-        self.dataSource = dataSource
+        self.dataSourceController = dataSourceController
+        self.delegateController = delegateController
         self.factory = factory
         super.init(nibName: nil, bundle: nil)
     }

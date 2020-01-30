@@ -6,7 +6,7 @@
 import Foundation
 
 final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>:
-    SearchBarControllerDelegate, UniversalListViewControllerDelegate, SearchListDelegateEventHandler
+    SearchBarControllerDelegate, UniversalListViewControllerDelegate, SimpleDelegateControllerEventHandler
     where
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == [[City]] {
@@ -32,13 +32,15 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
         reloadView()
     }
 
-    func didSelect(city: City) {
-        let cityIndex = selectedCities.map { $0.cityId }.firstIndex(of: city.cityId)
-        switch cityIndex {
-        case let .some(cityIndex):
-            selectedCities.remove(at: cityIndex)
-        case .none:
+    func didSelectRow(at indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            selectedCities.remove(at: indexPath.item)
+        case 1:
+            let city = citiesWithoutSelected()[indexPath.item]
             selectedCities.append(city)
+        default:
+            return
         }
         reloadView()
     }
@@ -55,10 +57,13 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
     }
 
     private func reloadView() {
-        let filteredWithoutSelectedCities = filteredCities.filter { !selectedCities.map { $0.cityId }.contains($0.cityId) }
-        let resultCities = [selectedCities, filteredWithoutSelectedCities]
+        let resultCities = [selectedCities, citiesWithoutSelected()]
         let citiesListData = dataTransformer.transform(resultCities)
         viewUpdater.update(with: citiesListData)
+    }
+
+    private func citiesWithoutSelected() -> [City] {
+        filteredCities.filter { !selectedCities.map { $0.cityId }.contains($0.cityId) }
     }
 
 }

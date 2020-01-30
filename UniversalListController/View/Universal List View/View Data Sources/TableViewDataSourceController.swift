@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-final class TableViewDataSource<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSource, UITableViewDataSource
+final class TableViewDataSourceController<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSourceController, UITableViewDataSource
     where
     ViewSource.View: UITableView,
     CellContext: CellSource,

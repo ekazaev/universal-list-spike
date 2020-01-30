@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-final class CollectionViewUpdater<DataSource: ReusableViewListDataSource & UICollectionViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
+final class CollectionViewUpdater<DataSource: ReusableViewListDataSourceController & UICollectionViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
     where
     ViewSource.View: UICollectionView,
     DataSource.View: UICollectionView,

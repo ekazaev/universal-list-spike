@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class UniversalListViewController: UIViewController {
+final class UniversalListViewController: UIViewController {
 
     weak var delegate: UniversalListViewControllerDelegate?
 

@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class CollectionViewUpdater<SectionContext, CellContext, Source: ViewSource>: ReusableViewListUpdater
+final class CollectionViewUpdater<SectionContext, CellContext, Source: ViewSource>: ReusableViewListUpdater
     where
     Source.View: UICollectionView,
     CellContext: CellSource,

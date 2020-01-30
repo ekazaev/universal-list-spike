@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class CollectionReusableCellDequeuer<VS: ViewSource>: ReusableViewDequeuer where VS.View: UICollectionView {
+final class CollectionReusableCellDequeuer<VS: ViewSource>: ReusableViewDequeuer where VS.View: UICollectionView {
 
     private let viewSource: VS
     private var reusableIdentifiers: Set<String> = Set()

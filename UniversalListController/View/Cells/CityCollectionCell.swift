@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class CityCollectionCell: UICollectionViewCell {
+final class CityCollectionCell: UICollectionViewCell {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!

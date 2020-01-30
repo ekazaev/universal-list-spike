@@ -12,7 +12,7 @@ protocol SearchListDelegateEventHandler {
 
 }
 
-class CitySearchTableDelegateTransformer: NSObject, UITableViewDelegate {
+final class CitySearchTableDelegateTransformer: NSObject, UITableViewDelegate {
 
     let eventHandler: SearchListDelegateEventHandler
 
@@ -25,6 +25,7 @@ class CitySearchTableDelegateTransformer: NSObject, UITableViewDelegate {
             return
         }
         eventHandler.didSelect(city: city)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }

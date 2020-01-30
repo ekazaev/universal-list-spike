@@ -29,3 +29,4 @@ struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransfor
 }
 
 extension Int: Differentiable {}
+extension String: Differentiable {}

@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class TableViewUpdater<SectionContext, CellContext, Source: ViewSource>: ReusableViewListUpdater
+final class TableViewUpdater<SectionContext, CellContext, Source: ViewSource>: ReusableViewListUpdater
     where
     Source.View: UITableView,
     CellContext: CellSource,

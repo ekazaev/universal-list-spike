@@ -22,4 +22,5 @@ extension CityTableCell: ConfigurableReusableView {
         titleLabel.text = city.city
         descriptionLabel.text = city.description
     }
+
 }

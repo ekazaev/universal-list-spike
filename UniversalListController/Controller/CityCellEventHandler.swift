@@ -6,7 +6,7 @@
 import DifferenceKit
 import Foundation
 
-class CityCellEventHandler: CityCellEventHandling {
+final class CityCellEventHandler: CityCellEventHandling {
 
     var title: String {
         return city.city

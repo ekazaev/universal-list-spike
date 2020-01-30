@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class TableViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSObject, UITableViewDataSource
+final class TableViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSObject, UITableViewDataSource
     where
     VS.View: UITableView,
     CellContext: CellSource,

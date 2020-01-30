@@ -12,7 +12,7 @@ protocol SearchBarControllerDelegate: AnyObject {
 
 }
 
-class SearchBarController: NSObject, UISearchBarDelegate {
+final class SearchBarController: NSObject, UISearchBarDelegate {
 
     public weak var delegate: SearchBarControllerDelegate?
 

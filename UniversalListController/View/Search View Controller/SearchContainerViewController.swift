@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-class SearchContainerViewController: UIViewController {
+final class SearchContainerViewController: UIViewController {
 
     var containingViewController: UIViewController? {
         didSet {

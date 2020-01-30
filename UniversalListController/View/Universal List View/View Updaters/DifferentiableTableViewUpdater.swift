@@ -7,7 +7,7 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-class DifferentiableTableViewUpdater<CellContext, Source: ViewSource>: ReusableViewListUpdater
+final class DifferentiableTableViewUpdater<CellContext, Source: ViewSource>: ReusableViewListUpdater
     where
     Source.View: UITableView,
     CellContext: CellSource,

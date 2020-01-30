@@ -19,6 +19,8 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
 
     private var selectedCities: [City] = []
 
+    private var filteredCities: [City] = []
+
     init(viewUpdater: ViewUpdater, citiesProvider: CityDataProvider, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
         self.citiesProvider = citiesProvider
@@ -26,7 +28,8 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
     }
 
     func listViewInstantiated() {
-        search(for: "")
+        filteredCities = citiesProvider.getData()
+        reloadView()
     }
 
     func didSelect(city: City) {
@@ -37,18 +40,25 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
         case .none:
             selectedCities.append(city)
         }
+        reloadView()
     }
 
     func search(for query: String) {
         let cities = citiesProvider.getData()
         guard !query.isEmpty else {
-            let citiesList = dataTransformer.transform([cities])
-            viewUpdater.update(with: citiesList)
+            filteredCities = cities
+            reloadView()
             return
         }
-        let filtered = cities.filter { $0.city.contains(query) || $0.description.contains(query) }
-        let data = dataTransformer.transform([filtered])
-        viewUpdater.update(with: data)
+        filteredCities = cities.filter { $0.city.contains(query) || $0.description.contains(query) }
+        reloadView()
+    }
+
+    private func reloadView() {
+        let filteredWithoutSelectedCities = filteredCities.filter { !selectedCities.map { $0.cityId }.contains($0.cityId) }
+        let resultCities = [selectedCities, filteredWithoutSelectedCities]
+        let citiesListData = dataTransformer.transform(resultCities)
+        viewUpdater.update(with: citiesListData)
     }
 
 }

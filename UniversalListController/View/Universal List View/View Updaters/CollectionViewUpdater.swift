@@ -13,7 +13,7 @@ final class CollectionViewUpdater<DataSource: ReusableViewListDataSource & UICol
     DataSource.CellContext: CellSource,
     DataSource.CellContext.Cell: UICollectionViewCell {
 
-    private var dataSource: DataSource
+    private weak var dataSource: DataSource?
 
     private let viewSource: ViewSource
 
@@ -30,6 +30,9 @@ final class CollectionViewUpdater<DataSource: ReusableViewListDataSource & UICol
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
+        guard let dataSource = dataSource else {
+            return
+        }
         dataSource.data = data
         guard viewSource.isViewLoaded else {
             return

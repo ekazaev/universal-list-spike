@@ -12,7 +12,7 @@ final class CollectionViewDataSource<SectionContext, CellContext, ViewSource: Li
     CellContext: CellSource,
     CellContext.Cell: UICollectionViewCell {
 
-    typealias View = UITableView
+    typealias View = ViewSource.View
 
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 

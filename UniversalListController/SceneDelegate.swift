@@ -40,20 +40,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchListDelegate = CitySearchTableDelegateTransformer(eventHandler: searchEventHandler)
         searchTableViewFactory.delegate = searchListDelegate
 
-        let searchTableViewController = UniversalListViewController(factory: searchTableViewFactory, eventHandler: [searchEventHandler, searchListDelegate])
+        let searchTableViewController = UniversalListViewController(factory: searchTableViewFactory, eventHandler: [searchEventHandler, searchListDelegate], dataSource: searchDataSource)
 
         searchContainerController.containingViewController = searchTableViewController
         searchTableViewController.delegate = searchEventHandler
 
         // Second:
         let tableViewFactory = TableViewFactory(style: .grouped)
-        let dataSource = TableViewDataSource<Void, ConfigurableCellSource<CityTableCell>, TableViewFactory>(viewSource: tableViewFactory)
+        let tableDataSource = TableViewDataSource<Void, ConfigurableCellSource<CityTableCell>, TableViewFactory>(viewSource: tableViewFactory)
 
-        let viewUpdater = DifferentiableTableViewUpdater(viewProvider: tableViewFactory, dataSource: dataSource)
+        let viewUpdater = DifferentiableTableViewUpdater(viewProvider: tableViewFactory, dataSource: tableDataSource)
         let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: dataProvider), dataTransformer: tableDataTransformer)
-        let tableViewController = UniversalListViewController(factory: tableViewFactory, eventHandler: tableEventHandler)
+        let tableViewController = UniversalListViewController(factory: tableViewFactory, eventHandler: tableEventHandler, dataSource: tableDataSource)
 
         // Third:
         let layout = UICollectionViewFlowLayout()
@@ -61,11 +61,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionViewFactory = CollectionViewFactory(collectionViewLayout: layout)
         let collectionDataSource = CollectionViewDataSource<Void, ConfigurableCellSource<CityCollectionCell>, CollectionViewFactory>(viewSource: collectionViewFactory)
 
-        let collectionViewUpdater = DifferentiableCollectionViewUpdater(viewProvider: collectionViewFactory, dataSource: collectionDataSource)
+        let collectionViewUpdater = DifferentiableCollectionViewUpdater(viewSource: collectionViewFactory, dataSource: collectionDataSource)
         let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: dataProvider), dataTransformer: collectionDataTransformer)
-        let collectionViewController = UniversalListViewController(factory: collectionViewFactory, eventHandler: collectionEventHandler)
+        let collectionViewController = UniversalListViewController(factory: collectionViewFactory, eventHandler: collectionEventHandler, dataSource: collectionDataSource)
 
         tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */
             UINavigationController(rootViewController: searchContainerController),

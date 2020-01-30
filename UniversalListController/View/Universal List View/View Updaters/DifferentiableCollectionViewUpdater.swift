@@ -16,7 +16,7 @@ final class DifferentiableCollectionViewUpdater<DataSource: ReusableViewListData
     DataSource.CellContext: Differentiable,
     DataSource.CellContext.Cell: UICollectionViewCell {
 
-    private var dataSource: DataSource
+    private weak var dataSource: DataSource?
 
     private let viewSource: ViewSource
 
@@ -27,12 +27,15 @@ final class DifferentiableCollectionViewUpdater<DataSource: ReusableViewListData
         return collection
     }()
 
-    init(viewProvider: ViewSource, dataSource: DataSource) {
+    init(viewSource: ViewSource, dataSource: DataSource) {
         self.dataSource = dataSource
-        viewSource = viewProvider
+        self.viewSource = viewSource
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
+        guard let dataSource = dataSource else {
+            return
+        }
         guard viewSource.isViewLoaded else {
             dataSource.data = data
             return

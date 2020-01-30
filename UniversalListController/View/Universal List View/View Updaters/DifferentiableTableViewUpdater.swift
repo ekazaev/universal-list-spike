@@ -16,7 +16,7 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
     DataSource.CellContext: Differentiable,
     DataSource.CellContext.Cell: UITableViewCell {
 
-    private var dataSource: DataSource
+    private weak var dataSource: DataSource?
 
     private let viewSource: ViewSource
 
@@ -33,6 +33,9 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
+        guard let dataSource = dataSource else {
+            return
+        }
         guard viewSource.isViewLoaded else {
             dataSource.data = data
             return

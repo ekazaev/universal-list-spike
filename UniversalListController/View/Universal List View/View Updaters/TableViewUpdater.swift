@@ -13,13 +13,12 @@ final class TableViewUpdater<DataSource: ReusableViewListDataSource & UITableVie
     DataSource.CellContext: CellSource,
     DataSource.CellContext.Cell: UITableViewCell {
 
-    private var dataSource: DataSource
+    private weak var dataSource: DataSource?
 
     private let viewSource: ViewSource
 
     private lazy var tableView: ViewSource.View = {
         let tableView = viewSource.view
-        tableView.dataSource = dataSource
         return tableView
     }()
 
@@ -29,6 +28,9 @@ final class TableViewUpdater<DataSource: ReusableViewListDataSource & UITableVie
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
+        guard let dataSource = dataSource else {
+            return
+        }
         dataSource.data = data
         guard viewSource.isViewLoaded else {
             return

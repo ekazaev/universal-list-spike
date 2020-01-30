@@ -38,9 +38,21 @@ final class TableViewFactory: ListViewSource, ViewFactory {
         }
     }
 
-    init(style: UITableView.Style = .plain, delegate: UITableViewDelegate? = nil) {
+    weak var dataSource: UITableViewDataSource? {
+        didSet {
+            guard isViewLoaded else {
+                return
+            }
+            view.dataSource = dataSource
+        }
+    }
+
+    init(style: UITableView.Style = .plain,
+         delegate: UITableViewDelegate? = nil,
+         dataSource: UITableViewDataSource? = nil) {
         self.style = style
         self.delegate = delegate
+        self.dataSource = dataSource
     }
 
     func build() -> UITableView {
@@ -51,6 +63,7 @@ final class TableViewFactory: ListViewSource, ViewFactory {
 
         let tableView = UITableView(frame: UIScreen.main.bounds, style: style)
         tableView.delegate = delegate
+        tableView.dataSource = dataSource
         self.tableView = tableView
         return tableView
     }

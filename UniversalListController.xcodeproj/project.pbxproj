@@ -211,7 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				1BE542DC1A9469077FDDA1C0 /* ReusableView.swift */,
-				1BE54A66260ADFC048A16F85 /* Sources */,
+				1BE54A66260ADFC048A16F85 /* Cell Sources */,
 				1BE548A85060B89B024934F5 /* ReusableViewFactory.swift */,
 				1BE5483A578EBFCA1A522658 /* DequeuingFactory.swift */,
 				1BE5411B7A916B73BBCB378B /* ReusableViewDequeuer.swift */,
@@ -220,14 +220,14 @@
 			path = ReusableView;
 			sourceTree = "<group>";
 		};
-		1BE54A66260ADFC048A16F85 /* Sources */ = {
+		1BE54A66260ADFC048A16F85 /* Cell Sources */ = {
 			isa = PBXGroup;
 			children = (
 				1BE54141562A88F216941EAD /* CellSource.swift */,
 				1BE546C6C6B6F8572FD65651 /* ConfigurableReusableView.swift */,
 				1BE54DE912EC142253D69D49 /* ConfigurableCellSource.swift */,
 			);
-			path = Sources;
+			path = "Cell Sources";
 			sourceTree = "<group>";
 		};
 		1BE54A98BE8DC662D217C246 /* Controller */ = {

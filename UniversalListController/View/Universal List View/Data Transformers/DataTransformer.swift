@@ -7,12 +7,10 @@ import Foundation
 
 protocol DataTransformer {
 
-    associatedtype Data
+    associatedtype Source
 
-    associatedtype SectionContext
+    associatedtype Target
 
-    associatedtype CellContext
-
-    func transform(_ data: Data) -> ListData<SectionContext, CellContext>
+    func transform(_ data: Source) -> Target
 
 }

@@ -8,21 +8,20 @@ import Foundation
 final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>:
     SearchBarControllerDelegate, UniversalListViewControllerDelegate, SearchListDelegateEventHandler
     where
-    Transformer.SectionContext == ViewUpdater.SectionContext,
-    Transformer.CellContext == ViewUpdater.CellContext,
-    Transformer.Data == [[City]] {
+    Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
+    Transformer.Source == [[City]] {
 
     private var viewUpdater: ViewUpdater
 
-    private var dataProvider: CityDataProvider
+    private var citiesProvider: CityDataProvider
 
     private var dataTransformer: Transformer
 
-    private var selectedCityIds: [Int] = []
+    private var selectedCities: [City] = []
 
     init(viewUpdater: ViewUpdater, citiesProvider: CityDataProvider, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
-        dataProvider = citiesProvider
+        self.citiesProvider = citiesProvider
         self.dataTransformer = dataTransformer
     }
 
@@ -31,22 +30,23 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transfo
     }
 
     func didSelect(city: City) {
-        switch selectedCityIds.contains(city.cityId) {
-        case true:
-            selectedCityIds.removeFirst(city.cityId)
-        case false:
-            selectedCityIds.append(city.cityId)
+        let cityIndex = selectedCities.map { $0.cityId }.firstIndex(of: city.cityId)
+        switch cityIndex {
+        case let .some(cityIndex):
+            selectedCities.remove(at: cityIndex)
+        case .none:
+            selectedCities.append(city)
         }
     }
 
     func search(for query: String) {
-        let entities = dataProvider.getData()
+        let cities = citiesProvider.getData()
         guard !query.isEmpty else {
-            let data = dataTransformer.transform(entities)
-            viewUpdater.update(with: data)
+            let citiesList = dataTransformer.transform([cities])
+            viewUpdater.update(with: citiesList)
             return
         }
-        let filtered = entities.first!.filter { $0.city.contains(query) || $0.description.contains(query) }
+        let filtered = cities.filter { $0.city.contains(query) || $0.description.contains(query) }
         let data = dataTransformer.transform([filtered])
         viewUpdater.update(with: data)
     }

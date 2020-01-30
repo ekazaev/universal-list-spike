@@ -8,9 +8,8 @@ import UIKit
 
 class RandomizingEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: DataProvider, Transformer: DataTransformer>
     where
-    Transformer.SectionContext == ViewUpdater.SectionContext,
-    Transformer.CellContext == ViewUpdater.CellContext,
-    Transformer.Data == Provider.Data {
+    Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
+    Transformer.Source == Provider.Data {
 
     private var viewUpdater: ViewUpdater
 

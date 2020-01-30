@@ -7,30 +7,32 @@ import DifferenceKit
 import Foundation
 import UIKit
 
-final class DifferentiableCollectionViewUpdater<CellContext, Source: ViewSource>: ReusableViewListUpdater
+final class DifferentiableCollectionViewUpdater<DataSource: ReusableViewListDataSource & UICollectionViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
     where
-    Source.View: UICollectionView,
-    CellContext: CellSource,
-    CellContext: Differentiable,
-    CellContext.Cell: UICollectionViewCell {
+    ViewSource.View: UICollectionView,
+    DataSource.View: UICollectionView,
+    DataSource.SectionContext == Void,
+    DataSource.CellContext: CellSource,
+    DataSource.CellContext: Differentiable,
+    DataSource.CellContext.Cell: UICollectionViewCell {
 
-    private let dataSource: CollectionViewDataSource<Void, CellContext, Source>
+    private var dataSource: DataSource
 
-    private let viewSource: Source
+    private let viewSource: ViewSource
 
-    private lazy var collectionView: Source.View = {
+    private lazy var collectionView: ViewSource.View = {
         let collection = viewSource.view
         collection.dataSource = dataSource
         collection.reloadData()
         return collection
     }()
 
-    init(viewProvider: Source, dataSource: CollectionViewDataSource<Void, CellContext, Source>) {
+    init(viewProvider: ViewSource, dataSource: DataSource) {
         self.dataSource = dataSource
         viewSource = viewProvider
     }
 
-    func update(with data: ListData<Void, CellContext>) {
+    func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
         guard viewSource.isViewLoaded else {
             dataSource.data = data
             return

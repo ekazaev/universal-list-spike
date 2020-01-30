@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol ViewSource {
+protocol ListViewSource {
 
     associatedtype View: UIView
 

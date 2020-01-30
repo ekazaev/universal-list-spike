@@ -1,12 +1,12 @@
 //
-// FlatCellSource.swift
+// ConfigurableCellSource.swift
 // UniversalListController
 //
 
 import Foundation
 import UIKit
 
-struct FlatCellSource<Cell: ConfigurableReusableView>: CellSource {
+struct ConfigurableCellSource<Cell: ConfigurableReusableView>: CellSource {
 
     public let data: Cell.Data
 

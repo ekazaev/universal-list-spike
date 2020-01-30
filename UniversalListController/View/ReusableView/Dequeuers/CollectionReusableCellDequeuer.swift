@@ -6,12 +6,12 @@
 import Foundation
 import UIKit
 
-final class CollectionReusableCellDequeuer<VS: ViewSource>: ReusableViewDequeuer where VS.View: UICollectionView {
+final class CollectionReusableCellDequeuer<ViewSource: ListViewSource>: ReusableViewDequeuer where ViewSource.View: UICollectionView {
 
-    private let viewSource: VS
+    private let viewSource: ViewSource
     private var reusableIdentifiers: Set<String> = Set()
 
-    init(viewSource: VS) {
+    init(viewSource: ViewSource) {
         self.viewSource = viewSource
     }
 

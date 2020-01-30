@@ -6,18 +6,20 @@
 import Foundation
 import UIKit
 
-final class CollectionViewDataSource<SectionContext, CellContext, VS: ViewSource>: NSObject, UICollectionViewDataSource
+final class CollectionViewDataSource<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSource, UICollectionViewDataSource
     where
-    VS.View: UICollectionView,
+    ViewSource.View: UICollectionView,
     CellContext: CellSource,
     CellContext.Cell: UICollectionViewCell {
 
+    typealias View = UITableView
+
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let viewSource: VS
-    private let cellDequeuer: CollectionReusableCellDequeuer<VS>
+    private let viewSource: ViewSource
+    private let cellDequeuer: CollectionReusableCellDequeuer<ViewSource>
 
-    init(viewSource: VS) {
+    init(viewSource: ViewSource) {
         self.viewSource = viewSource
         cellDequeuer = CollectionReusableCellDequeuer(viewSource: viewSource)
 

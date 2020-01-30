@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-final class AnyViewSource: ViewSource {
+final class AnyViewSource: ListViewSource {
 
     typealias View = UIView
 
@@ -20,7 +20,7 @@ final class AnyViewSource: ViewSource {
 
     private var box: AnyViewSourceBox
 
-    init<VS: ViewSource>(with viewSource: VS) {
+    init<VS: ListViewSource>(with viewSource: VS) {
         box = ViewSourceBox(with: viewSource)
     }
 }
@@ -33,9 +33,9 @@ private protocol AnyViewSourceBox {
 
 }
 
-private final class ViewSourceBox<Source: ViewSource>: AnyViewSourceBox {
+private final class ViewSourceBox<ViewSource: ListViewSource>: AnyViewSourceBox {
 
-    private var viewSource: Source
+    private var viewSource: ViewSource
 
     var isViewLoaded: Bool {
         return viewSource.isViewLoaded
@@ -45,7 +45,7 @@ private final class ViewSourceBox<Source: ViewSource>: AnyViewSourceBox {
         return viewSource.view
     }
 
-    init(with viewSource: Source) {
+    init(with viewSource: ViewSource) {
         self.viewSource = viewSource
     }
 

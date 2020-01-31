@@ -8,7 +8,7 @@ import UIKit
 
 protocol CellSource {
 
-    associatedtype Cell: ReusableView
+    associatedtype Cell
 
     func getView(with factory: ReusableViewFactory) -> Cell
 

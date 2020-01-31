@@ -17,7 +17,7 @@ enum ListState<Data> {
 
 struct ListStateTableDataTransformer<Data,
                                      DataCell: UITableViewCell & ConfigurableReusableView,
-                                     LoadingCell: UITableViewCell>: DataTransformer
+                                     LoadingCell: UITableViewCell & ReusableView>: DataTransformer
     where
     DataCell.Data == Data {
 

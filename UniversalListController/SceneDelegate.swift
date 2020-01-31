@@ -28,9 +28,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // First
         let searchContainerController = SearchContainerViewController()
         let searchTableViewFactory = TableViewFactory(style: .grouped)
-        let searchDataSource = TableViewDataSourceController<Void, AnyTableCellSource, TableViewFactory>(viewSource: searchTableViewFactory)
+        let searchDataSource = TableViewDataSourceController<Void, AnyTableCellAdapter, TableViewFactory>(holder: searchTableViewFactory)
 
-        let searchViewUpdater = TableViewUpdater(viewSource: searchTableViewFactory, dataSource: searchDataSource)
+        let searchViewUpdater = TableViewUpdater(holder: searchTableViewFactory, dataSource: searchDataSource)
         let dataProvider = CityDataProvider()
         let searchDataTransformer = ListStateTableDataTransformer<City, CityTableCell, LoadingTableViewCell>()
 
@@ -56,9 +56,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Second:
         let tableViewFactory = TableViewFactory(style: .grouped)
-        let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellSource<CityTableCell>, TableViewFactory>(viewSource: tableViewFactory)
+        let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<CityTableCell>, TableViewFactory>(holder: tableViewFactory)
 
-        let viewUpdater = DifferentiableTableViewUpdater(viewSource: tableViewFactory, dataSource: tableDataSource)
+        let viewUpdater = DifferentiableTableViewUpdater(holder: tableViewFactory, dataSource: tableDataSource)
         let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: tableDataTransformer)
@@ -73,9 +73,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 200)
         let collectionViewFactory = CollectionViewFactory(collectionViewLayout: layout)
-        let collectionDataSource = CollectionViewDataSourceController<Void, ConfigurableCellSource<CityCollectionCell>, CollectionViewFactory>(viewSource: collectionViewFactory)
+        let collectionDataSource = CollectionViewDataSourceController<Void, ConfigurableCellAdapter<CityCollectionCell>, CollectionViewFactory>(holder: collectionViewFactory)
 
-        let collectionViewUpdater = DifferentiableCollectionViewUpdater(viewSource: collectionViewFactory, dataSource: collectionDataSource)
+        let collectionViewUpdater = DifferentiableCollectionViewUpdater(holder: collectionViewFactory, dataSource: collectionDataSource)
         let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: collectionDataTransformer)

@@ -6,12 +6,12 @@
 import Foundation
 import UIKit
 
-struct AnyTableCellSource: CellSource {
+struct AnyTableCellAdapter: CellAdapter {
 
-    private let box: AnyCellSourceBox
+    private let box: AnyCellAdapterBox
 
-    init<CS: CellSource>(with cellSource: CS) where CS.Cell: UITableViewCell {
-        box = CellSourceBox(with: cellSource)
+    init<CS: CellAdapter>(with cellSource: CS) where CS.Cell: UITableViewCell {
+        box = CellAdapterBox(with: cellSource)
     }
 
     func getView(with factory: ReusableViewFactory) -> UITableViewCell {
@@ -20,13 +20,13 @@ struct AnyTableCellSource: CellSource {
 
 }
 
-private protocol AnyCellSourceBox {
+private protocol AnyCellAdapterBox {
 
     func build(with factory: ReusableViewFactory) -> UITableViewCell
 
 }
 
-private final class CellSourceBox<CS: CellSource>: AnyCellSourceBox where CS.Cell: UITableViewCell {
+private final class CellAdapterBox<CS: CellAdapter>: AnyCellAdapterBox where CS.Cell: UITableViewCell {
 
     private var cellSource: CS
 

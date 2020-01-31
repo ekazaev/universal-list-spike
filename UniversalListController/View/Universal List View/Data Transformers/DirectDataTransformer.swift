@@ -15,12 +15,12 @@ struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransfor
 
     typealias SectionContext = Void
 
-    typealias CellContext = ConfigurableCellSource<Cell>
+    typealias CellContext = ConfigurableCellAdapter<Cell>
 
     func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
             return SectionData(cells: $0.map {
-                CellData(context: ConfigurableCellSource<Cell>(with: $0))
+                CellData(context: ConfigurableCellAdapter<Cell>(with: $0))
             })
         })
         return listData

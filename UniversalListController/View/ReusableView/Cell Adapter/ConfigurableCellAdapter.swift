@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-struct ConfigurableCellSource<Cell: ConfigurableReusableView>: CellSource {
+struct ConfigurableCellAdapter<Cell: ConfigurableReusableView>: CellAdapter {
 
     public let data: Cell.Data
 

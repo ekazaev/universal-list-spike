@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol CellSource {
+protocol CellAdapter {
 
     associatedtype Cell
 

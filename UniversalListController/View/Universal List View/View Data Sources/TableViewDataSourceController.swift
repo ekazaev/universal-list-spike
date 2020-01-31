@@ -6,35 +6,35 @@
 import Foundation
 import UIKit
 
-final class TableViewDataSourceController<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSourceController, UITableViewDataSource
+final class TableViewDataSourceController<SectionContext, CellContext, ListHolder: ViewHolder>: NSObject, ReusableViewListDataSourceController, UITableViewDataSource
     where
-    ViewSource.View: UITableView,
-    CellContext: CellSource,
+    ListHolder.View: UITableView,
+    CellContext: CellAdapter,
     CellContext.Cell: UITableViewCell {
 
-    typealias View = ViewSource.View
+    typealias View = ListHolder.View
 
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let viewSource: ViewSource
-    private let cellDequeuer: TableReusableCellDequeuer<ViewSource>
+    private let holder: ListHolder
+    private let cellDequeuer: TableReusableCellDequeuer<ListHolder>
 
-    init(viewSource: ViewSource) {
-        self.viewSource = viewSource
-        cellDequeuer = TableReusableCellDequeuer(viewSource: viewSource)
+    init(holder: ListHolder) {
+        self.holder = holder
+        cellDequeuer = TableReusableCellDequeuer(holder: holder)
 
         super.init()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard viewSource.isViewLoaded else {
+        guard holder.isViewLoaded else {
             return 0
         }
         return data.sections.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard viewSource.isViewLoaded else {
+        guard holder.isViewLoaded else {
             return 0
         }
         return data.sections[section].cells.count

@@ -1,12 +1,12 @@
 //
-// ViewSource.swift
+// ViewHolder.swift
 // UniversalListController
 //
 
 import Foundation
 import UIKit
 
-protocol ListViewSource {
+protocol ViewHolder {
 
     associatedtype View: UIView
 

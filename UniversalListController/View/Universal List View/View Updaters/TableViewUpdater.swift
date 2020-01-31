@@ -6,26 +6,26 @@
 import Foundation
 import UIKit
 
-final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
+final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: ReusableViewListUpdater
     where
-    ViewSource.View: UITableView,
+    ListHolder.View: UITableView,
     DataSource.View: UITableView,
-    DataSource.CellContext: CellSource,
+    DataSource.CellContext: CellAdapter,
     DataSource.CellContext.Cell: UITableViewCell {
 
     private weak var dataSource: DataSource?
 
-    private let viewSource: ViewSource
+    private let holder: ListHolder
 
-    private lazy var tableView: ViewSource.View = {
-        let tableView = viewSource.view
+    private lazy var tableView: ListHolder.View = {
+        let tableView = holder.view
         tableView.dataSource = dataSource
         return tableView
     }()
 
-    init(viewSource: ViewSource, dataSource: DataSource) {
+    init(holder: ListHolder, dataSource: DataSource) {
         self.dataSource = dataSource
-        self.viewSource = viewSource
+        self.holder = holder
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
@@ -33,7 +33,7 @@ final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & 
             return
         }
         dataSource.data = data
-        guard viewSource.isViewLoaded else {
+        guard holder.isViewLoaded else {
             return
         }
         tableView.reloadData()

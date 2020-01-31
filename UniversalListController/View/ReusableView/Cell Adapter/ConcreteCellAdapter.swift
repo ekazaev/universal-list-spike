@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-struct ConcreteCellSource<Cell: ReusableView>: CellSource {
+struct ConcreteCellAdapter<Cell: ReusableView>: CellAdapter {
 
     func getView(with factory: ReusableViewFactory) -> Cell {
         return factory.build()

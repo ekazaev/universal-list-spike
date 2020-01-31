@@ -6,35 +6,35 @@
 import Foundation
 import UIKit
 
-final class CollectionViewDataSourceController<SectionContext, CellContext, ViewSource: ListViewSource>: NSObject, ReusableViewListDataSourceController, UICollectionViewDataSource
+final class CollectionViewDataSourceController<SectionContext, CellContext, ListHolder: ViewHolder>: NSObject, ReusableViewListDataSourceController, UICollectionViewDataSource
     where
-    ViewSource.View: UICollectionView,
-    CellContext: CellSource,
+    ListHolder.View: UICollectionView,
+    CellContext: CellAdapter,
     CellContext.Cell: UICollectionViewCell {
 
-    typealias View = ViewSource.View
+    typealias View = ListHolder.View
 
     var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let viewSource: ViewSource
-    private let cellDequeuer: CollectionReusableCellDequeuer<ViewSource>
+    private let holder: ListHolder
+    private let cellDequeuer: CollectionReusableCellDequeuer<ListHolder>
 
-    init(viewSource: ViewSource) {
-        self.viewSource = viewSource
-        cellDequeuer = CollectionReusableCellDequeuer(viewSource: viewSource)
+    init(holder: ListHolder) {
+        self.holder = holder
+        cellDequeuer = CollectionReusableCellDequeuer(holder: holder)
 
         super.init()
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard viewSource.isViewLoaded else {
+        guard holder.isViewLoaded else {
             return 0
         }
         return data.sections.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard viewSource.isViewLoaded else {
+        guard holder.isViewLoaded else {
             return 0
         }
         return data.sections[section].cells.count

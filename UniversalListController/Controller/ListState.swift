@@ -21,14 +21,14 @@ struct ListStateTableDataTransformer<Data,
     where
     DataCell.Data == Data {
 
-    func transform(_ data: [[ListState<Data>]]) -> ListData<Void, AnyTableCellSource> {
-        let listData = ListData<Void, AnyTableCellSource>(sections: data.map {
+    func transform(_ data: [[ListState<Data>]]) -> ListData<Void, AnyTableCellAdapter> {
+        let listData = ListData<Void, AnyTableCellAdapter>(sections: data.map {
             return SectionData(cells: $0.map {
                 switch $0 {
                 case let .data(cellData):
-                    return CellData(context: AnyTableCellSource(with: ConfigurableCellSource<DataCell>(with: cellData)))
+                    return CellData(context: AnyTableCellAdapter(with: ConfigurableCellAdapter<DataCell>(with: cellData)))
                 case .loading:
-                    return CellData(context: AnyTableCellSource(with: ConcreteCellSource<LoadingCell>()))
+                    return CellData(context: AnyTableCellAdapter(with: ConcreteCellAdapter<LoadingCell>()))
                 }
             })
         })

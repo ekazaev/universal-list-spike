@@ -6,27 +6,27 @@
 import Foundation
 import UIKit
 
-final class CollectionViewUpdater<DataSource: ReusableViewListDataSourceController & UICollectionViewDataSource, ViewSource: ListViewSource>: ReusableViewListUpdater
+final class CollectionViewUpdater<DataSource: ReusableViewListDataSourceController & UICollectionViewDataSource, ListHolder: ViewHolder>: ReusableViewListUpdater
     where
-    ViewSource.View: UICollectionView,
+    ListHolder.View: UICollectionView,
     DataSource.View: UICollectionView,
-    DataSource.CellContext: CellSource,
+    DataSource.CellContext: CellAdapter,
     DataSource.CellContext.Cell: UICollectionViewCell {
 
     private weak var dataSource: DataSource?
 
-    private let viewSource: ViewSource
+    private let holder: ListHolder
 
-    private lazy var collectionView: ViewSource.View = {
-        let collectionView = viewSource.view
+    private lazy var collectionView: ListHolder.View = {
+        let collectionView = holder.view
         collectionView.dataSource = dataSource
         collectionView.reloadData()
         return collectionView
     }()
 
-    init(viewSource: ViewSource, dataSource: DataSource) {
+    init(holder: ListHolder, dataSource: DataSource) {
         self.dataSource = dataSource
-        self.viewSource = viewSource
+        self.holder = holder
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
@@ -34,7 +34,7 @@ final class CollectionViewUpdater<DataSource: ReusableViewListDataSourceControll
             return
         }
         dataSource.data = data
-        guard viewSource.isViewLoaded else {
+        guard holder.isViewLoaded else {
             return
         }
         collectionView.reloadData()

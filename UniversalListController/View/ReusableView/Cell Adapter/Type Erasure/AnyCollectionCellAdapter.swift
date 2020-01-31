@@ -6,12 +6,12 @@
 import Foundation
 import UIKit
 
-struct AnyCollectionCellSource: CellSource {
+struct AnyCollectionCellAdapter: CellAdapter {
 
-    private let box: AnyCellSourceBox
+    private let box: AnyCellAdapterBox
 
-    init<CS: CellSource>(with cellSource: CS) where CS.Cell: UICollectionViewCell {
-        box = CellSourceBox(with: cellSource)
+    init<CS: CellAdapter>(with cellSource: CS) where CS.Cell: UICollectionViewCell {
+        box = CellAdapterBox(with: cellSource)
     }
 
     func getView(with factory: ReusableViewFactory) -> UICollectionViewCell {
@@ -20,13 +20,13 @@ struct AnyCollectionCellSource: CellSource {
 
 }
 
-private protocol AnyCellSourceBox {
+private protocol AnyCellAdapterBox {
 
     func build(with factory: ReusableViewFactory) -> UICollectionViewCell
 
 }
 
-private final class CellSourceBox<CS: CellSource>: AnyCellSourceBox where CS.Cell: UICollectionViewCell {
+private final class CellAdapterBox<CS: CellAdapter>: AnyCellAdapterBox where CS.Cell: UICollectionViewCell {
 
     private var cellSource: CS
 

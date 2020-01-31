@@ -31,7 +31,7 @@ final class DefaultScrollViewNextPageRequester: ScrollViewNextPageRequester {
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let viewPortHeight = scrollView.bounds.height + scrollView.contentInset.top + scrollView.contentInset.bottom
+        let viewPortHeight = scrollView.bounds.height // + scrollView.contentInset.top + scrollView.contentInset.bottom
         if scrollView.contentOffset.y > scrollView.contentSize.height - viewPortHeight {
             eventHandler.requestNewPage()
         }

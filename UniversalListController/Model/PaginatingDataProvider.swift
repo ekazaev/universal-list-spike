@@ -6,7 +6,7 @@
 import Foundation
 
 // This object exists only for the demo purposes
-final class PaginatingDataProvider<DP: DataProvider, Element>: DataProvider where DP.Data == Array<Element> {
+final class PaginatingDataProvider<DP: DataProvider, Element>: DataProvider where DP.Data == [Element] {
 
     let itemsPerPage: Int
 
@@ -32,4 +32,3 @@ final class PaginatingDataProvider<DP: DataProvider, Element>: DataProvider wher
     }
 
 }
-

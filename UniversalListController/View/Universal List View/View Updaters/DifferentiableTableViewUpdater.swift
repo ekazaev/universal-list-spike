@@ -27,9 +27,9 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
         return tableView
     }()
 
-    init(viewProvider: ViewSource, dataSource: DataSource) {
+    init(viewSource: ViewSource, dataSource: DataSource) {
         self.dataSource = dataSource
-        viewSource = viewProvider
+        self.viewSource = viewSource
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {

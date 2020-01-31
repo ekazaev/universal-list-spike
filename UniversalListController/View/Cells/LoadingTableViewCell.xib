@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KBV-dS-TGD" customClass="LoadingTableViewCell" customModule="UniversalListController" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KBV-dS-TGD" id="Vtn-lr-DAG">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-I6-x7B">
+                        <rect key="frame" x="12" y="12" width="390" height="20"/>
+                    </activityIndicatorView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tdH-I6-x7B" firstAttribute="top" secondItem="Vtn-lr-DAG" secondAttribute="top" constant="12" id="8xg-4z-H4X"/>
+                    <constraint firstAttribute="bottom" secondItem="tdH-I6-x7B" secondAttribute="bottom" constant="12" id="avI-vv-onW"/>
+                    <constraint firstItem="tdH-I6-x7B" firstAttribute="leading" secondItem="Vtn-lr-DAG" secondAttribute="leading" constant="12" id="ftd-FQ-nSR"/>
+                    <constraint firstAttribute="trailing" secondItem="tdH-I6-x7B" secondAttribute="trailing" constant="12" id="moK-Dv-hmX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="-29" y="68"/>
+        </tableViewCell>
+    </objects>
+</document>

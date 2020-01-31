@@ -13,7 +13,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     where
     DP.Data == [City],
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Source == [DP.Data] {
+    Transformer.Source == [[ListState<DP.Data.Element>]] {
 
     private var viewUpdater: ViewUpdater
 
@@ -25,9 +25,11 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
 
     private var filteredItems: DP.Data = []
 
+    private var isLoading: Bool = false
+
     init(viewUpdater: ViewUpdater, citiesProvider: DP, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
-        self.itemsProvider = citiesProvider
+        itemsProvider = citiesProvider
         self.dataTransformer = dataTransformer
     }
 
@@ -50,8 +52,19 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     func requestNewPage() {
-        filteredItems.append(contentsOf: itemsProvider.getData())
+        isLoading = true
         reloadView()
+        let mainQueue = DispatchQueue.main
+        let deadline = DispatchTime.now() + .seconds(5)
+        mainQueue.asyncAfter(deadline: deadline) { [weak self] in
+            self?.isLoading = true
+            guard let self = self else {
+                return
+            }
+            self.filteredItems.append(contentsOf: self.itemsProvider.getData())
+            self.reloadView()
+        }
+
     }
 
     func search(for query: String) {
@@ -66,7 +79,15 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     private func reloadView() {
-        let resultItems = [selectedItems, itemsWithoutSelected()]
+        let selectedItemsState = selectedItems.map { ListState.data($0) }
+        var unselectedItemsState = itemsWithoutSelected().map { ListState.data($0) }
+        if isLoading {
+            unselectedItemsState.append(.loading)
+        }
+        let resultItems = [
+            selectedItemsState,
+            unselectedItemsState
+        ]
         let itemsAsListData = dataTransformer.transform(resultItems)
         viewUpdater.update(with: itemsAsListData)
     }

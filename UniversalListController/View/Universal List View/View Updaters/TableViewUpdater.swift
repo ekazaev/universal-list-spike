@@ -19,6 +19,7 @@ final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & 
 
     private lazy var tableView: ViewSource.View = {
         let tableView = viewSource.view
+        tableView.dataSource = dataSource
         return tableView
     }()
 

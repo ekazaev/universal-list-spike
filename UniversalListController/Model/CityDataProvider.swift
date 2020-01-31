@@ -16,7 +16,7 @@ protocol DataProvider {
 struct CityDataProvider: DataProvider {
 
     func getData() -> [City] {
-        let cities = CityDataMock.cities.shuffled()
+        let cities = CityDataMock.cities
         return cities
     }
 

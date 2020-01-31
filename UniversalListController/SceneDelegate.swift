@@ -61,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewUpdater = DifferentiableTableViewUpdater(viewSource: tableViewFactory, dataSource: tableDataSource)
         let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
-        let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: dataProvider), dataTransformer: tableDataTransformer)
+        let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
             factory: tableViewFactory,
             eventHandler: tableEventHandler,
@@ -78,7 +78,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionViewUpdater = DifferentiableCollectionViewUpdater(viewSource: collectionViewFactory, dataSource: collectionDataSource)
         let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
 
-        let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: dataProvider), dataTransformer: collectionDataTransformer)
+        let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
                                                                    eventHandler: collectionEventHandler, dataSourceController: collectionDataSource,
                                                                    delegateController: SimpleCollectionViewDelegateController())

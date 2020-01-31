@@ -5,65 +5,74 @@
 
 import Foundation
 
-final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, Transformer: DataTransformer>:
-    SearchBarControllerDelegate, UniversalListViewControllerDelegate, SimpleDelegateControllerEventHandler
+final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Transformer: DataTransformer>:
+    SearchBarControllerDelegate,
+    UniversalListViewControllerDelegate,
+    SimpleDelegateControllerEventHandler,
+    NextPageEventHandler
     where
+    DP.Data == [City],
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Source == [[City]] {
+    Transformer.Source == [DP.Data] {
 
     private var viewUpdater: ViewUpdater
 
-    private var citiesProvider: CityDataProvider
+    private var itemsProvider: DP
 
     private var dataTransformer: Transformer
 
-    private var selectedCities: [City] = []
+    private var selectedItems: DP.Data = []
 
-    private var filteredCities: [City] = []
+    private var filteredItems: DP.Data = []
 
-    init(viewUpdater: ViewUpdater, citiesProvider: CityDataProvider, dataTransformer: Transformer) {
+    init(viewUpdater: ViewUpdater, citiesProvider: DP, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
-        self.citiesProvider = citiesProvider
+        self.itemsProvider = citiesProvider
         self.dataTransformer = dataTransformer
     }
 
     func listViewInstantiated() {
-        filteredCities = citiesProvider.getData()
+        filteredItems = itemsProvider.getData()
         reloadView()
     }
 
     func didSelectRow(at indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            selectedCities.remove(at: indexPath.item)
+            selectedItems.remove(at: indexPath.item)
         case 1:
-            let city = citiesWithoutSelected()[indexPath.item]
-            selectedCities.append(city)
+            let city = itemsWithoutSelected()[indexPath.item]
+            selectedItems.append(city)
         default:
             return
         }
         reloadView()
     }
 
+    func requestNewPage() {
+        filteredItems.append(contentsOf: itemsProvider.getData())
+        reloadView()
+    }
+
     func search(for query: String) {
-        let cities = citiesProvider.getData()
+        let cities = itemsProvider.getData()
         guard !query.isEmpty else {
-            filteredCities = cities
+            filteredItems = cities
             reloadView()
             return
         }
-        filteredCities = cities.filter { $0.city.contains(query) || $0.description.contains(query) }
+        filteredItems = cities.filter { $0.city.contains(query) || $0.description.contains(query) }
         reloadView()
     }
 
     private func reloadView() {
-        let resultCities = [selectedCities, citiesWithoutSelected()]
-        let citiesListData = dataTransformer.transform(resultCities)
-        viewUpdater.update(with: citiesListData)
+        let resultItems = [selectedItems, itemsWithoutSelected()]
+        let itemsAsListData = dataTransformer.transform(resultItems)
+        viewUpdater.update(with: itemsAsListData)
     }
 
-    private func citiesWithoutSelected() -> [City] {
-        filteredCities.filter { !selectedCities.map { $0.cityId }.contains($0.cityId) }
+    private func itemsWithoutSelected() -> DP.Data {
+        filteredItems.filter { !selectedItems.map { $0.cityId }.contains($0.cityId) }
     }
 
 }

@@ -34,10 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let dataProvider = CityDataProvider()
         let searchDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
-        let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater, citiesProvider: dataProvider, dataTransformer: searchDataTransformer)
+        let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater, citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 10), dataTransformer: searchDataTransformer)
         searchContainerController.searchBarController.delegate = searchEventHandler
 
-        let delegateController = SimpleTableViewDelegateController(eventHandler: searchEventHandler)
+        let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10, eventHandler: searchEventHandler)
+        let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: searchEventHandler)
 
         searchTableViewFactory.delegate = delegateController
 
@@ -77,10 +78,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: dataProvider), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
-                                                                   eventHandler: collectionEventHandler, dataSourceController: collectionDataSource,
-                                                                   delegateController: SimpleCollectionViewDelegateController())
+            eventHandler: collectionEventHandler, dataSourceController: collectionDataSource,
+            delegateController: SimpleCollectionViewDelegateController())
 
-        tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */
+        tabBarController.viewControllers = [/* UINavigationController(rootViewController: controller), */
             UINavigationController(rootViewController: searchContainerController),
             UINavigationController(rootViewController: tableViewController),
             UINavigationController(rootViewController: collectionViewController)

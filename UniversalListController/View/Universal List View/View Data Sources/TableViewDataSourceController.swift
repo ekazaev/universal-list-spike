@@ -41,8 +41,8 @@ final class TableViewDataSourceController<SectionContext, CellContext, ListHolde
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellSource = data.sections[indexPath.section].cells[indexPath.item]
-        let cell = cellSource.context.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
+        let cellData = data.sections[indexPath.section].cells[indexPath.item]
+        let cell = cellData.context.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
         return cell
     }
 

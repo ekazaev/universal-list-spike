@@ -1,5 +1,5 @@
 //
-// ConfigurableCellSource+DifferenceKit.swift
+// ConfigurableCellAdapter+DifferenceKit.swift
 // UniversalListController
 //
 

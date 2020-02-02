@@ -1,5 +1,5 @@
 //
-// AnyTableCellSource.swift
+// AnyTableCellAdapter.swift
 // UniversalListController
 //
 
@@ -10,8 +10,8 @@ struct AnyTableCellAdapter: CellAdapter {
 
     private let box: AnyCellAdapterBox
 
-    init<CS: CellAdapter>(with cellSource: CS) where CS.Cell: UITableViewCell {
-        box = CellAdapterBox(with: cellSource)
+    init<CA: CellAdapter>(with cellAdapter: CA) where CA.Cell: UITableViewCell {
+        box = CellAdapterBox(with: cellAdapter)
     }
 
     func getView(with factory: ReusableViewFactory) -> UITableViewCell {
@@ -26,16 +26,16 @@ private protocol AnyCellAdapterBox {
 
 }
 
-private final class CellAdapterBox<CS: CellAdapter>: AnyCellAdapterBox where CS.Cell: UITableViewCell {
+private final class CellAdapterBox<CA: CellAdapter>: AnyCellAdapterBox where CA.Cell: UITableViewCell {
 
-    private var cellSource: CS
+    private var cellAdapter: CA
 
-    init(with cellSource: CS) {
-        self.cellSource = cellSource
+    init(with cellAdapter: CA) {
+        self.cellAdapter = cellAdapter
     }
 
     func build(with factory: ReusableViewFactory) -> UITableViewCell {
-        return cellSource.getView(with: factory)
+        return cellAdapter.getView(with: factory)
     }
 
 }

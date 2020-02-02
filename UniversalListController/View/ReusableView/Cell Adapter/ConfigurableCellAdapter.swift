@@ -1,5 +1,5 @@
 //
-// ConfigurableCellSource.swift
+// ConfigurableCellAdapter.swift
 // UniversalListController
 //
 

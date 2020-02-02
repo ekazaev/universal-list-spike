@@ -1,5 +1,5 @@
 //
-// CellSource.swift
+// CellAdapter.swift
 // UniversalListController
 //
 

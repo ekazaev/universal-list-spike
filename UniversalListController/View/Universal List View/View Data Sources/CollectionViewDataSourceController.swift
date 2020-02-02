@@ -41,8 +41,8 @@ final class CollectionViewDataSourceController<SectionContext, CellContext, List
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellSource = data.sections[indexPath.section].cells[indexPath.item]
-        let cell = cellSource.context.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
+        let cellData = data.sections[indexPath.section].cells[indexPath.item]
+        let cell = cellData.context.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
         return cell
     }
 

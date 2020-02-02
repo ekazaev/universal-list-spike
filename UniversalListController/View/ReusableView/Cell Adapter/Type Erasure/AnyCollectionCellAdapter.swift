@@ -1,5 +1,5 @@
 //
-// AnyCollectionCellSource.swift
+// AnyCollectionCellAdapter.swift
 // UniversalListController
 //
 
@@ -10,8 +10,8 @@ struct AnyCollectionCellAdapter: CellAdapter {
 
     private let box: AnyCellAdapterBox
 
-    init<CS: CellAdapter>(with cellSource: CS) where CS.Cell: UICollectionViewCell {
-        box = CellAdapterBox(with: cellSource)
+    init<CA: CellAdapter>(with cellAdapter: CA) where CA.Cell: UICollectionViewCell {
+        box = CellAdapterBox(with: cellAdapter)
     }
 
     func getView(with factory: ReusableViewFactory) -> UICollectionViewCell {
@@ -26,16 +26,16 @@ private protocol AnyCellAdapterBox {
 
 }
 
-private final class CellAdapterBox<CS: CellAdapter>: AnyCellAdapterBox where CS.Cell: UICollectionViewCell {
+private final class CellAdapterBox<CA: CellAdapter>: AnyCellAdapterBox where CA.Cell: UICollectionViewCell {
 
-    private var cellSource: CS
+    private var cellAdapter: CA
 
-    init(with cellSource: CS) {
-        self.cellSource = cellSource
+    init(with cellAdapter: CA) {
+        self.cellAdapter = cellAdapter
     }
 
     func build(with factory: ReusableViewFactory) -> UICollectionViewCell {
-        return cellSource.getView(with: factory)
+        return cellAdapter.getView(with: factory)
     }
 
 }

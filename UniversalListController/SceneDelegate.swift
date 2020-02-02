@@ -22,17 +22,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.windowScene = windowScene
         let tabBarController = UITabBarController()
 
-        //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //        let controller = storyboard.instantiateInitialViewController()!
-        //
         // First
         let searchContainerController = SearchContainerViewController()
         let searchTableViewFactory = TableViewFactory(style: .grouped)
-        let searchDataSource = TableViewDataSourceController<Void, AnyTableCellAdapter, TableViewFactory>(holder: searchTableViewFactory)
+        let searchDataSource = TableViewDataSourceController<Void, ListStateCellAdapter<CityTableCell, LoadingTableViewCell>, TableViewFactory>(holder: searchTableViewFactory)
 
         let searchViewUpdater = TableViewUpdater(holder: searchTableViewFactory, dataSource: searchDataSource)
         let dataProvider = CityDataProvider()
-        let searchDataTransformer = ListStateTableDataTransformer<City, CityTableCell, LoadingTableViewCell>()
+        let searchDataTransformer = ListStateDataTransformer<CityTableCell, LoadingTableViewCell>()
 
         let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater,
                                                         citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 10),

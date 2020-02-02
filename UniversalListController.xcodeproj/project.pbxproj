@@ -21,7 +21,7 @@
 		1BE542DA49B94C3B4799B630 /* UniversalListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */; };
 		1BE5431D61ABCC21EB0022CB /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */; };
 		1BE5431EF887E6FADB6C9EAD /* ConfigurableCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54DE912EC142253D69D49 /* ConfigurableCellAdapter.swift */; };
-		1BE5432DF14B3372AB70A8AE /* ConfigurableCellSource+DifferenceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546245295D6F3FEBE817C /* ConfigurableCellSource+DifferenceKit.swift */; };
+		1BE5432DF14B3372AB70A8AE /* ConfigurableCellAdapter+DifferenceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546245295D6F3FEBE817C /* ConfigurableCellAdapter+DifferenceKit.swift */; };
 		1BE5433BD4EE069E71BB9DDF /* ReusableViewListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE540DBA85C4F6C85CC7403 /* ReusableViewListUpdater.swift */; };
 		1BE5441A8E2A77ECCF91FD2D /* PaginatingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54C1F04477B557E7461F1 /* PaginatingDataProvider.swift */; };
 		1BE54422EE3D1DE980A171A9 /* CityDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54FA5D14BD8BC0AD8BDE8 /* CityDataMock.swift */; };
@@ -99,7 +99,7 @@
 		1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
 		1BE545B06DFA0ABDC78BEF83 /* SimpleTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewDelegateController.swift; sourceTree = "<group>"; };
 		1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchEventHandler.swift; sourceTree = "<group>"; };
-		1BE546245295D6F3FEBE817C /* ConfigurableCellSource+DifferenceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigurableCellSource+DifferenceKit.swift"; sourceTree = "<group>"; };
+		1BE546245295D6F3FEBE817C /* ConfigurableCellAdapter+DifferenceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigurableCellAdapter+DifferenceKit.swift"; sourceTree = "<group>"; };
 		1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListViewControllerDelegate.swift; sourceTree = "<group>"; };
 		1BE546C6C6B6F8572FD65651 /* ConfigurableReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableReusableView.swift; sourceTree = "<group>"; };
 		1BE546D6F89DDE43F9192674 /* ViewHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewHolder.swift; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 		1BE54B5DD5E27FA9FC50BB48 /* Difference Kit Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				1BE546245295D6F3FEBE817C /* ConfigurableCellSource+DifferenceKit.swift */,
+				1BE546245295D6F3FEBE817C /* ConfigurableCellAdapter+DifferenceKit.swift */,
 				1BE5411A3FAEAA928CC5D79C /* ListData+DifferenceKit.swift */,
 			);
 			path = "Difference Kit Extensions";
@@ -532,7 +532,7 @@
 				1BE54208F18D1F34303622E0 /* CollectionViewUpdater.swift in Sources */,
 				1BE545D77F7B78DA863898D1 /* TableViewDataSourceController.swift in Sources */,
 				1BE5489E070260618841BFA2 /* CollectionViewDataSourceController.swift in Sources */,
-				1BE5432DF14B3372AB70A8AE /* ConfigurableCellSource+DifferenceKit.swift in Sources */,
+				1BE5432DF14B3372AB70A8AE /* ConfigurableCellAdapter+DifferenceKit.swift in Sources */,
 				1BE546F573FCB4EC3C411154 /* ListData+DifferenceKit.swift in Sources */,
 				1BE5494D2AF9149C3B31D7AA /* ReusableView.swift in Sources */,
 				1BE54C85E68A6E9D581CA8C5 /* CellAdapter.swift in Sources */,

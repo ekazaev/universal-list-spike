@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchTableViewFactory = TableViewFactory(style: .grouped)
         let searchDataSource = TableViewDataSourceController<Void, ListStateCellAdapter<CityTableCell, LoadingTableViewCell>, TableViewFactory>(holder: searchTableViewFactory)
 
-        let searchViewUpdater = TableViewUpdater(holder: searchTableViewFactory, dataSource: searchDataSource)
+        let searchViewUpdater = DifferentiableTableViewUpdater(holder: searchTableViewFactory, dataSource: searchDataSource)
         let dataProvider = CityDataProvider()
         let searchDataTransformer = ListStateDataTransformer<CityTableCell, LoadingTableViewCell>()
 

@@ -13,7 +13,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     where
     DP.Data == [City],
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Source == [[ListState<DP.Data.Element>]] {
+    Transformer.Source == [[ListCellType<DP.Data.Element>]] {
 
     private var viewUpdater: ViewUpdater
 
@@ -79,8 +79,8 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     private func reloadView() {
-        let selectedItemsState = selectedItems.map { ListState.data($0) }
-        var unselectedItemsState = itemsWithoutSelected().map { ListState.data($0) }
+        let selectedItemsState = selectedItems.map { ListCellType.dataCell($0) }
+        var unselectedItemsState = itemsWithoutSelected().map { ListCellType.dataCell($0) }
         if isLoading {
             unselectedItemsState.append(.loading)
         }

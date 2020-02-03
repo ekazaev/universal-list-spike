@@ -35,7 +35,7 @@ final class PaginatingDataProvider<DP: DataProvider, Element>: DataProvider wher
                 completion(.success(pagedData))
             }
         } else {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(Int.random(in: 0..<5))) { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(Int.random(in: 0...3))) { [weak self] in
                 guard let self = self else {
                     return
                 }

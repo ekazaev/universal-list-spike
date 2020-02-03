@@ -43,13 +43,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let searchTableViewController = UniversalListViewController(
             factory: searchTableViewFactory,
-            eventHandler: [searchEventHandler],
             dataSourceController: searchDataSource,
             delegateController: delegateController
         )
 
         searchContainerController.containingViewController = searchTableViewController
-        searchTableViewController.delegate = searchEventHandler
+        searchTableViewController.eventHandler = searchEventHandler
 
         // Second:
         let tableViewFactory = TableViewFactory(style: .grouped)
@@ -61,10 +60,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
             factory: tableViewFactory,
-            eventHandler: tableEventHandler,
             dataSourceController: tableDataSource,
             delegateController: SimpleTableViewDelegateController(eventHandler: searchEventHandler)
         )
+        tableViewController.eventHandler = tableEventHandler
 
         // Third:
         let layout = UICollectionViewFlowLayout()
@@ -77,10 +76,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
-                                                                   eventHandler: collectionEventHandler, dataSourceController: collectionDataSource,
+                                                                   dataSourceController: collectionDataSource,
                                                                    delegateController: SimpleCollectionViewDelegateController())
+        collectionViewController.eventHandler = collectionEventHandler
 
-        tabBarController.viewControllers = [ /* UINavigationController(rootViewController: controller), */
+        tabBarController.viewControllers = [
             UINavigationController(rootViewController: searchContainerController),
             UINavigationController(rootViewController: tableViewController),
             UINavigationController(rootViewController: collectionViewController)

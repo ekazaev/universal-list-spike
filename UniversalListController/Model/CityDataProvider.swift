@@ -24,6 +24,9 @@ final class CityDataProvider: DataProvider {
             guard self.requestingQuery == nil || self.requestingQuery != query else {
                 return
             }
+            defer {
+                self.requestingQuery = nil
+            }
             self.requestingQuery = query
             let cities = CityDataMock.cities
             guard !query.isEmpty else {
@@ -36,7 +39,7 @@ final class CityDataProvider: DataProvider {
 
     private func delay(completion: @escaping () -> Void) {
         let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(Int.random(in: 0..<6))
+        let deadline = DispatchTime.now() + .seconds(Int.random(in: 0...3))
         mainQueue.asyncAfter(deadline: deadline) { completion() }
     }
 

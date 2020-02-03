@@ -11,10 +11,9 @@ final class UniversalListViewController<Factory: ViewFactory, DataSource: Reusab
     Factory.View == DataSource.View,
     Factory.View == Delegate.View {
 
-    weak var delegate: UniversalListViewControllerDelegate?
+    var eventHandler: UniversalListViewControllerDelegate?
 
     private let factory: Factory
-    private let eventHandler: Any
     private let dataSourceController: DataSource
     private let delegateController: Delegate
 
@@ -23,8 +22,7 @@ final class UniversalListViewController<Factory: ViewFactory, DataSource: Reusab
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(factory: Factory, eventHandler: Any, dataSourceController: DataSource, delegateController: Delegate) {
-        self.eventHandler = eventHandler
+    init(factory: Factory, dataSourceController: DataSource, delegateController: Delegate) {
         self.dataSourceController = dataSourceController
         self.delegateController = delegateController
         self.factory = factory
@@ -34,7 +32,7 @@ final class UniversalListViewController<Factory: ViewFactory, DataSource: Reusab
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        delegate?.listViewInstantiated()
+        eventHandler?.listViewInstantiated()
     }
 
 }

@@ -52,16 +52,20 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     func requestNewPage() {
+        guard !isLoading else {
+            return
+        }
         isLoading = true
         reloadView()
         let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(5)
+        let deadline = DispatchTime.now() + .seconds(1)
         mainQueue.asyncAfter(deadline: deadline) { [weak self] in
-            self?.isLoading = true
+            self?.isLoading = false
             guard let self = self else {
                 return
             }
-            self.filteredItems.append(contentsOf: self.itemsProvider.getData())
+            let newItems = self.itemsProvider.getData()
+            self.filteredItems.append(contentsOf: newItems)
             self.reloadView()
         }
 

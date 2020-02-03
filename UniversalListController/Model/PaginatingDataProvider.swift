@@ -23,12 +23,17 @@ final class PaginatingDataProvider<DP: DataProvider, Element>: DataProvider wher
         if data == nil {
             data = provider.getData()
         }
-
-        if let pageData = data?.dropFirst(itemsPerPage) {
-            return Array(pageData)
+        guard var data = data else {
+            return [Element]()
         }
-
-        return [Element]()
+        let pageData = data.prefix(itemsPerPage)
+        if itemsPerPage < data.count {
+            data.removeFirst(itemsPerPage)
+        } else {
+            data = []
+        }
+        self.data = data
+        return Array(pageData)
     }
 
 }

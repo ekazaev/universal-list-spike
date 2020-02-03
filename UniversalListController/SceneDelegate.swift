@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchDataTransformer = ListStateDataTransformer<CityTableCell, LoadingTableViewCell>()
 
         let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater,
-                                                        citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 10),
+                                                        citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
                                                         dataTransformer: searchDataTransformer)
         searchContainerController.searchBarController.delegate = searchEventHandler
 

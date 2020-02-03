@@ -15,17 +15,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-I6-x7B">
+                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-I6-x7B">
                         <rect key="frame" x="12" y="12" width="390" height="20"/>
                     </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="tdH-I6-x7B" firstAttribute="top" secondItem="Vtn-lr-DAG" secondAttribute="top" constant="12" id="8xg-4z-H4X"/>
                     <constraint firstAttribute="bottom" secondItem="tdH-I6-x7B" secondAttribute="bottom" constant="12" id="avI-vv-onW"/>
-                    <constraint firstItem="tdH-I6-x7B" firstAttribute="leading" secondItem="Vtn-lr-DAG" secondAttribute="leading" constant="12" id="ftd-FQ-nSR"/>
-                    <constraint firstAttribute="trailing" secondItem="tdH-I6-x7B" secondAttribute="trailing" constant="12" id="moK-Dv-hmX"/>
+                    <constraint firstItem="tdH-I6-x7B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vtn-lr-DAG" secondAttribute="leading" constant="12" id="ftd-FQ-nSR"/>
+                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="tdH-I6-x7B" secondAttribute="trailing" constant="12" id="moK-Dv-hmX"/>
+                    <constraint firstItem="tdH-I6-x7B" firstAttribute="centerX" secondItem="Vtn-lr-DAG" secondAttribute="centerX" id="pcx-of-29U"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="activityIndicator" destination="tdH-I6-x7B" id="b5w-5R-0Xd"/>
+            </connections>
             <point key="canvasLocation" x="-29" y="68"/>
         </tableViewCell>
     </objects>

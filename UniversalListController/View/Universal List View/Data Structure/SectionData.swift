@@ -7,9 +7,9 @@ import Foundation
 
 struct SectionData<SectionContext, CellContext> {
 
-    let context: SectionContext
+    var context: SectionContext
 
-    let cells: [CellData<CellContext>]
+    var cells: [CellData<CellContext>]
 
     init(context: SectionContext, cells: [CellData<CellContext>]) {
         self.context = context

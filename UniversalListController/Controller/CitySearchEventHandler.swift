@@ -66,16 +66,16 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
 
     private func requestData(for query: String) {
         isLoading = true
+        reloadView()
         if self.query != query {
             filteredItems = []
         }
-        reloadView()
         self.query = query
         itemsProvider.getData(with: query, completion: { [weak self] result in
             self?.isLoading = false
             guard let self = self,
                 let newItems = try? result.get() else {
-                return
+                    return
             }
             self.filteredItems.append(contentsOf: newItems)
             self.reloadView()

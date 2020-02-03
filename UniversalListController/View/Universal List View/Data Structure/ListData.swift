@@ -11,6 +11,14 @@ struct ListData<SectionContext, CellContext> {
 
 }
 
+extension ListData: CustomStringConvertible {
+
+    public var description: String {
+        return "ListData\n" + sections.map { "    \($0.context)\n        \($0.cells.count)" }.joined(separator: "\n")
+    }
+
+}
+
 // Not finished
 extension ListData {
 

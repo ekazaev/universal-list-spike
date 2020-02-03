@@ -20,6 +20,15 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
 
     private let viewSource: ListHolder
 
+    /// Data to compare with
+    private var previousData = ListData<DataSource.SectionContext, DataSource.CellContext>(sections: [])
+
+    /// Postponed data
+    private var postponedData: ListData<DataSource.SectionContext, DataSource.CellContext>?
+
+    /// Updating flag
+    private var isUpdating: Bool = false
+
     private lazy var tableView: ListHolder.View = {
         let tableView = viewSource.view
         tableView.dataSource = holder
@@ -33,21 +42,51 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
-        guard let dataSource = holder else {
+        guard holder != nil else {
+            previousData = data
             return
         }
         guard viewSource.isViewLoaded else {
-            dataSource.data = data
+            previousData = data
+            holder?.data = data
+            return
+        }
+        guard !isUpdating else {
+            postponedData = data
             return
         }
 
-        let source = dataSource.data.getAsDifferentiableArray()
+        isUpdating = true
+        let source = previousData.getAsDifferentiableArray()
         let target = data.getAsDifferentiableArray()
-        let changeSet = StagedChangeset(source: source, target: target)
-        tableView.reload(using: changeSet, with: .fade) { data in
-            let sections = data.map { SectionData(cells: $0.elements.map { CellData(context: $0) }) }
-            dataSource.data = ListData(sections: sections)
+        let changeSet = StagedChangeset(source: source,
+                                        target: target)
+        previousData = data
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            guard let self = self else {
+                return
+            }
+            if let postponedData = self.postponedData {
+                DispatchQueue.main.async {
+                    self.isUpdating = false
+                    self.postponedData = nil
+                    self.update(with: postponedData)
+                }
+            } else {
+                self.isUpdating = false
+            }
         }
+        tableView.reload(using: changeSet, with: .fade) { [weak self] data in
+            let changedData = ListData(
+                sections: data.map {
+                    SectionData(
+                        cells: $0.elements.map { CellData(context: $0)
+                    })
+                })
+            self?.holder?.data = changedData
+        }
+        CATransaction.commit()
     }
 
 }

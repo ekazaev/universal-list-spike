@@ -36,7 +36,7 @@ final class CityDataProvider: DataProvider {
 
     private func delay(completion: @escaping () -> Void) {
         let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(1)
+        let deadline = DispatchTime.now() + .seconds(Int.random(in: 0..<6))
         mainQueue.asyncAfter(deadline: deadline) { completion() }
     }
 

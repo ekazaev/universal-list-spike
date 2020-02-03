@@ -36,7 +36,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                                         dataTransformer: searchDataTransformer)
         searchContainerController.searchBarController.delegate = searchEventHandler
 
-        let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10, eventHandler: searchEventHandler)
+        let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10,
+            nextPageEventHandler: searchEventHandler,
+            loadingStateEventHandler: searchEventHandler)
         let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: searchEventHandler)
 
         searchTableViewFactory.delegate = delegateController

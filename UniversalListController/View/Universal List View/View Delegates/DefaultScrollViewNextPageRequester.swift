@@ -18,22 +18,36 @@ protocol ScrollViewNextPageRequester {
 
 }
 
+protocol DataLoadingStateHandler {
+
+    var isDataLoading: Bool { get }
+
+}
+
 final class DefaultScrollViewNextPageRequester: ScrollViewNextPageRequester {
 
     let nextPageEventInset: CGFloat
 
-    private var eventHandler: NextPageEventHandler
+    private var nextPageEventHandler: NextPageEventHandler
+
+    private var loadingStateEventHandler: DataLoadingStateHandler
 
     init(nextPageEventInset: CGFloat,
-         eventHandler: NextPageEventHandler) {
+         nextPageEventHandler: NextPageEventHandler,
+         loadingStateEventHandler: DataLoadingStateHandler) {
         self.nextPageEventInset = nextPageEventInset
-        self.eventHandler = eventHandler
+        self.nextPageEventHandler = nextPageEventHandler
+        self.loadingStateEventHandler = loadingStateEventHandler
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard !loadingStateEventHandler.isDataLoading else {
+            return
+        }
+
         let viewPortHeight = scrollView.bounds.height // + scrollView.contentInset.top + scrollView.contentInset.bottom
         if scrollView.contentOffset.y > scrollView.contentSize.height - viewPortHeight {
-            eventHandler.requestNewPage()
+            nextPageEventHandler.requestNewPage()
         }
     }
 

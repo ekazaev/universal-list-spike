@@ -9,12 +9,17 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     SearchBarControllerDelegate,
     UniversalListViewControllerDelegate,
     SimpleDelegateControllerEventHandler,
-    NextPageEventHandler
+    NextPageEventHandler,
+    DataLoadingStateHandler
     where
     DP.Data == [City],
     DP.Request == String,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == [[ListCellType<DP.Data.Element>]] {
+
+    private(set) var isDataLoading: Bool = false
+
+    private var isFullyLoaded = false
 
     private var viewUpdater: ViewUpdater
 
@@ -25,8 +30,6 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     private var selectedItems: DP.Data = []
 
     private var filteredItems: DP.Data = []
-
-    private var isLoading: Bool = false
 
     private var query: String = ""
 
@@ -54,7 +57,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     func requestNewPage() {
-        guard !isLoading else {
+        guard !isDataLoading else {
             return
         }
         requestData(for: query)
@@ -65,18 +68,24 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     private func requestData(for query: String) {
-        isLoading = true
+        let isNewRequest = self.query != query
+        guard isNewRequest || !isFullyLoaded else {
+            return
+        }
+        isDataLoading = true
         reloadView()
-        if self.query != query {
+        if isNewRequest {
+            isFullyLoaded = false
             filteredItems = []
         }
         self.query = query
         itemsProvider.getData(with: query, completion: { [weak self] result in
-            self?.isLoading = false
+            self?.isDataLoading = false
             guard let self = self,
                 let newItems = try? result.get() else {
                     return
             }
+            self.isFullyLoaded = newItems.isEmpty
             self.filteredItems.append(contentsOf: newItems)
             self.reloadView()
         })
@@ -85,7 +94,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     private func reloadView() {
         let selectedItemsState = selectedItems.map { ListCellType.dataCell($0) }
         var unselectedItemsState = itemsWithoutSelected().map { ListCellType.dataCell($0) }
-        if isLoading {
+        if isDataLoading {
             unselectedItemsState.append(.loading)
         }
         let resultItems = [

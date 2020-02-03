@@ -3,18 +3,18 @@
 // Copyright (c) 2020 Eugene Kazaev. All rights reserved.
 //
 
+import DifferenceKit
 import Foundation
 import UIKit
-import DifferenceKit
 
 struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
-                           DP: DataProvider>
-        where
-        DataCell: UITableViewCell,
-        DataCell.Data: Identifiable & Differentiable,
-        DataCell.Data.DifferenceIdentifier == Int,
-        DP.Data == [DataCell.Data],
-        DP.Request == String {
+                            DP: DataProvider>
+    where
+    DataCell: UITableViewCell,
+    DataCell.Data: Identifiable & Differentiable,
+    DataCell.Data.DifferenceIdentifier == Int,
+    DP.Data == [DataCell.Data],
+    DP.Request == String {
 
     private let dataProvider: DP
 
@@ -30,21 +30,20 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         let searchDataTransformer = ListStateDataTransformer<DataCell, LoadingTableViewCell>()
 
         let searchEventHandler = GenericSearchEventHandler(viewUpdater: searchViewUpdater,
-                citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
-                dataTransformer: searchDataTransformer)
+                                                           citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
+                                                           dataTransformer: searchDataTransformer)
 
         let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10,
-                nextPageEventHandler: searchEventHandler,
-                loadingStateEventHandler: searchEventHandler)
+                                                                   nextPageEventHandler: searchEventHandler,
+                                                                   loadingStateEventHandler: searchEventHandler)
         let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: searchEventHandler)
 
         searchTableViewFactory.delegate = delegateController
 
-
         let searchTableViewController = UniversalListViewController(
-                factory: searchTableViewFactory,
-                dataSourceController: searchDataSource,
-                delegateController: delegateController
+            factory: searchTableViewFactory,
+            dataSourceController: searchDataSource,
+            delegateController: delegateController
         )
         searchTableViewController.title = "Cities"
         searchTableViewController.eventHandler = searchEventHandler

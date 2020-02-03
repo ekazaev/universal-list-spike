@@ -3,8 +3,8 @@
 // Copyright (c) 2020 Eugene Kazaev. All rights reserved.
 //
 
-import Foundation
 import DifferenceKit
+import Foundation
 
 struct Person: Identifiable {
 
@@ -47,7 +47,7 @@ enum PeopleDataMock {
         Person(id: 16, name: "Cathal Murphy", description: "Designer"),
         Person(id: 17, name: "Johny Ive", description: "Designer"),
         Person(id: 18, name: "Angela Merkel", description: "Dickhead * 0.3"),
-        Person(id: 19, name: "Margaret Mitchel", description: "Writer"),
+        Person(id: 19, name: "Margaret Mitchel", description: "Writer")
     ]
 
 }

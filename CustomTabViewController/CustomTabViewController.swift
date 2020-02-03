@@ -15,7 +15,7 @@ public class CustomTabViewController: UIViewController {
     public var selectedIndex: Int = 0
 
     public weak var delegate: CustomTabViewControllerDelegate?
-    
+
     public var viewControllers: [UIViewController] = [] {
         didSet {
             updateSegmentedController()
@@ -58,12 +58,12 @@ public class CustomTabViewController: UIViewController {
             return
         }
         segmentedControl.isHidden = false
-        children.filter({ !viewControllers.contains($0) }).forEach({
+        children.filter { !viewControllers.contains($0) }.forEach {
             $0.removeFromParent()
             observers.removeValue(forKey: $0)
-        })
+        }
         let newSelectedIndex = selectedIndex < viewControllers.count ? selectedIndex : 0
-        viewControllers.enumerated().forEach({ (index, viewController: UIViewController) in
+        viewControllers.enumerated().forEach { (index, viewController: UIViewController) in
             segmentedControl.insertSegment(withTitle: viewController.title, at: index, animated: false)
             if viewController.parent != self {
                 if viewController.parent != nil {
@@ -77,7 +77,7 @@ public class CustomTabViewController: UIViewController {
                     addToContentView(viewController: viewController)
                 }
                 viewController.didMove(toParent: self)
-                let observer = viewController.observe(\.title, options: [.new], changeHandler: { viewController, change in
+                let observer = viewController.observe(\.title, options: [.new], changeHandler: { viewController, _ in
                     guard let index = self.viewControllers.firstIndex(of: viewController) else {
                         return
                     }
@@ -85,7 +85,7 @@ public class CustomTabViewController: UIViewController {
                 })
                 observers[viewController] = observer
             }
-        })
+        }
         segmentedControl.selectedSegmentIndex = newSelectedIndex
         selectedIndex = newSelectedIndex
     }

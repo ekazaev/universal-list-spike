@@ -19,7 +19,7 @@
 		1BE5425FF18A7BF62D80DD20 /* AnyTableCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54C6206E7DF789AB8B93E /* AnyTableCellAdapter.swift */; };
 		1BE542AAEE24802B91F89EA7 /* CollectionViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE548B3B9312013DD9FF47A /* CollectionViewFactory.swift */; };
 		1BE542DA49B94C3B4799B630 /* UniversalListViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */; };
-		1BE5431D61ABCC21EB0022CB /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */; };
+		1BE5431D61ABCC21EB0022CB /* SearchBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5452FD3C614F40ED4E7B7 /* SearchBarContainerViewController.swift */; };
 		1BE5431EF887E6FADB6C9EAD /* ConfigurableCellAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54DE912EC142253D69D49 /* ConfigurableCellAdapter.swift */; };
 		1BE5432DF14B3372AB70A8AE /* ConfigurableCellAdapter+DifferenceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546245295D6F3FEBE817C /* ConfigurableCellAdapter+DifferenceKit.swift */; };
 		1BE5433BD4EE069E71BB9DDF /* ReusableViewListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE540DBA85C4F6C85CC7403 /* ReusableViewListUpdater.swift */; };
@@ -77,6 +77,8 @@
 		45F26DB223E44EE200747FB2 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F26DB123E44EE200747FB2 /* LoadingTableViewCell.xib */; };
 		C539A939C5A6B7FFF022DB0C /* libPods-UniversalListController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */; };
 		EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */; };
+		EF158A3668F65FEE9560AE2D /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15829DA3B6230D15B7763E /* ContainerViewController.swift */; };
+		EF158B2A6CEB1E715B8E0B5F /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15892A6C24E88E66A2D57A /* ContainerController.swift */; };
 		EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587D8319D79B214596097 /* PeopleDataProvider.swift */; };
 		EF158FB55693E9883AD39ED7 /* GenericSearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158B4C63EFB75AE27466E9 /* GenericSearchBuilder.swift */; };
 /* End PBXBuildFile section */
@@ -127,7 +129,7 @@
 		1BE544C4A2FC9F2E9CD242E8 /* RandomizingEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomizingEventHandler.swift; sourceTree = "<group>"; };
 		1BE544DA41DEF5CD5BB1D55E /* EnclosingArrayDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnclosingArrayDataProvider.swift; sourceTree = "<group>"; };
 		1BE545031B03203BDF413C27 /* ReusableViewListDataSourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableViewListDataSourceController.swift; sourceTree = "<group>"; };
-		1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
+		1BE5452FD3C614F40ED4E7B7 /* SearchBarContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarContainerViewController.swift; sourceTree = "<group>"; };
 		1BE545B06DFA0ABDC78BEF83 /* SimpleTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewDelegateController.swift; sourceTree = "<group>"; };
 		1BE545F87D717E7276B339CD /* GenericSearchEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericSearchEventHandler.swift; sourceTree = "<group>"; };
 		1BE546245295D6F3FEBE817C /* ConfigurableCellAdapter+DifferenceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigurableCellAdapter+DifferenceKit.swift"; sourceTree = "<group>"; };
@@ -179,8 +181,10 @@
 		655CD093BE26AA1ED13466C3 /* Pods-UniversalListController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.release.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.release.xcconfig"; sourceTree = "<group>"; };
 		B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UniversalListController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA00DCFFBCB3DB1898422BF /* Pods-UniversalListController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.debug.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.debug.xcconfig"; sourceTree = "<group>"; };
+		EF15829DA3B6230D15B7763E /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		EF1587D8319D79B214596097 /* PeopleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataProvider.swift; sourceTree = "<group>"; };
 		EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataMock.swift; sourceTree = "<group>"; };
+		EF15892A6C24E88E66A2D57A /* ContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
 		EF158B4C63EFB75AE27466E9 /* GenericSearchBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericSearchBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -362,8 +366,10 @@
 		1BE54BB0DD4073DD91E0A5C1 /* Search View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */,
+				1BE5452FD3C614F40ED4E7B7 /* SearchBarContainerViewController.swift */,
 				1BE54AEC4B1C5CB4D3255D00 /* SearchBarController.swift */,
+				EF15829DA3B6230D15B7763E /* ContainerViewController.swift */,
+				EF15892A6C24E88E66A2D57A /* ContainerController.swift */,
 			);
 			path = "Search View Controller";
 			sourceTree = "<group>";
@@ -675,7 +681,7 @@
 				1BE54EA7AFC3A02FBB20EF8D /* UniversalListViewController.swift in Sources */,
 				1BE542AAEE24802B91F89EA7 /* CollectionViewFactory.swift in Sources */,
 				1BE5402BAC44EC1CB17A6728 /* TableViewFactory.swift in Sources */,
-				1BE5431D61ABCC21EB0022CB /* SearchContainerViewController.swift in Sources */,
+				1BE5431D61ABCC21EB0022CB /* SearchBarContainerViewController.swift in Sources */,
 				1BE549FE5A615620849CBE5E /* SearchBarController.swift in Sources */,
 				1BE542DA49B94C3B4799B630 /* UniversalListViewControllerDelegate.swift in Sources */,
 				1BE54F466A188DACF21C6251 /* CityCellEventHandling.swift in Sources */,
@@ -698,6 +704,8 @@
 				EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */,
 				EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */,
 				EF158FB55693E9883AD39ED7 /* GenericSearchBuilder.swift in Sources */,
+				EF158A3668F65FEE9560AE2D /* ContainerViewController.swift in Sources */,
+				EF158B2A6CEB1E715B8E0B5F /* ContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

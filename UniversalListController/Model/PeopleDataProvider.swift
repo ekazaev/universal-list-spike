@@ -18,11 +18,11 @@ final class PeopleDataProvider: DataProvider {
                 self.requestingQuery = nil
             }
             self.requestingQuery = query
-            let people = PeopleDataMock.cities
+            let people = PeopleDataMock.people
             guard !query.isEmpty else {
                 return completion(.success(people))
             }
-            let filteredPeople = people.filter { $0.city.contains(query) || $0.description.contains(query) }
+            let filteredPeople = people.filter { $0.name.contains(query) || $0.description.contains(query) }
             completion(.success(filteredPeople))
         }
     }

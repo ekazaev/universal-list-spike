@@ -36,7 +36,7 @@
 		1BE546F573FCB4EC3C411154 /* ListData+DifferenceKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5411A3FAEAA928CC5D79C /* ListData+DifferenceKit.swift */; };
 		1BE54752484A05011F2305A8 /* AnyViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE540CD8AD55EB94A0EFF56 /* AnyViewFactory.swift */; };
 		1BE5477BF9562C33D470E48E /* CityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54979DA47C603454EF36D /* CityCollectionCell.swift */; };
-		1BE547ACE8A405FAADB57DA4 /* CitySearchEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */; };
+		1BE547ACE8A405FAADB57DA4 /* GenericSearchEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545F87D717E7276B339CD /* GenericSearchEventHandler.swift */; };
 		1BE54803123A480197543F0B /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5497EE5B0FFC7C094986F /* CellData.swift */; };
 		1BE5482A3E7FF7767D6275EF /* AnyViewHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54806AC5C7F48F19AE873 /* AnyViewHolder.swift */; };
 		1BE5489E070260618841BFA2 /* CollectionViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5487579C3D63841DD72F3 /* CollectionViewDataSourceController.swift */; };
@@ -59,7 +59,6 @@
 		1BE54DC835C886808017F3A5 /* DirectDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5429270008E549910AF8B /* DirectDataTransformer.swift */; };
 		1BE54DD16A7FCFD6591A644A /* SimpleTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545B06DFA0ABDC78BEF83 /* SimpleTableViewDelegateController.swift */; };
 		1BE54DF8489EE61F98B46DA6 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54D412F4C7BA39AF4B1F8 /* ViewFactory.swift */; };
-		1BE54E685CBA36504D3F98AE /* CityCellEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5426F2D40ECA90BDC6454 /* CityCellEventHandler.swift */; };
 		1BE54EA7AFC3A02FBB20EF8D /* UniversalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE540D000C82B39CF8803EC /* UniversalListViewController.swift */; };
 		1BE54EBA49935C8C057D6631 /* ConfigurableReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE546C6C6B6F8572FD65651 /* ConfigurableReusableView.swift */; };
 		1BE54F29CF4ADF76A4D4CC78 /* CityTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1BE5406DA9CA490425882368 /* CityTableCell.xib */; };
@@ -79,6 +78,7 @@
 		C539A939C5A6B7FFF022DB0C /* libPods-UniversalListController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */; };
 		EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */; };
 		EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587D8319D79B214596097 /* PeopleDataProvider.swift */; };
+		EF158FB55693E9883AD39ED7 /* GenericSearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158B4C63EFB75AE27466E9 /* GenericSearchBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +116,6 @@
 		1BE54141562A88F216941EAD /* CellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellAdapter.swift; sourceTree = "<group>"; };
 		1BE541A4604D21D5C26786B9 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		1BE541C5D34EEEDBE8BC1A27 /* TableViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFactory.swift; sourceTree = "<group>"; };
-		1BE5426F2D40ECA90BDC6454 /* CityCellEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityCellEventHandler.swift; sourceTree = "<group>"; };
 		1BE5429270008E549910AF8B /* DirectDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectDataTransformer.swift; sourceTree = "<group>"; };
 		1BE542DC1A9469077FDDA1C0 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		1BE5432F5620F530D7D10DAB /* CollectionReusableCellDequeuer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionReusableCellDequeuer.swift; sourceTree = "<group>"; };
@@ -130,7 +129,7 @@
 		1BE545031B03203BDF413C27 /* ReusableViewListDataSourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableViewListDataSourceController.swift; sourceTree = "<group>"; };
 		1BE5452FD3C614F40ED4E7B7 /* SearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
 		1BE545B06DFA0ABDC78BEF83 /* SimpleTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewDelegateController.swift; sourceTree = "<group>"; };
-		1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CitySearchEventHandler.swift; sourceTree = "<group>"; };
+		1BE545F87D717E7276B339CD /* GenericSearchEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericSearchEventHandler.swift; sourceTree = "<group>"; };
 		1BE546245295D6F3FEBE817C /* ConfigurableCellAdapter+DifferenceKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConfigurableCellAdapter+DifferenceKit.swift"; sourceTree = "<group>"; };
 		1BE546652567191C0EFAFA39 /* UniversalListViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListViewControllerDelegate.swift; sourceTree = "<group>"; };
 		1BE546C6C6B6F8572FD65651 /* ConfigurableReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurableReusableView.swift; sourceTree = "<group>"; };
@@ -182,6 +181,7 @@
 		BBA00DCFFBCB3DB1898422BF /* Pods-UniversalListController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.debug.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.debug.xcconfig"; sourceTree = "<group>"; };
 		EF1587D8319D79B214596097 /* PeopleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataProvider.swift; sourceTree = "<group>"; };
 		EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataMock.swift; sourceTree = "<group>"; };
+		EF158B4C63EFB75AE27466E9 /* GenericSearchBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericSearchBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -343,9 +343,8 @@
 		1BE54A98BE8DC662D217C246 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1BE545F87D717E7276B339CD /* CitySearchEventHandler.swift */,
+				1BE545F87D717E7276B339CD /* GenericSearchEventHandler.swift */,
 				1BE544C4A2FC9F2E9CD242E8 /* RandomizingEventHandler.swift */,
-				1BE5426F2D40ECA90BDC6454 /* CityCellEventHandler.swift */,
 				1BE54063ACA0DBB008F2F82E /* ListCellType.swift */,
 			);
 			path = Controller;
@@ -466,6 +465,7 @@
 				1BE54252E4E5AC4ADA57F254 /* View */,
 				1BE54A98BE8DC662D217C246 /* Controller */,
 				1BE5451D88182B8E19518879 /* Model */,
+				EF158B64D610F80EC2858969 /* Builder */,
 			);
 			path = UniversalListController;
 			sourceTree = "<group>";
@@ -476,6 +476,14 @@
 				B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF158B64D610F80EC2858969 /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				EF158B4C63EFB75AE27466E9 /* GenericSearchBuilder.swift */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -634,7 +642,7 @@
 				45C913A423DF3D830021602D /* SceneDelegate.swift in Sources */,
 				1BE54C1D9F05DC28F17125EE /* ViewController.swift in Sources */,
 				1BE54422EE3D1DE980A171A9 /* CityDataMock.swift in Sources */,
-				1BE547ACE8A405FAADB57DA4 /* CitySearchEventHandler.swift in Sources */,
+				1BE547ACE8A405FAADB57DA4 /* GenericSearchEventHandler.swift in Sources */,
 				1BE54D742770685412B14E0D /* RandomizingEventHandler.swift in Sources */,
 				1BE54B6435E8F25EF971AE06 /* CityDataProvider.swift in Sources */,
 				1BE54DF8489EE61F98B46DA6 /* ViewFactory.swift in Sources */,
@@ -671,7 +679,6 @@
 				1BE549FE5A615620849CBE5E /* SearchBarController.swift in Sources */,
 				1BE542DA49B94C3B4799B630 /* UniversalListViewControllerDelegate.swift in Sources */,
 				1BE54F466A188DACF21C6251 /* CityCellEventHandling.swift in Sources */,
-				1BE54E685CBA36504D3F98AE /* CityCellEventHandler.swift in Sources */,
 				1BE54CBE771FB83BCA96AEC2 /* EnclosingArrayDataProvider.swift in Sources */,
 				1BE5463E359D293D5D56BA47 /* ReusableViewListDataSourceController.swift in Sources */,
 				1BE54490F9C6A65F26CF9FE2 /* ReusableViewListDelegateController.swift in Sources */,
@@ -690,6 +697,7 @@
 				1BE540CFF3E93287725F9A93 /* ShufflingDataProvider.swift in Sources */,
 				EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */,
 				EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */,
+				EF158FB55693E9883AD39ED7 /* GenericSearchBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

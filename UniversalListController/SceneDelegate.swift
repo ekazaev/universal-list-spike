@@ -17,7 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else {
+            return
+        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
@@ -25,38 +27,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // First
         let searchContainerController = SearchContainerViewController()
-        let searchTableViewFactory = TableViewFactory(style: .grouped)
-        let searchDataSource = TableViewDataSourceController<Void, ListStateCellAdapter<CityTableCell, LoadingTableViewCell>, TableViewFactory>(holder: searchTableViewFactory)
 
-        let searchViewUpdater = DifferentiableTableViewUpdater(holder: searchTableViewFactory, dataSource: searchDataSource)
-        let dataProvider = CityDataProvider()
-        let searchDataTransformer = ListStateDataTransformer<CityTableCell, LoadingTableViewCell>()
+//        searchContainerController.searchBarController.delegate = searchEventHandler
 
-        let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater,
-                                                        citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
-                                                        dataTransformer: searchDataTransformer)
-        searchContainerController.searchBarController.delegate = searchEventHandler
-
-        let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10,
-            nextPageEventHandler: searchEventHandler,
-            loadingStateEventHandler: searchEventHandler)
-        let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: searchEventHandler)
-
-        searchTableViewFactory.delegate = delegateController
-
-        let searchTableViewController = UniversalListViewController(
-            factory: searchTableViewFactory,
-            dataSourceController: searchDataSource,
-            delegateController: delegateController
-        )
-        searchTableViewController.title = "Cities"
+        let searchTableViewController = GenericSearchBuilder<CityTableCell, CityDataProvider>(dataProvider: CityDataProvider()).build()
 
         // Custom tab Bar
         let customTabBarController = CustomTabViewController(nibName: "CustomTabViewController", bundle: Bundle(for: CustomTabViewController.self))
         customTabBarController.viewControllers = [searchTableViewController]
 
         searchContainerController.containingViewController = customTabBarController
-        searchTableViewController.eventHandler = searchEventHandler
 
         // Second:
         let tableViewFactory = TableViewFactory(style: .grouped)
@@ -67,9 +47,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
-            factory: tableViewFactory,
-            dataSourceController: tableDataSource,
-            delegateController: SimpleTableViewDelegateController(eventHandler: searchEventHandler)
+                factory: tableViewFactory,
+                dataSourceController: tableDataSource,
+                delegateController: SimpleTableViewDelegateController()
         )
         tableViewController.eventHandler = tableEventHandler
 
@@ -84,8 +64,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
-                                                                   dataSourceController: collectionDataSource,
-                                                                   delegateController: SimpleCollectionViewDelegateController())
+                dataSourceController: collectionDataSource,
+                delegateController: SimpleCollectionViewDelegateController())
         collectionViewController.eventHandler = collectionEventHandler
 
         tabBarController.viewControllers = [

@@ -5,14 +5,15 @@
 
 import Foundation
 
-final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Transformer: DataTransformer>:
+final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Transformer: DataTransformer>:
     SearchBarControllerDelegate,
     UniversalListViewControllerDelegate,
     SimpleDelegateControllerEventHandler,
     NextPageEventHandler,
     DataLoadingStateHandler
     where
-    DP.Data == [City],
+    Entity: Identifiable,
+    DP.Data == [Entity],
     DP.Request == String,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == [[ListCellType<DP.Data.Element>]] {
@@ -106,7 +107,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     private func itemsWithoutSelected() -> DP.Data {
-        filteredItems.filter { !selectedItems.map { $0.cityId }.contains($0.cityId) }
+        filteredItems.filter { !selectedItems.map { $0.id }.contains($0.id) }
     }
 
 }

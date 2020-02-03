@@ -69,7 +69,6 @@
 		4508237423E8B6FC008D604C /* CustomTabViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4508236D23E8B6FC008D604C /* CustomTabViewController.framework */; };
 		4508237523E8B6FC008D604C /* CustomTabViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4508236D23E8B6FC008D604C /* CustomTabViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4508238023E8B745008D604C /* CustomTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508237B23E8B745008D604C /* CustomTabViewController.swift */; };
-		4508238123E8B745008D604C /* CustomTabViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 4508237C23E8B745008D604C /* CustomTabViewController.h */; };
 		4508238223E8B745008D604C /* CustomTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4508237D23E8B745008D604C /* CustomTabViewController.xib */; };
 		4508238323E8B745008D604C /* CustomTabViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4508237E23E8B745008D604C /* CustomTabViewControllerDelegate.swift */; };
 		45C913A223DF3D830021602D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C913A123DF3D830021602D /* AppDelegate.swift */; };
@@ -78,6 +77,8 @@
 		45C913AE23DF3D850021602D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45C913AC23DF3D850021602D /* LaunchScreen.storyboard */; };
 		45F26DB223E44EE200747FB2 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F26DB123E44EE200747FB2 /* LoadingTableViewCell.xib */; };
 		C539A939C5A6B7FFF022DB0C /* libPods-UniversalListController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */; };
+		EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */; };
+		EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587D8319D79B214596097 /* PeopleDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,9 +167,7 @@
 		4508236D23E8B6FC008D604C /* CustomTabViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CustomTabViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4508236F23E8B6FC008D604C /* CustomTabViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTabViewController.h; sourceTree = "<group>"; };
 		4508237023E8B6FC008D604C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4508237A23E8B745008D604C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../route-composer/MovieExample/Internal Frameworks/UI/CustomTabViewController/Info.plist"; sourceTree = "<group>"; };
 		4508237B23E8B745008D604C /* CustomTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabViewController.swift; sourceTree = "<group>"; };
-		4508237C23E8B745008D604C /* CustomTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTabViewController.h; path = "../../route-composer/MovieExample/Internal Frameworks/UI/CustomTabViewController/CustomTabViewController.h"; sourceTree = "<group>"; };
 		4508237D23E8B745008D604C /* CustomTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTabViewController.xib; sourceTree = "<group>"; };
 		4508237E23E8B745008D604C /* CustomTabViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabViewControllerDelegate.swift; sourceTree = "<group>"; };
 		45C9139E23DF3D830021602D /* UniversalListController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UniversalListController.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,6 +180,8 @@
 		655CD093BE26AA1ED13466C3 /* Pods-UniversalListController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.release.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.release.xcconfig"; sourceTree = "<group>"; };
 		B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UniversalListController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA00DCFFBCB3DB1898422BF /* Pods-UniversalListController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.debug.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.debug.xcconfig"; sourceTree = "<group>"; };
+		EF1587D8319D79B214596097 /* PeopleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataProvider.swift; sourceTree = "<group>"; };
+		EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataMock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +260,8 @@
 				1BE544DA41DEF5CD5BB1D55E /* EnclosingArrayDataProvider.swift */,
 				1BE54C1F04477B557E7461F1 /* PaginatingDataProvider.swift */,
 				1BE5491829609596AEA56069 /* ShufflingDataProvider.swift */,
+				EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */,
+				EF1587D8319D79B214596097 /* PeopleDataProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -423,11 +426,9 @@
 		4508236E23E8B6FC008D604C /* CustomTabViewController */ = {
 			isa = PBXGroup;
 			children = (
-				4508237C23E8B745008D604C /* CustomTabViewController.h */,
 				4508237B23E8B745008D604C /* CustomTabViewController.swift */,
 				4508237D23E8B745008D604C /* CustomTabViewController.xib */,
 				4508237E23E8B745008D604C /* CustomTabViewControllerDelegate.swift */,
-				4508237A23E8B745008D604C /* Info.plist */,
 				4508236F23E8B6FC008D604C /* CustomTabViewController.h */,
 				4508237023E8B6FC008D604C /* Info.plist */,
 			);
@@ -484,7 +485,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4508238123E8B745008D604C /* CustomTabViewController.h in Headers */,
 				4508237123E8B6FC008D604C /* CustomTabViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -688,6 +688,8 @@
 				1BE54752484A05011F2305A8 /* AnyViewFactory.swift in Sources */,
 				1BE5482A3E7FF7767D6275EF /* AnyViewHolder.swift in Sources */,
 				1BE540CFF3E93287725F9A93 /* ShufflingDataProvider.swift in Sources */,
+				EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */,
+				EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

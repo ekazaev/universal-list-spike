@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CustomTabViewController
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -48,8 +49,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             dataSourceController: searchDataSource,
             delegateController: delegateController
         )
+        searchTableViewController.title = "Cities"
 
-        searchContainerController.containingViewController = searchTableViewController
+        // Custom tab Bar
+        let customTabBarController = CustomTabViewController(nibName: "CustomTabViewController", bundle: Bundle(for: CustomTabViewController.self))
+        customTabBarController.viewControllers = [searchTableViewController]
+
+        searchContainerController.containingViewController = customTabBarController
         searchTableViewController.eventHandler = searchEventHandler
 
         // Second:

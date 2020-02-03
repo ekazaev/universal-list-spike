@@ -8,6 +8,7 @@ import UIKit
 
 final class RandomizingEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: DataProvider, Transformer: DataTransformer>
     where
+    Provider.Request == String,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == Provider.Data {
 
@@ -24,9 +25,13 @@ final class RandomizingEventHandler<ViewUpdater: ReusableViewListUpdater, Provid
         self.dataProvider = dataProvider
         self.dataTransformer = dataTransformer
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
-            let entities = dataProvider.getData()
-            let data = dataTransformer.transform(entities)
-            self?.viewUpdater.update(with: data)
+            dataProvider.getData(with: "") { [weak self] result in
+                guard let self = self, let entities = try? result.get() else {
+                    return
+                }
+                let data = dataTransformer.transform(entities)
+                self.viewUpdater.update(with: data)
+            }
         }
     }
 }

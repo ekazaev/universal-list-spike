@@ -13,8 +13,15 @@ struct EnclosingArrayDataProvider<DP: DataProvider>: DataProvider {
         self.dataProvider = dataProvider
     }
 
-    func getData() -> [DP.Data] {
-        return [dataProvider.getData()]
+    func getData(with request: DP.Request, completion: @escaping (Result<[DP.Data], Error>) -> Void) {
+        dataProvider.getData(with: request) { result in
+            switch result {
+            case let .success(data):
+                completion(.success([data]))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
 
 }

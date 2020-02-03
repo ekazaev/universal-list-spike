@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchDataTransformer = ListStateDataTransformer<CityTableCell, LoadingTableViewCell>()
 
         let searchEventHandler = CitySearchEventHandler(viewUpdater: searchViewUpdater,
-                                                        citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
+                                                        citiesProvider: dataProvider,//PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
                                                         dataTransformer: searchDataTransformer)
         searchContainerController.searchBarController.delegate = searchEventHandler
 
@@ -58,7 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewUpdater = DifferentiableTableViewUpdater(holder: tableViewFactory, dataSource: tableDataSource)
         let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
 
-        let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: tableDataTransformer)
+        let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
             factory: tableViewFactory,
             eventHandler: tableEventHandler,
@@ -75,7 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionViewUpdater = DifferentiableCollectionViewUpdater(holder: collectionViewFactory, dataSource: collectionDataSource)
         let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
 
-        let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: collectionDataTransformer)
+        let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
                                                                    eventHandler: collectionEventHandler, dataSourceController: collectionDataSource,
                                                                    delegateController: SimpleCollectionViewDelegateController())

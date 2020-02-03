@@ -13,8 +13,15 @@ class ShufflingDataProvider<DP: DataProvider>: DataProvider where DP.Data: Colle
         self.dataProvider = dataProvider
     }
 
-    func getData() -> [DP.Data.Element] {
-        return dataProvider.getData().shuffled()
+    func getData(with request: DP.Request, completion: @escaping (Result<[DP.Data.Element], Error>) -> Void) {
+        dataProvider.getData(with: request) { result in
+            switch result {
+            case let .success(data):
+                completion(.success(data.shuffled()))
+            case let .failure(error):
+                return completion(.failure(error))
+            }
+        }
     }
 
 }

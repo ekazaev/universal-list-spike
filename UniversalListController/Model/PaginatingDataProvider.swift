@@ -19,10 +19,24 @@ final class PaginatingDataProvider<DP: DataProvider, Element>: DataProvider wher
         self.itemsPerPage = itemsPerPage
     }
 
-    func getData() -> DP.Data {
+    func getData(with request: DP.Request,
+                 completion: @escaping (Result<DP.Data, Error>) -> Void) {
         if data == nil {
-            data = provider.getData()
+            provider.getData(with: request) { [weak self] result in
+                guard let self = self, let data = try? result.get() else {
+                    return
+                }
+                `self`.data = data
+                let pagedData = self.getPagedData()
+                completion(.success(pagedData))
+            }
+        } else {
+            let pagedData = getPagedData()
+            completion(.success(pagedData))
         }
+    }
+
+    private func getPagedData() -> DP.Data {
         guard var data = data else {
             return [Element]()
         }

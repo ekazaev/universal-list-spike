@@ -12,6 +12,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     NextPageEventHandler
     where
     DP.Data == [City],
+    DP.Request == String,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == [[ListCellType<DP.Data.Element>]] {
 
@@ -27,6 +28,8 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
 
     private var isLoading: Bool = false
 
+    private var query: String = ""
+
     init(viewUpdater: ViewUpdater, citiesProvider: DP, dataTransformer: Transformer) {
         self.viewUpdater = viewUpdater
         itemsProvider = citiesProvider
@@ -34,8 +37,7 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
     }
 
     func listViewInstantiated() {
-        filteredItems = itemsProvider.getData()
-        reloadView()
+        requestData(for: query)
     }
 
     func didSelectRow(at indexPath: IndexPath) {
@@ -55,31 +57,29 @@ final class CitySearchEventHandler<ViewUpdater: ReusableViewListUpdater, DP: Dat
         guard !isLoading else {
             return
         }
-        isLoading = true
-        reloadView()
-        let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(1)
-        mainQueue.asyncAfter(deadline: deadline) { [weak self] in
-            self?.isLoading = false
-            guard let self = self else {
-                return
-            }
-            let newItems = self.itemsProvider.getData()
-            self.filteredItems.append(contentsOf: newItems)
-            self.reloadView()
-        }
-
+        requestData(for: query)
     }
 
     func search(for query: String) {
-        let cities = itemsProvider.getData()
-        guard !query.isEmpty else {
-            filteredItems = cities
-            reloadView()
-            return
+        requestData(for: query)
+    }
+
+    private func requestData(for query: String) {
+        isLoading = true
+        if self.query != query {
+            filteredItems = []
         }
-        filteredItems = cities.filter { $0.city.contains(query) || $0.description.contains(query) }
         reloadView()
+        self.query = query
+        itemsProvider.getData(with: query, completion: { [weak self] result in
+            self?.isLoading = false
+            guard let self = self,
+                let newItems = try? result.get() else {
+                return
+            }
+            self.filteredItems.append(contentsOf: newItems)
+            self.reloadView()
+        })
     }
 
     private func reloadView() {

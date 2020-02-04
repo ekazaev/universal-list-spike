@@ -29,17 +29,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchContainerController = SearchBarContainerViewController()
 
         let citiesSearchViewController = GenericSearchBuilder<CityTableCell, PaginatingDataProvider<CityDataProvider, City>>(dataProvider: PaginatingDataProvider(for: CityDataProvider(), itemsPerPage: 5)).build()
-        let personSearchViewController = GenericSearchBuilder<PersonTableCell, PeopleDataProvider>(dataProvider: PeopleDataProvider()).build()
+        //let personSearchViewController = GenericSearchBuilder<PersonTableCell, PaginatingDataProvider<PeopleDataProvider, Person>>(dataProvider: PaginatingDataProvider(for: PeopleDataProvider(), itemsPerPage: 5)).build()
 
         citiesSearchViewController.title = "Cities"
-        personSearchViewController.title = "Peoples"
+        //personSearchViewController.title = "Peoples"
 
         searchContainerController.searchBarController.add(delegate: citiesSearchViewController)
-        searchContainerController.searchBarController.add(delegate: personSearchViewController)
+        //searchContainerController.searchBarController.add(delegate: personSearchViewController)
 
         // Custom tab Bar
         let customTabBarController = CustomTabViewController(nibName: "CustomTabViewController", bundle: Bundle(for: CustomTabViewController.self))
-        customTabBarController.viewControllers = [citiesSearchViewController, personSearchViewController]
+        customTabBarController.viewControllers = [
+            citiesSearchViewController,
+//            personSearchViewController
+        ]
 
         searchContainerController.containingViewController = customTabBarController
 
@@ -52,9 +55,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
-            factory: tableViewFactory,
-            dataSourceController: tableDataSource,
-            delegateController: SimpleTableViewDelegateController()
+                factory: tableViewFactory,
+                dataSourceController: tableDataSource,
+                delegateController: SimpleTableViewDelegateController()
         )
         tableViewController.eventHandler = tableEventHandler
 
@@ -69,14 +72,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
-            dataSourceController: collectionDataSource,
-            delegateController: SimpleCollectionViewDelegateController())
+                dataSourceController: collectionDataSource,
+                delegateController: SimpleCollectionViewDelegateController())
         collectionViewController.eventHandler = collectionEventHandler
 
         tabBarController.viewControllers = [
             UINavigationController(rootViewController: searchContainerController),
-            UINavigationController(rootViewController: tableViewController),
-            UINavigationController(rootViewController: collectionViewController)
+//            UINavigationController(rootViewController: tableViewController),
+//            UINavigationController(rootViewController: collectionViewController)
         ]
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

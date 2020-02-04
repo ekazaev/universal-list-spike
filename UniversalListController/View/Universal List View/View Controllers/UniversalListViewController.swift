@@ -11,7 +11,7 @@ final class UniversalListViewController<Factory: ViewFactory, DataSource: Reusab
     Factory.View == DataSource.View,
     Factory.View == Delegate.View {
 
-    var eventHandler: UniversalListViewControllerDelegate?
+    var eventHandler: UniversalListViewControllerEventHandler?
 
     private let factory: Factory
     private let dataSourceController: DataSource

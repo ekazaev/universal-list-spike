@@ -6,15 +6,15 @@
 import Foundation
 import UIKit
 
-protocol NextPageEventHandler {
-
-    func requestNewPage()
-
-}
-
 protocol ScrollViewNextPageRequester {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView)
+
+}
+
+protocol NextPageEventHandler {
+
+    func requestNewPage()
 
 }
 

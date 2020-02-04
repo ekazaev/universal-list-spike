@@ -7,22 +7,15 @@ import Foundation
 
 final class PeopleDataProvider: DataProvider {
 
-    private var requestingQuery: String?
-
     func getData(with query: String, completion: @escaping (Result<[Person], Error>) -> Void) {
         delay {
-            guard self.requestingQuery == nil || self.requestingQuery != query else {
-                return
-            }
-            defer {
-                self.requestingQuery = nil
-            }
-            self.requestingQuery = query
-            let people = PeopleDataMock.people
+            let people = PeopleDataMock.people.sorted(by: { $0.name < $1.name} )
             guard !query.isEmpty else {
                 return completion(.success(people))
             }
-            let filteredPeople = people.filter { $0.name.contains(query) || $0.description.contains(query) }
+            var filteredPeople = people.filter {
+                $0.name.lowercased().contains(query.lowercased()) || $0.description.lowercased().contains(query.lowercased())
+            }
             completion(.success(filteredPeople))
         }
     }
@@ -30,7 +23,9 @@ final class PeopleDataProvider: DataProvider {
     private func delay(completion: @escaping () -> Void) {
         let mainQueue = DispatchQueue.main
         let deadline = DispatchTime.now() + .seconds(Int.random(in: 0...2))
-        mainQueue.asyncAfter(deadline: deadline) { completion() }
+        mainQueue.asyncAfter(deadline: deadline) {
+            completion()
+        }
     }
 
 }

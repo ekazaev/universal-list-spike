@@ -5,14 +5,14 @@
 
 import Foundation
 
-protocol UniversalListViewControllerDelegate: AnyObject {
+protocol UniversalListViewControllerEventHandler: AnyObject {
 
     func listViewInstantiated()
 
 }
 
 /// Extension that makes implementation optional
-extension UniversalListViewControllerDelegate {
+extension UniversalListViewControllerEventHandler {
 
     func listViewInstantiated() {}
 

@@ -17,12 +17,12 @@ enum GenericSearchEventHandlerState {
     case noResults
 }
 
-final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Transformer: DataTransformer>:
+final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdater, DP: PageableDataProvider, Transformer: DataTransformer>:
     SearchContainerViewControllerEventHandler,
-    UniversalListViewControllerDelegate,
     SimpleDelegateControllerEventHandler,
     NextPageEventHandler,
-    DataLoadingStateHandler
+    DataLoadingStateHandler,
+    UniversalListViewControllerEventHandler
     where
     Entity: Identifiable,
     DP.Data == [Entity],
@@ -55,7 +55,8 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
     }
 
     func listViewInstantiated() {
-        requestData(for: query)
+        reloadView()
+        search(for: query)
     }
 
     func didSelectRow(at indexPath: IndexPath) {
@@ -72,20 +73,24 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
     }
 
     func requestNewPage() {
-        guard !isDataLoading else {
+        guard !isDataLoading, !isFullyLoaded else {
             return
         }
-        requestData(for: query)
+        isDataLoading = true
+        reloadView()
+        let query = self.query
+        itemsProvider.getNextPage { [weak self] result in
+            guard query == self?.query else {
+                return
+            }
+            self?.handleDataLoad(result: result)
+        }
     }
 
     func search(for query: String) {
-        requestData(for: query)
-    }
-
-    private func requestData(for query: String) {
         let isNewRequest = self.query != query
         self.query = query
-        guard isNewRequest || !isFullyLoaded else {
+        guard isNewRequest else {
             return
         }
         isDataLoading = true
@@ -96,18 +101,21 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
         }
         delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : .someResults)
         itemsProvider.getData(with: query, completion: { [weak self] result in
-            self?.isDataLoading = false
-            guard let self = self,
-                let newItems = try? result.get() else {
-                    return
-            }
-            self.isFullyLoaded = newItems.isEmpty
-            self.filteredItems.append(contentsOf: newItems)
-
-            self.delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : self.filteredItems.isEmpty ? .noResults : .someResults)
-
-            self.reloadView()
+            self?.handleDataLoad(result: result)
         })
+    }
+
+    private func handleDataLoad(result: Result<DP.Data, Error>) {
+        isDataLoading = false
+        guard let newItems = try? result.get() else {
+            return
+        }
+        isFullyLoaded = newItems.isEmpty
+        filteredItems.append(contentsOf: newItems)
+
+        delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : self.filteredItems.isEmpty ? .noResults : .someResults)
+
+        reloadView()
     }
 
     private func reloadView() {

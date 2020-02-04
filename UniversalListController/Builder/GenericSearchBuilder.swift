@@ -8,7 +8,7 @@ import Foundation
 import UIKit
 
 struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
-                            DP: DataProvider>
+                            DP: PageableDataProvider>
     where
     DataCell: UITableViewCell,
     DataCell.Data: Identifiable & Differentiable,
@@ -45,6 +45,7 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
             dataSourceController: searchDataSource,
             delegateController: delegateController
         )
+        // Fix
         searchTableViewController.eventHandler = searchEventHandler
 
         let containerController = SearchResultsContainerViewController(eventHandler: searchEventHandler)

@@ -29,19 +29,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let searchContainerController = SearchBarContainerViewController()
 
         let citiesSearchViewController = GenericSearchBuilder<CityTableCell, PaginatingDataProvider<CityDataProvider, City>>(dataProvider: PaginatingDataProvider(for: CityDataProvider(), itemsPerPage: 5)).build()
-        //let personSearchViewController = GenericSearchBuilder<PersonTableCell, PaginatingDataProvider<PeopleDataProvider, Person>>(dataProvider: PaginatingDataProvider(for: PeopleDataProvider(), itemsPerPage: 5)).build()
+        let personSearchViewController = GenericSearchBuilder<PersonTableCell, PaginatingDataProvider<PeopleDataProvider, Person>>(dataProvider: PaginatingDataProvider(for: PeopleDataProvider(), itemsPerPage: 5)).build()
 
         citiesSearchViewController.title = "Cities"
-        //personSearchViewController.title = "Peoples"
+        personSearchViewController.title = "Peoples"
 
         searchContainerController.searchBarController.add(delegate: citiesSearchViewController)
-        //searchContainerController.searchBarController.add(delegate: personSearchViewController)
+        searchContainerController.searchBarController.add(delegate: personSearchViewController)
 
         // Custom tab Bar
         let customTabBarController = CustomTabViewController(nibName: "CustomTabViewController", bundle: Bundle(for: CustomTabViewController.self))
         customTabBarController.viewControllers = [
             citiesSearchViewController,
-//            personSearchViewController
+            personSearchViewController
         ]
 
         searchContainerController.containingViewController = customTabBarController
@@ -78,8 +78,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         tabBarController.viewControllers = [
             UINavigationController(rootViewController: searchContainerController),
-//            UINavigationController(rootViewController: tableViewController),
-//            UINavigationController(rootViewController: collectionViewController)
+            UINavigationController(rootViewController: tableViewController),
+            UINavigationController(rootViewController: collectionViewController)
         ]
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()

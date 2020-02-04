@@ -13,7 +13,7 @@ final class PeopleDataProvider: DataProvider {
             guard !query.isEmpty else {
                 return completion(.success(people))
             }
-            var filteredPeople = people.filter {
+            let filteredPeople = people.filter {
                 $0.name.lowercased().contains(query.lowercased()) || $0.description.lowercased().contains(query.lowercased())
             }
             completion(.success(filteredPeople))

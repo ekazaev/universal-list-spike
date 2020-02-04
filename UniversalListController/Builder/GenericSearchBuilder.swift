@@ -48,10 +48,13 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         searchTableViewController.title = "Cities"
         searchTableViewController.eventHandler = searchEventHandler
 
-        let containerController = SearchContainerViewController(eventHandler: searchEventHandler)
+        let containerController = SearchResultsContainerViewController(eventHandler: searchEventHandler)
 
-        let startViewController = UIViewController(nibName: "StartTypingViewController", bundle: nil)
-        containerController.viewControllers = [startViewController, searchTableViewController]
+        let initialViewController = UIViewController(nibName: "StartTypingViewController", bundle: nil)
+        let noResultsViewController = UIViewController(nibName: "NoResultsAvailableViewController", bundle: nil)
+        containerController.viewControllers = [initialViewController, searchTableViewController, noResultsViewController]
+
+        searchEventHandler.delegate = containerController
 
         return containerController
     }

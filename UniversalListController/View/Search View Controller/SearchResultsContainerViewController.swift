@@ -6,27 +6,22 @@
 import Foundation
 import UIKit
 
-protocol SearchContainerViewControllerEventHandler: SearchBarControllerDelegate {}
+protocol SearchContainerViewControllerEventHandler: SearchBarControllerDelegate {
+}
 
-class SearchContainerViewController: UIViewController, SearchBarControllerDelegate {
+class SearchResultsContainerViewController: UIViewController, SearchBarControllerDelegate, GenericSearchEventHandlerDelegate {
 
     let eventHandler: SearchContainerViewControllerEventHandler
 
-    var selectedIndex: Int {
-        get {
-            return containerController.selectedIndex
-        }
-        set {
-            containerController.selectedIndex = newValue
+    var selectedIndex: Int = 0 {
+        didSet {
+            containerController.selectedIndex = selectedIndex
         }
     }
 
-    var viewControllers: [UIViewController] {
-        get {
-            return containerController.viewControllers
-        }
-        set {
-            containerController.viewControllers = newValue
+    var viewControllers: [UIViewController] = [] {
+        didSet {
+            containerController.viewControllers = viewControllers
         }
     }
 
@@ -49,12 +44,21 @@ class SearchContainerViewController: UIViewController, SearchBarControllerDelega
         containerController.setup()
     }
 
-    func search(for query: String) {
-        if query.isEmpty {
-            containerController.selectedIndex = 0
-        } else {
+    func searchResultStateChanged(to state: GenericSearchEventHandlerState) {
+        switch state {
+        case .initial:
+            if containerController.selectedIndex == 2 {
+                containerController.selectedIndex = 1
+            }
+            break
+        case .someResults:
             containerController.selectedIndex = 1
+        case .noResults:
+            containerController.selectedIndex = 2
         }
+    }
+
+    func search(for query: String) {
         eventHandler.search(for: query)
     }
 

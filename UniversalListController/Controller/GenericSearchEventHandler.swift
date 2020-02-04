@@ -5,18 +5,33 @@
 
 import Foundation
 
+protocol GenericSearchEventHandlerDelegate: AnyObject {
+
+    func searchResultStateChanged(to state: GenericSearchEventHandlerState)
+
+}
+
+enum GenericSearchEventHandlerState {
+    case initial
+    case someResults
+    case noResults
+}
+
 final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Transformer: DataTransformer>:
-    SearchContainerViewControllerEventHandler,
-    UniversalListViewControllerDelegate,
-    SimpleDelegateControllerEventHandler,
-    NextPageEventHandler,
-    DataLoadingStateHandler
-    where
-    Entity: Identifiable,
-    DP.Data == [Entity],
-    DP.Request == String,
-    Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Source == [[ListCellType<DP.Data.Element>]] {
+        SearchContainerViewControllerEventHandler,
+        UniversalListViewControllerDelegate,
+        SimpleDelegateControllerEventHandler,
+        NextPageEventHandler,
+        DataLoadingStateHandler
+        where
+        Entity: Identifiable,
+        DP.Data == [Entity],
+        DP.Request == String,
+        Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
+        Transformer.Source == [[ListCellType<DP.Data.Element>]] {
+
+
+    weak var delegate: GenericSearchEventHandlerDelegate?
 
     private(set) var isDataLoading: Bool = false
 
@@ -80,14 +95,17 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
             filteredItems = []
         }
         self.query = query
+        delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : .someResults)
         itemsProvider.getData(with: query, completion: { [weak self] result in
             self?.isDataLoading = false
             guard let self = self,
-                let newItems = try? result.get() else {
-                    return
+                  let newItems = try? result.get() else {
+                return
             }
             self.isFullyLoaded = newItems.isEmpty
             self.filteredItems.append(contentsOf: newItems)
+            self.delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : self.filteredItems.isEmpty ? .noResults : .someResults)
+
             self.reloadView()
         })
     }

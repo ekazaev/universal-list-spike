@@ -14,7 +14,7 @@ protocol SearchBarControllerDelegate: AnyObject {
 
 final class SearchBarController: NSObject, UISearchBarDelegate {
 
-    public weak var delegate: SearchBarControllerDelegate?
+    private var delegates = WeakArray<SearchBarControllerDelegate>()
 
     private var previousQuery = ""
 
@@ -23,13 +23,17 @@ final class SearchBarController: NSObject, UISearchBarDelegate {
         let deadline = DispatchTime.now() + .milliseconds(500)
         mainQueue.asyncAfter(deadline: deadline) { [weak self] in
             guard let self = self,
-                let delegate = self.delegate,
                 let query = searchBar.text?.trimmingCharacters(in: CharacterSet.whitespaces),
                 query != self.previousQuery else {
-                    return
+                return
             }
             self.previousQuery = query
-            delegate.search(for: query)
+            self.delegates.forEach { $0.search(for: query) }
         }
     }
+
+    func add(delegate: SearchBarControllerDelegate) {
+        delegates.appendUnique(delegate)
+    }
+
 }

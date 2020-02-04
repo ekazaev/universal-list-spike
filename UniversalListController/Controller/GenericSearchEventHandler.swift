@@ -102,9 +102,7 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
                     return
             }
             self.isFullyLoaded = newItems.isEmpty
-            self.filteredItems.append(contentsOf: newItems.filter { newItem in
-                !self.filteredItems.contains(where: { newItem.id != $0.id })
-            })
+            self.filteredItems.append(contentsOf: newItems)
 
             self.delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : self.filteredItems.isEmpty ? .noResults : .someResults)
 
@@ -113,15 +111,13 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
     }
 
     private func reloadView() {
-        let selectedItemsState = selectedItems.map {
-            ListCellType.dataCell($0)
-        }
-        var unselectedItemsState = itemsWithoutSelected().map {
-            ListCellType.dataCell($0)
-        }
+        let selectedItemsState = selectedItems.map { ListCellType.dataCell($0) }
+        var unselectedItemsState = itemsWithoutSelected().map { ListCellType.dataCell($0) }
+
         if isDataLoading {
             unselectedItemsState.append(.loading)
         }
+
         let resultItems = [
             selectedItemsState,
             unselectedItemsState

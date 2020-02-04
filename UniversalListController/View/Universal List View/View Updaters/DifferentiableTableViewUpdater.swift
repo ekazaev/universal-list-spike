@@ -23,6 +23,9 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
     /// Data to compare with
     private var previousData = ListData<DataSource.SectionContext, DataSource.CellContext>(sections: [])
 
+    /// Postponed data
+    private var postponedData: ListData<DataSource.SectionContext, DataSource.CellContext>?
+
     /// Updating flag
     private var isUpdating: Bool = false
 
@@ -48,20 +51,42 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
             holder?.data = data
             return
         }
+        guard !isUpdating else {
+            postponedData = data
+            return
+        }
+
+        isUpdating = true
         let source = previousData.getAsDifferentiableArray()
         let target = data.getAsDifferentiableArray()
         let changeSet = StagedChangeset(source: source,
-                                        target: target)
+            target: target)
         previousData = data
+        CATransaction.begin()
+        CATransaction.setCompletionBlock { [weak self] in
+            guard let self = self else {
+                return
+            }
+            if let postponedData = self.postponedData {
+                DispatchQueue.main.async {
+                    self.isUpdating = false
+                    self.postponedData = nil
+                    self.update(with: postponedData)
+                }
+            } else {
+                self.isUpdating = false
+            }
+        }
         tableView.reload(using: changeSet, with: .fade) { [weak self] data in
             let changedData = ListData(
                 sections: data.map {
                     SectionData(
                         cells: $0.elements.map { CellData(context: $0)
-                    })
+                        })
                 })
             self?.holder?.data = changedData
         }
+        CATransaction.commit()
     }
 
 }

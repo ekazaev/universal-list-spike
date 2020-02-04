@@ -28,12 +28,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // First
         let searchContainerController = SearchBarContainerViewController()
 
-        let searchViewController = GenericSearchBuilder<CityTableCell, CityDataProvider>(dataProvider: CityDataProvider()).build()
-        searchContainerController.searchBarController.delegate = searchViewController
+        let citiesSearchViewController = GenericSearchBuilder<CityTableCell, PaginatingDataProvider<CityDataProvider, City>>(dataProvider: PaginatingDataProvider(for: CityDataProvider(), itemsPerPage: 5)).build()
+        let personSearchViewController = GenericSearchBuilder<PersonTableCell, PeopleDataProvider>(dataProvider: PeopleDataProvider()).build()
+
+        citiesSearchViewController.title = "Cities"
+        personSearchViewController.title = "Peoples"
+
+        searchContainerController.searchBarController.add(delegate: citiesSearchViewController)
+        searchContainerController.searchBarController.add(delegate: personSearchViewController)
 
         // Custom tab Bar
         let customTabBarController = CustomTabViewController(nibName: "CustomTabViewController", bundle: Bundle(for: CustomTabViewController.self))
-        customTabBarController.viewControllers = [searchViewController]
+        customTabBarController.viewControllers = [citiesSearchViewController, personSearchViewController]
 
         searchContainerController.containingViewController = customTabBarController
 
@@ -63,8 +69,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
-                                                                   dataSourceController: collectionDataSource,
-                                                                   delegateController: SimpleCollectionViewDelegateController())
+            dataSourceController: collectionDataSource,
+            delegateController: SimpleCollectionViewDelegateController())
         collectionViewController.eventHandler = collectionEventHandler
 
         tabBarController.viewControllers = [

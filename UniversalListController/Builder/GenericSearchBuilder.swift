@@ -30,7 +30,7 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         let searchDataTransformer = ListStateDataTransformer<DataCell, LoadingTableViewCell>()
 
         let searchEventHandler = GenericSearchEventHandler(viewUpdater: searchViewUpdater,
-                                                           citiesProvider: PaginatingDataProvider(for: dataProvider, itemsPerPage: 5),
+                                                           citiesProvider:  dataProvider,
                                                            dataTransformer: searchDataTransformer)
 
         let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10,
@@ -45,7 +45,6 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
             dataSourceController: searchDataSource,
             delegateController: delegateController
         )
-        searchTableViewController.title = "Cities"
         searchTableViewController.eventHandler = searchEventHandler
 
         let containerController = SearchResultsContainerViewController(eventHandler: searchEventHandler)

@@ -22,7 +22,7 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         self.dataProvider = dataProvider
     }
 
-    func build() -> UIViewController {
+    func build() -> UIViewController & SearchBarControllerDelegate {
         let searchTableViewFactory = TableViewFactory(style: .grouped)
         let searchDataSource = TableViewDataSourceController<Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>, TableViewFactory>(holder: searchTableViewFactory)
 
@@ -47,7 +47,13 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         )
         searchTableViewController.title = "Cities"
         searchTableViewController.eventHandler = searchEventHandler
-        return searchTableViewController
+
+        let containerController = SearchContainerViewController(eventHandler: searchEventHandler)
+
+        let startViewController = UIViewController(nibName: "StartTypingViewController", bundle: nil)
+        containerController.viewControllers = [startViewController, searchTableViewController]
+
+        return containerController
     }
 
 }

@@ -8,7 +8,14 @@ import UIKit
 
 final class ContainerController {
 
-    var selectedIndex: Int = 0
+    var selectedIndex: Int = 0 {
+        didSet {
+            guard oldValue != selectedIndex else {
+                return
+            }
+            updateStack()
+        }
+    }
 
     private weak var containerViewController: UIViewController?
 

@@ -28,13 +28,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // First
         let searchContainerController = SearchBarContainerViewController()
 
-//        searchContainerController.searchBarController.delegate = searchEventHandler
-
-        let searchTableViewController = GenericSearchBuilder<CityTableCell, CityDataProvider>(dataProvider: CityDataProvider()).build()
+        let searchViewController = GenericSearchBuilder<CityTableCell, CityDataProvider>(dataProvider: CityDataProvider()).build()
+        searchContainerController.searchBarController.delegate = searchViewController
 
         // Custom tab Bar
         let customTabBarController = CustomTabViewController(nibName: "CustomTabViewController", bundle: Bundle(for: CustomTabViewController.self))
-        customTabBarController.viewControllers = [searchTableViewController]
+        customTabBarController.viewControllers = [searchViewController]
 
         searchContainerController.containingViewController = customTabBarController
 

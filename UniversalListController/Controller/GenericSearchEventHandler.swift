@@ -6,7 +6,7 @@
 import Foundation
 
 final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdater, DP: DataProvider, Transformer: DataTransformer>:
-    SearchBarControllerDelegate,
+    SearchContainerViewControllerEventHandler,
     UniversalListViewControllerDelegate,
     SimpleDelegateControllerEventHandler,
     NextPageEventHandler,
@@ -93,8 +93,12 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
     }
 
     private func reloadView() {
-        let selectedItemsState = selectedItems.map { ListCellType.dataCell($0) }
-        var unselectedItemsState = itemsWithoutSelected().map { ListCellType.dataCell($0) }
+        let selectedItemsState = selectedItems.map {
+            ListCellType.dataCell($0)
+        }
+        var unselectedItemsState = itemsWithoutSelected().map {
+            ListCellType.dataCell($0)
+        }
         if isDataLoading {
             unselectedItemsState.append(.loading)
         }
@@ -107,7 +111,11 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
     }
 
     private func itemsWithoutSelected() -> DP.Data {
-        filteredItems.filter { !selectedItems.map { $0.id }.contains($0.id) }
+        filteredItems.filter {
+            !selectedItems.map {
+                $0.id
+            }.contains($0.id)
+        }
     }
 
 }

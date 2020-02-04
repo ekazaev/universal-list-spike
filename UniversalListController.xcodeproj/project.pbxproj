@@ -75,9 +75,11 @@
 		45C913AB23DF3D850021602D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45C913AA23DF3D850021602D /* Assets.xcassets */; };
 		45C913AE23DF3D850021602D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45C913AC23DF3D850021602D /* LaunchScreen.storyboard */; };
 		45F26DB223E44EE200747FB2 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45F26DB123E44EE200747FB2 /* LoadingTableViewCell.xib */; };
+		45FD722323E8E8D1007C7EE2 /* StartTypingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FD722223E8E8D1007C7EE2 /* StartTypingViewController.xib */; };
+		45FD722523E8E90A007C7EE2 /* NoResultsAvailableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45FD722423E8E90A007C7EE2 /* NoResultsAvailableViewController.xib */; };
 		C539A939C5A6B7FFF022DB0C /* libPods-UniversalListController.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */; };
 		EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */; };
-		EF158A3668F65FEE9560AE2D /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15829DA3B6230D15B7763E /* ContainerViewController.swift */; };
+		EF158A3668F65FEE9560AE2D /* SearchContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15829DA3B6230D15B7763E /* SearchContainerViewController.swift */; };
 		EF158B2A6CEB1E715B8E0B5F /* ContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15892A6C24E88E66A2D57A /* ContainerController.swift */; };
 		EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587D8319D79B214596097 /* PeopleDataProvider.swift */; };
 		EF158FB55693E9883AD39ED7 /* GenericSearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158B4C63EFB75AE27466E9 /* GenericSearchBuilder.swift */; };
@@ -178,10 +180,12 @@
 		45C913AD23DF3D850021602D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45C913AF23DF3D850021602D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45F26DB123E44EE200747FB2 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
+		45FD722223E8E8D1007C7EE2 /* StartTypingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StartTypingViewController.xib; sourceTree = "<group>"; };
+		45FD722423E8E90A007C7EE2 /* NoResultsAvailableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoResultsAvailableViewController.xib; sourceTree = "<group>"; };
 		655CD093BE26AA1ED13466C3 /* Pods-UniversalListController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.release.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.release.xcconfig"; sourceTree = "<group>"; };
 		B0BB4E9989D25C0FD96A32AA /* libPods-UniversalListController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UniversalListController.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA00DCFFBCB3DB1898422BF /* Pods-UniversalListController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UniversalListController.debug.xcconfig"; path = "Target Support Files/Pods-UniversalListController/Pods-UniversalListController.debug.xcconfig"; sourceTree = "<group>"; };
-		EF15829DA3B6230D15B7763E /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		EF15829DA3B6230D15B7763E /* SearchContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchContainerViewController.swift; sourceTree = "<group>"; };
 		EF1587D8319D79B214596097 /* PeopleDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataProvider.swift; sourceTree = "<group>"; };
 		EF1588762DFDDC46C223F502 /* PeopleDataMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleDataMock.swift; sourceTree = "<group>"; };
 		EF15892A6C24E88E66A2D57A /* ContainerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerController.swift; sourceTree = "<group>"; };
@@ -368,8 +372,10 @@
 			children = (
 				1BE5452FD3C614F40ED4E7B7 /* SearchBarContainerViewController.swift */,
 				1BE54AEC4B1C5CB4D3255D00 /* SearchBarController.swift */,
-				EF15829DA3B6230D15B7763E /* ContainerViewController.swift */,
+				EF15829DA3B6230D15B7763E /* SearchContainerViewController.swift */,
 				EF15892A6C24E88E66A2D57A /* ContainerController.swift */,
+				45FD722223E8E8D1007C7EE2 /* StartTypingViewController.xib */,
+				45FD722423E8E90A007C7EE2 /* NoResultsAvailableViewController.xib */,
 			);
 			path = "Search View Controller";
 			sourceTree = "<group>";
@@ -595,6 +601,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45FD722523E8E90A007C7EE2 /* NoResultsAvailableViewController.xib in Resources */,
+				45FD722323E8E8D1007C7EE2 /* StartTypingViewController.xib in Resources */,
 				45C913AE23DF3D850021602D /* LaunchScreen.storyboard in Resources */,
 				45F26DB223E44EE200747FB2 /* LoadingTableViewCell.xib in Resources */,
 				45C913AB23DF3D850021602D /* Assets.xcassets in Resources */,
@@ -704,7 +712,7 @@
 				EF158205F0EB948E4BE4B61B /* PeopleDataMock.swift in Sources */,
 				EF158B75876BE70E5C86CDF9 /* PeopleDataProvider.swift in Sources */,
 				EF158FB55693E9883AD39ED7 /* GenericSearchBuilder.swift in Sources */,
-				EF158A3668F65FEE9560AE2D /* ContainerViewController.swift in Sources */,
+				EF158A3668F65FEE9560AE2D /* SearchContainerViewController.swift in Sources */,
 				EF158B2A6CEB1E715B8E0B5F /* ContainerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

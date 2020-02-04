@@ -6,8 +6,7 @@
 import Foundation
 import UIKit
 
-protocol SearchContainerViewControllerEventHandler: SearchBarControllerDelegate {
-}
+protocol SearchContainerViewControllerEventHandler: SearchBarControllerDelegate {}
 
 class SearchResultsContainerViewController: UIViewController, SearchBarControllerDelegate, GenericSearchEventHandlerDelegate {
 
@@ -50,7 +49,6 @@ class SearchResultsContainerViewController: UIViewController, SearchBarControlle
             if containerController.selectedIndex == 2 {
                 containerController.selectedIndex = 1
             }
-            break
         case .someResults:
             containerController.selectedIndex = 1
         case .noResults:

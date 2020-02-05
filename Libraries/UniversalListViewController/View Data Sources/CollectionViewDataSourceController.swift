@@ -8,35 +8,35 @@ import ReusableView
 import UIKit
 import UniversalList
 
-public final class CollectionViewDataSourceController<SectionContext, CellContext, ListHolder: ViewHolder>: NSObject, UniversalListDataSourceController, UICollectionViewDataSource
+public final class CollectionViewDataSourceController<SectionContext, CellContext, ViewProxy: ViewAccessProxy>: NSObject, UniversalListDataSourceController, UICollectionViewDataSource
     where
-    ListHolder.View: UICollectionView,
+    ViewProxy.View: UICollectionView,
     CellContext: CellAdapter,
     CellContext.Cell: UICollectionViewCell {
 
-    public typealias View = ListHolder.View
+    public typealias View = ViewProxy.View
 
     public var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let holder: ListHolder
-    private let cellDequeuer: CollectionReusableCellDequeuer<ListHolder>
+    private let viewProxy: ViewProxy
+    private let cellDequeuer: CollectionReusableCellDequeuer<ViewProxy>
 
-    public init(holder: ListHolder) {
-        self.holder = holder
-        cellDequeuer = CollectionReusableCellDequeuer(holder: holder)
+    public init(viewProxy: ViewProxy) {
+        self.viewProxy = viewProxy
+        cellDequeuer = CollectionReusableCellDequeuer(viewProxy: viewProxy)
 
         super.init()
     }
 
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        guard holder.isViewLoaded else {
+        guard viewProxy.isViewLoaded else {
             return 0
         }
         return data.sections.count
     }
 
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard holder.isViewLoaded else {
+        guard viewProxy.isViewLoaded else {
             return 0
         }
         return data.sections[section].cells.count

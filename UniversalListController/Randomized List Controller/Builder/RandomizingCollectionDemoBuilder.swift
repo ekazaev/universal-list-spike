@@ -3,11 +3,11 @@
 // UniversalListController
 //
 
-import Foundation
-import UIKit
-import ReusableView
-import UniversalListViewController
 import DifferenceKit
+import Foundation
+import ReusableView
+import UIKit
+import UniversalListViewController
 
 class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollectionViewCell & ConfigurableReusableView>
     where
@@ -16,27 +16,35 @@ class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollectionViewC
     [Cell.Data] == DP.Data {
 
     private let dataProvider: DP
+    private let tabBarConfiguration: TabBarConfiguration
 
-    init(dataProvider: DP) {
+    init(dataProvider: DP, tabBarConfiguration: TabBarConfiguration) {
         self.dataProvider = dataProvider
+        self.tabBarConfiguration = tabBarConfiguration
     }
 
     func build() -> UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 200)
         let collectionViewFactory = CollectionViewFactory(collectionViewLayout: layout)
-        let collectionDataSource = CollectionViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, CollectionViewFactory>(holder: collectionViewFactory)
+        let collectionDataSource = CollectionViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, CollectionViewFactory>(viewProxy: collectionViewFactory)
 
-        let collectionViewUpdater = DifferentiableCollectionViewUpdater(holder: collectionViewFactory, dataSource: collectionDataSource)
+        let collectionViewUpdater = DifferentiableCollectionViewUpdater(viewProxy: collectionViewFactory, dataSource: collectionDataSource)
         let collectionDataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
+
+        collectionViewFactory.dataSource = collectionDataSource
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)), dataTransformer: collectionDataTransformer)
         let collectionViewController = UniversalListViewController(
             view: collectionViewFactory.build(),
+            eventHandler: collectionEventHandler,
             dataSourceController: collectionDataSource,
             delegateController: SimpleCollectionViewDelegateController()
         )
-        collectionViewController.eventHandler = collectionEventHandler
+
+        collectionViewController.tabBarItem.image = tabBarConfiguration.image
+        collectionViewController.tabBarItem.title = tabBarConfiguration.title
+
         return collectionViewController
     }
 

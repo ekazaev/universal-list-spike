@@ -7,18 +7,6 @@ import Foundation
 import UniversalList
 import UniversalListViewController
 
-protocol GenericSearchEventHandlerDelegate: AnyObject {
-
-    func searchResultStateChanged(to state: GenericSearchEventHandlerState)
-
-}
-
-enum GenericSearchEventHandlerState {
-    case initial
-    case someResults
-    case noResults
-}
-
 final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater, DP: PageableDataProvider, Transformer: DataTransformer>:
     SearchContainerViewControllerEventHandler,
     SimpleDelegateControllerEventHandler,
@@ -32,7 +20,7 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == [[ListCellType<DP.Data.Element>]] {
 
-    weak var delegate: GenericSearchEventHandlerDelegate?
+    weak var delegate: SearchResultStateDelegate?
 
     private(set) var isDataLoading: Bool = false
 

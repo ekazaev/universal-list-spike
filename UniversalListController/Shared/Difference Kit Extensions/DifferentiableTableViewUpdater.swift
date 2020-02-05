@@ -10,9 +10,9 @@ import UIKit
 import UniversalList
 import UniversalListViewController
 
-final class DifferentiableTableViewUpdater<DataSource: UniversalListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: UniversalListUpdater
+final class DifferentiableTableViewUpdater<DataSource: UniversalListDataSourceController & UITableViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
     where
-    ListHolder.View: UITableView,
+    Proxy.View: UITableView,
     DataSource.View: UITableView,
     DataSource.SectionContext == Void,
     DataSource.CellContext: CellAdapter,
@@ -21,18 +21,18 @@ final class DifferentiableTableViewUpdater<DataSource: UniversalListDataSourceCo
 
     private weak var dataSource: DataSource?
 
-    private let holder: ListHolder
+    private let viewProxy: Proxy
 
-    private lazy var tableView: ListHolder.View = {
-        let tableView = holder.view
+    private lazy var tableView: Proxy.View = {
+        let tableView = viewProxy.view
         tableView.dataSource = dataSource
         tableView.reloadData()
         return tableView
     }()
 
-    init(holder: ListHolder, dataSource: DataSource) {
+    init(viewProxy: Proxy, dataSource: DataSource) {
         self.dataSource = dataSource
-        self.holder = holder
+        self.viewProxy = viewProxy
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
@@ -40,14 +40,14 @@ final class DifferentiableTableViewUpdater<DataSource: UniversalListDataSourceCo
             guard let self = self else {
                 return
             }
-            guard let holder = self.dataSource else {
+            guard let viewProxy = self.dataSource else {
                 return
             }
-            guard self.holder.isViewLoaded else {
+            guard self.viewProxy.isViewLoaded else {
                 self.dataSource?.data = data
                 return
             }
-            let source = holder.data.getAsDifferentiableArray() // previousData.getAsDifferentiableArray()
+            let source = viewProxy.data.getAsDifferentiableArray()
             let target = data.getAsDifferentiableArray()
             let changeSet = StagedChangeset(source: source, target: target)
             self.tableView.reload(using: changeSet, with: .fade) { data in
@@ -58,7 +58,7 @@ final class DifferentiableTableViewUpdater<DataSource: UniversalListDataSourceCo
                                 CellData(context: $0)
                                     })
                         })
-                holder.data = changedData
+                viewProxy.data = changedData
             }
         }
     }

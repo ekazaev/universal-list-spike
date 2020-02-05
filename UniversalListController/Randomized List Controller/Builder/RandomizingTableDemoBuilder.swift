@@ -3,11 +3,11 @@
 // UniversalListController
 //
 
-import Foundation
-import UIKit
-import ReusableView
-import UniversalListViewController
 import DifferenceKit
+import Foundation
+import ReusableView
+import UIKit
+import UniversalListViewController
 
 struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & ConfigurableReusableView>
     where
@@ -16,29 +16,37 @@ struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & Con
     [Cell.Data] == DP.Data {
 
     private let dataProvider: DP
+    private let tabBarConfiguration: TabBarConfiguration
 
-    init(dataProvider: DP) {
+    init(dataProvider: DP, tabBarConfiguration: TabBarConfiguration) {
         self.dataProvider = dataProvider
+        self.tabBarConfiguration = tabBarConfiguration
     }
 
     func build() -> UIViewController {
         let tableViewFactory = TableViewFactory(style: .grouped)
-        let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, TableViewFactory>(holder: tableViewFactory)
+        let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, TableViewFactory>(viewProxy: tableViewFactory)
 
-        let viewUpdater = DifferentiableTableViewUpdater(holder: tableViewFactory, dataSource: tableDataSource)
+        let viewUpdater = DifferentiableTableViewUpdater(viewProxy: tableViewFactory, dataSource: tableDataSource)
         let tableDataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
 
         let tableEventHandler = RandomizingEventHandler(
             viewUpdater: viewUpdater,
             dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)),
-            dataTransformer: tableDataTransformer)
+            dataTransformer: tableDataTransformer
+        )
+
+        tableViewFactory.dataSource = tableDataSource
 
         let tableViewController = UniversalListViewController(
             view: tableViewFactory.build(),
+            eventHandler: tableEventHandler,
             dataSourceController: tableDataSource,
             delegateController: SimpleTableViewDelegateController()
         )
-        tableViewController.eventHandler = tableEventHandler
+
+        tableViewController.tabBarItem.image = tabBarConfiguration.image
+        tableViewController.tabBarItem.title = tabBarConfiguration.title
 
         return tableViewController
     }

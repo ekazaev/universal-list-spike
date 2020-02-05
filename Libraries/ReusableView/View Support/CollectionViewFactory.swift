@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public final class CollectionViewFactory: ViewHolder, ViewBuilder {
+public final class CollectionViewFactory: ViewAccessProxy, ViewBuilder {
 
     public var isViewLoaded: Bool {
         return collectionView != nil

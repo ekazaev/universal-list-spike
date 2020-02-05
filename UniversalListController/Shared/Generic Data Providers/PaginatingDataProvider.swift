@@ -5,7 +5,9 @@
 
 import Foundation
 
-// This object exists only for the demo purposes
+// This object exists only for the demo purposes showing the possibility of building the chain or responsibilities with data providers
+// Like one data provider requests list of people, another adds information if they are favored or not by the user and so on,
+// Does not always work correctly as it does not have the racing condition protection.
 final class PaginatingDataProvider<DP: DataProvider, Element>: PageableDataProvider where DP.Data == [Element], DP.Request: Equatable {
 
     let itemsPerPage: Int
@@ -13,8 +15,6 @@ final class PaginatingDataProvider<DP: DataProvider, Element>: PageableDataProvi
     private let provider: DP
 
     private var data: DP.Data?
-
-    private var previousRequest: DP.Request?
 
     init(for provider: DP, itemsPerPage: Int) {
         self.provider = provider

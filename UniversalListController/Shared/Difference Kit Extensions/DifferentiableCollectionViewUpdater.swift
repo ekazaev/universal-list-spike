@@ -10,9 +10,9 @@ import UIKit
 import UniversalList
 import UniversalListViewController
 
-final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, ListHolder: ViewHolder>: UniversalListUpdater
+final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
     where
-    ListHolder.View: UICollectionView,
+    Proxy.View: UICollectionView,
     DataSource.View: UICollectionView,
     DataSource.SectionContext == Void,
     DataSource.CellContext: CellAdapter,
@@ -21,18 +21,18 @@ final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSou
 
     private weak var dataSource: DataSource?
 
-    private let holder: ListHolder
+    private let viewProxy: Proxy
 
-    private lazy var collectionView: ListHolder.View = {
-        let collection = holder.view
+    private lazy var collectionView: Proxy.View = {
+        let collection = viewProxy.view
         collection.dataSource = dataSource
         collection.reloadData()
         return collection
     }()
 
-    init(holder: ListHolder, dataSource: DataSource) {
+    init(viewProxy: Proxy, dataSource: DataSource) {
         self.dataSource = dataSource
-        self.holder = holder
+        self.viewProxy = viewProxy
     }
 
     func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
@@ -43,7 +43,7 @@ final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSou
             guard let dataSource = self.dataSource else {
                 return
             }
-            guard self.holder.isViewLoaded else {
+            guard self.viewProxy.isViewLoaded else {
                 dataSource.data = data
                 return
             }

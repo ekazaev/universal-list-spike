@@ -26,38 +26,40 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
     }
 
     func build() -> UIViewController & SearchBarControllerDelegate {
-        let searchTableViewFactory = TableViewFactory(style: .grouped)
-        let searchDataSource = TableViewDataSourceController<Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>, TableViewFactory>(holder: searchTableViewFactory)
+        let viewFactory = TableViewFactory(style: .grouped)
+        let dataSource = TableViewDataSourceController<Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>, TableViewFactory>(viewProxy: viewFactory)
 
-        let searchViewUpdater = DifferentiableTableViewUpdater(holder: searchTableViewFactory, dataSource: searchDataSource)
-        let searchDataTransformer = ListStateDataTransformer<DataCell, LoadingTableViewCell>()
+        let viewUpdater = DifferentiableTableViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
+        let dataTransformer = ListStateDataTransformer<DataCell, LoadingTableViewCell>()
 
-        let searchEventHandler = GenericSearchEventHandler(viewUpdater: searchViewUpdater,
-                                                           citiesProvider: dataProvider,
-                                                           dataTransformer: searchDataTransformer)
+        let eventHandler = GenericSearchEventHandler(viewUpdater: viewUpdater,
+                                                     citiesProvider: dataProvider,
+                                                     dataTransformer: dataTransformer)
 
         let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10,
-                                                                   nextPageEventHandler: searchEventHandler,
-                                                                   loadingStateEventHandler: searchEventHandler)
-        let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: searchEventHandler)
+                                                                   nextPageEventHandler: eventHandler,
+                                                                   loadingStateEventHandler: eventHandler)
 
-        searchTableViewFactory.delegate = delegateController
+        let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: eventHandler)
+
+        viewFactory.delegate = delegateController
+        viewFactory.dataSource = dataSource
 
         let searchTableViewController = UniversalListViewController(
-            view: searchTableViewFactory.build(),
-            dataSourceController: searchDataSource,
+            view: viewFactory.build(),
+            eventHandler: eventHandler,
+            dataSourceController: dataSource,
             delegateController: delegateController
         )
-        // Fix
-        searchTableViewController.eventHandler = searchEventHandler
 
-        let containerController = SearchResultsContainerViewController(eventHandler: searchEventHandler)
+        // Container Controller
+        let containerController = SearchResultsContainerViewController(eventHandler: eventHandler)
 
         let initialViewController = UIViewController(nibName: "StartTypingViewController", bundle: nil)
         let noResultsViewController = UIViewController(nibName: "NoResultsAvailableViewController", bundle: nil)
         containerController.viewControllers = [initialViewController, searchTableViewController, noResultsViewController]
 
-        searchEventHandler.delegate = containerController
+        eventHandler.delegate = containerController
 
         return containerController
     }

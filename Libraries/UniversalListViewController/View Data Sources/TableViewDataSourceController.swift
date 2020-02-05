@@ -8,35 +8,35 @@ import ReusableView
 import UIKit
 import UniversalList
 
-public final class TableViewDataSourceController<SectionContext, CellContext, ListHolder: ViewHolder>: NSObject, UniversalListDataSourceController, UITableViewDataSource
+public final class TableViewDataSourceController<SectionContext, CellContext, Proxy: ViewAccessProxy>: NSObject, UniversalListDataSourceController, UITableViewDataSource
     where
-    ListHolder.View: UITableView,
+    Proxy.View: UITableView,
     CellContext: CellAdapter,
     CellContext.Cell: UITableViewCell {
 
-    public typealias View = ListHolder.View
+    public typealias View = Proxy.View
 
     public var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let holder: ListHolder
-    private let cellDequeuer: TableReusableCellDequeuer<ListHolder>
+    private let viewProxy: Proxy
+    private let cellDequeuer: TableReusableCellDequeuer<Proxy>
 
-    public init(holder: ListHolder) {
-        self.holder = holder
-        cellDequeuer = TableReusableCellDequeuer(holder: holder)
+    public init(viewProxy: Proxy) {
+        self.viewProxy = viewProxy
+        cellDequeuer = TableReusableCellDequeuer(viewProxy: viewProxy)
 
         super.init()
     }
 
     public func numberOfSections(in tableView: UITableView) -> Int {
-        guard holder.isViewLoaded else {
+        guard viewProxy.isViewLoaded else {
             return 0
         }
         return data.sections.count
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard holder.isViewLoaded else {
+        guard viewProxy.isViewLoaded else {
             return 0
         }
         return data.sections[section].cells.count

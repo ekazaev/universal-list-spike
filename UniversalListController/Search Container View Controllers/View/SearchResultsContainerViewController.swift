@@ -9,7 +9,7 @@ import UIKit
 
 protocol SearchContainerViewControllerEventHandler: SearchBarControllerDelegate {}
 
-class SearchResultsContainerViewController: UIViewController, SearchBarControllerDelegate, GenericSearchEventHandlerDelegate {
+class SearchResultsContainerViewController: UIViewController, SearchBarControllerDelegate, SearchResultStateDelegate {
 
     let eventHandler: SearchContainerViewControllerEventHandler
 
@@ -44,7 +44,7 @@ class SearchResultsContainerViewController: UIViewController, SearchBarControlle
         containerController.setup()
     }
 
-    func searchResultStateChanged(to state: GenericSearchEventHandlerState) {
+    func searchResultStateChanged(to state: SearchResultState) {
         switch state {
         case .initial:
             if containerController.selectedIndex == 2 {

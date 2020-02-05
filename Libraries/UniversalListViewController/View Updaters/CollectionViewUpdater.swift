@@ -8,27 +8,27 @@ import ReusableView
 import UIKit
 import UniversalList
 
-public final class CollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, ListHolder: ViewHolder>: UniversalListUpdater
+public final class CollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
     where
-    ListHolder.View: UICollectionView,
+    Proxy.View: UICollectionView,
     DataSource.View: UICollectionView,
     DataSource.CellContext: CellAdapter,
     DataSource.CellContext.Cell: UICollectionViewCell {
 
     private weak var dataSource: DataSource?
 
-    private let holder: ListHolder
+    private let viewProxy: Proxy
 
-    private lazy var collectionView: ListHolder.View = {
-        let collectionView = holder.view
+    private lazy var collectionView: Proxy.View = {
+        let collectionView = viewProxy.view
         collectionView.dataSource = dataSource
         collectionView.reloadData()
         return collectionView
     }()
 
-    public init(holder: ListHolder, dataSource: DataSource) {
+    public init(viewProxy: Proxy, dataSource: DataSource) {
         self.dataSource = dataSource
-        self.holder = holder
+        self.viewProxy = viewProxy
     }
 
     public func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
@@ -36,7 +36,7 @@ public final class CollectionViewUpdater<DataSource: UniversalListDataSourceCont
             return
         }
         dataSource.data = data
-        guard holder.isViewLoaded else {
+        guard viewProxy.isViewLoaded else {
             return
         }
         collectionView.reloadData()

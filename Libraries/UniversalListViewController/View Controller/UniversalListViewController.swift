@@ -11,7 +11,7 @@ public final class UniversalListViewController<View, DataSource: UniversalListDa
     View == DataSource.View,
     View == Delegate.View {
 
-    public var eventHandler: UniversalListViewControllerEventHandler?
+    public let eventHandler: UniversalListViewControllerEventHandler
 
     private let viewFactory: () -> View
     private let dataSourceController: DataSource
@@ -22,9 +22,12 @@ public final class UniversalListViewController<View, DataSource: UniversalListDa
         fatalError("init(coder:) has not been implemented")
     }
 
-    public init(view: @escaping @autoclosure () -> View, dataSourceController: DataSource, delegateController: Delegate) {
+    public init(view: @escaping @autoclosure () -> View,
+                eventHandler: UniversalListViewControllerEventHandler,
+                dataSourceController: DataSource, delegateController: Delegate) {
         self.dataSourceController = dataSourceController
         self.delegateController = delegateController
+        self.eventHandler = eventHandler
         viewFactory = view
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,7 +35,7 @@ public final class UniversalListViewController<View, DataSource: UniversalListDa
     public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        eventHandler?.listViewInstantiated()
+        eventHandler.listViewInstantiated()
     }
 
 }

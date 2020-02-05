@@ -33,7 +33,7 @@ enum PeopleDataMock {
         Person(id: 2, name: "Lucas Baptista", description: "Team lead"),
         Person(id: 3, name: "Edgar Lopes", description: "IOS Developer"),
         Person(id: 4, name: "Steve Jobs", description: "Deadmen"),
-        Person(id: 5, name: "Alexandra Stamato", description: "Garbage Collector Adjuster"),
+        Person(id: 5, name: "Alejandra Stamato", description: "Garbage Collector Adjuster"),
         Person(id: 6, name: "Jorge Lucas", description: "Director"),
         Person(id: 7, name: "Capitan America", description: "Superhero"),
         Person(id: 8, name: "Leonardo DiCaprio", description: "Actor"),

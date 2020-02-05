@@ -5,6 +5,7 @@
 
 import Foundation
 
+// Gets any data ad shuffles it before returning
 class ShufflingDataProvider<DP: DataProvider>: DataProvider where DP.Data: Collection {
 
     private let dataProvider: DP

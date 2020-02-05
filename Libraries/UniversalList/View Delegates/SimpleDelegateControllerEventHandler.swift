@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol SimpleDelegateControllerEventHandler: AnyObject {
+public protocol SimpleDelegateControllerEventHandler: AnyObject {
 
     func didSelectRow(at indexPath: IndexPath)
 

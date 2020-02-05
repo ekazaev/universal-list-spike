@@ -7,7 +7,7 @@ import Foundation
 import ReusableView
 import UIKit
 
-final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: ReusableViewListUpdater
+public final class TableViewUpdater<DataSource: UniversalListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: UniversalListUpdater
     where
     ListHolder.View: UITableView,
     DataSource.View: UITableView,
@@ -24,12 +24,12 @@ final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & 
         return tableView
     }()
 
-    init(holder: ListHolder, dataSource: DataSource) {
+    public init(holder: ListHolder, dataSource: DataSource) {
         self.dataSource = dataSource
         self.holder = holder
     }
 
-    func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
+    public func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
         guard let dataSource = dataSource else {
             return
         }

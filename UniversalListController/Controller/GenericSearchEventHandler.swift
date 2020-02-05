@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import UniversalList
 
 protocol GenericSearchEventHandlerDelegate: AnyObject {
 
@@ -17,7 +18,7 @@ enum GenericSearchEventHandlerState {
     case noResults
 }
 
-final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdater, DP: PageableDataProvider, Transformer: DataTransformer>:
+final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater, DP: PageableDataProvider, Transformer: DataTransformer>:
     SearchContainerViewControllerEventHandler,
     SimpleDelegateControllerEventHandler,
     NextPageEventHandler,

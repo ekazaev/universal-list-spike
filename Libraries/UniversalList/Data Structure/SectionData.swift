@@ -5,11 +5,11 @@
 
 import Foundation
 
-struct SectionData<SectionContext, CellContext> {
+public struct SectionData<SectionContext, CellContext> {
 
-    var context: SectionContext
+    public var context: SectionContext
 
-    var cells: [CellData<CellContext>]
+    public var cells: [CellData<CellContext>]
 
     init(context: SectionContext, cells: [CellData<CellContext>]) {
         self.context = context
@@ -18,7 +18,7 @@ struct SectionData<SectionContext, CellContext> {
 
 }
 
-extension SectionData where SectionContext == Void {
+public extension SectionData where SectionContext == Void {
 
     init(cells: [CellData<CellContext>]) {
         context = ()

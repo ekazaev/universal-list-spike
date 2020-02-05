@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol DataTransformer {
+public protocol DataTransformer {
 
     associatedtype Source
 

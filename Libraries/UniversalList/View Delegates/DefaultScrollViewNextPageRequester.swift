@@ -6,41 +6,41 @@
 import Foundation
 import UIKit
 
-protocol ScrollViewNextPageRequester {
+public protocol ScrollViewNextPageRequester {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView)
 
 }
 
-protocol NextPageEventHandler {
+public protocol NextPageEventHandler {
 
     func requestNewPage()
 
 }
 
-protocol DataLoadingStateHandler {
+public protocol DataLoadingStateHandler {
 
     var isDataLoading: Bool { get }
 
 }
 
-final class DefaultScrollViewNextPageRequester: ScrollViewNextPageRequester {
+public final class DefaultScrollViewNextPageRequester: ScrollViewNextPageRequester {
 
-    let nextPageEventInset: CGFloat
+    public let nextPageEventInset: CGFloat
 
     private var nextPageEventHandler: NextPageEventHandler
 
     private var loadingStateEventHandler: DataLoadingStateHandler
 
-    init(nextPageEventInset: CGFloat,
-         nextPageEventHandler: NextPageEventHandler,
-         loadingStateEventHandler: DataLoadingStateHandler) {
+    public init(nextPageEventInset: CGFloat,
+                nextPageEventHandler: NextPageEventHandler,
+                loadingStateEventHandler: DataLoadingStateHandler) {
         self.nextPageEventInset = nextPageEventInset
         self.nextPageEventHandler = nextPageEventHandler
         self.loadingStateEventHandler = loadingStateEventHandler
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard !loadingStateEventHandler.isDataLoading else {
             return
         }

@@ -5,13 +5,13 @@
 
 import Foundation
 
-struct ListData<SectionContext, CellContext> {
+public struct ListData<SectionContext, CellContext>: CustomStringConvertible {
 
-    var sections: [SectionData<SectionContext, CellContext>]
+    public var sections: [SectionData<SectionContext, CellContext>]
 
-}
-
-extension ListData: CustomStringConvertible {
+    public init(sections: [SectionData<SectionContext, CellContext>]) {
+        self.sections = sections
+    }
 
     public var description: String {
         return "ListData\n" + sections.map { "    \($0.context)\n        \($0.cells.count)" }.joined(separator: "\n")
@@ -20,7 +20,7 @@ extension ListData: CustomStringConvertible {
 }
 
 // Not finished
-extension ListData {
+public extension ListData {
 
     subscript(section: Int, item: Int) -> CellContext {
         get {

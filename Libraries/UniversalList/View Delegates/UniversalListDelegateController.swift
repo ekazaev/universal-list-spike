@@ -1,15 +1,13 @@
 //
-// LazyViewFactory.swift
+// ReusableViewListDelegate.swift
 // UniversalListController
 //
 
 import Foundation
 import UIKit
 
-public protocol ViewFactory {
+public protocol UniversalListDelegateController {
 
     associatedtype View: UIView
-
-    func build() -> View
 
 }

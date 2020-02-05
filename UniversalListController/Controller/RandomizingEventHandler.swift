@@ -5,8 +5,9 @@
 
 import Foundation
 import UIKit
+import UniversalList
 
-final class RandomizingEventHandler<ViewUpdater: ReusableViewListUpdater, Provider: DataProvider, Transformer: DataTransformer>: UniversalListViewControllerEventHandler
+final class RandomizingEventHandler<ViewUpdater: UniversalListUpdater, Provider: DataProvider, Transformer: DataTransformer>: UniversalListViewControllerEventHandler
     where
     Provider.Request == String,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,

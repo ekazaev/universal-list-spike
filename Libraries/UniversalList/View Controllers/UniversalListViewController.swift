@@ -4,17 +4,16 @@
 //
 
 import Foundation
-import ReusableView
 import UIKit
 
-final class UniversalListViewController<Factory: ViewFactory, DataSource: ReusableViewListDataSourceController, Delegate: ReusableViewListDelegateController>: UIViewController
+public final class UniversalListViewController<View, DataSource: UniversalListDataSourceController, Delegate: UniversalListDelegateController>: UIViewController
     where
-    Factory.View == DataSource.View,
-    Factory.View == Delegate.View {
+    View == DataSource.View,
+    View == Delegate.View {
 
-    var eventHandler: UniversalListViewControllerEventHandler?
+    public var eventHandler: UniversalListViewControllerEventHandler?
 
-    private let factory: Factory
+    private let viewFactory: () -> View
     private let dataSourceController: DataSource
     private let delegateController: Delegate
 
@@ -23,14 +22,14 @@ final class UniversalListViewController<Factory: ViewFactory, DataSource: Reusab
         fatalError("init(coder:) has not been implemented")
     }
 
-    init(factory: Factory, dataSourceController: DataSource, delegateController: Delegate) {
+    public init(view: @escaping @autoclosure () -> View, dataSourceController: DataSource, delegateController: Delegate) {
         self.dataSourceController = dataSourceController
         self.delegateController = delegateController
-        self.factory = factory
+        viewFactory = view
         super.init(nibName: nil, bundle: nil)
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         eventHandler?.listViewInstantiated()
@@ -41,7 +40,7 @@ final class UniversalListViewController<Factory: ViewFactory, DataSource: Reusab
 private extension UniversalListViewController {
 
     private func setupView() {
-        let listView = factory.build()
+        let listView = viewFactory()
         listView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(listView)
         listView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true

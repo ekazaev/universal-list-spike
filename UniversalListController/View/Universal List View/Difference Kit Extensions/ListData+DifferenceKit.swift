@@ -5,6 +5,7 @@
 
 import DifferenceKit
 import Foundation
+import UniversalList
 
 extension ListData where SectionContext == Void, CellContext: Differentiable {
 
@@ -15,3 +16,6 @@ extension ListData where SectionContext == Void, CellContext: Differentiable {
     }
 
 }
+
+extension Int: Differentiable {}
+extension String: Differentiable {}

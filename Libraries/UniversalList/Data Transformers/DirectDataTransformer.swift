@@ -3,22 +3,23 @@
 // UniversalListController
 //
 
-import DifferenceKit
 import Foundation
 import ReusableView
 import UIKit
 
-struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
+public struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
     where
     Data: Collection,
     Data.Element: Collection,
     Data.Element.Element == Cell.Data {
 
-    typealias SectionContext = Void
+    public typealias SectionContext = Void
 
-    typealias CellContext = ConfigurableCellAdapter<Cell>
+    public typealias CellContext = ConfigurableCellAdapter<Cell>
 
-    func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
+    public init() {}
+
+    public func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
             return SectionData(cells: $0.map {
                 CellData(context: ConfigurableCellAdapter<Cell>(with: $0))
@@ -28,6 +29,3 @@ struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransfor
     }
 
 }
-
-extension Int: Differentiable {}
-extension String: Differentiable {}

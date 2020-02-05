@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol ReusableViewListDataSourceController: AnyObject {
+public protocol UniversalListDataSourceController: AnyObject {
 
     associatedtype View: UIView
 

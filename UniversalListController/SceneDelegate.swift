@@ -9,6 +9,7 @@
 import CustomTabViewController
 import ReusableView
 import UIKit
+import UniversalList
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -56,7 +57,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
-            factory: tableViewFactory,
+            view: tableViewFactory.view,
             dataSourceController: tableDataSource,
             delegateController: SimpleTableViewDelegateController()
         )
@@ -72,7 +73,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
-        let collectionViewController = UniversalListViewController(factory: collectionViewFactory,
+        let collectionViewController = UniversalListViewController(view: collectionViewFactory.view,
                                                                    dataSourceController: collectionDataSource,
                                                                    delegateController: SimpleCollectionViewDelegateController())
         collectionViewController.eventHandler = collectionEventHandler

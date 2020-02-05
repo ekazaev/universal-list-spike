@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import ReusableView
 import UIKit
 
 final class UniversalListViewController<Factory: ViewFactory, DataSource: ReusableViewListDataSourceController, Delegate: ReusableViewListDelegateController>: UIViewController

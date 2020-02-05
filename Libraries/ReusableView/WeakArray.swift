@@ -27,11 +27,11 @@ private final class WeakObject {
 
  **Note:** *Element*s should be **non-optional** class objects, otherwise they will be ignored.
  */
-struct WeakArray<Element> {
+public struct WeakArray<Element>: Sequence {
 
     fileprivate var elements: [WeakObject]
 
-    init(elements: [Element] = []) {
+    public init(elements: [Element] = []) {
         self.elements = elements.compactMap { element in
             guard let weakObject = WeakObject(element) else {
                 return nil
@@ -43,7 +43,7 @@ struct WeakArray<Element> {
     /// Adds a new element at the end of the array.
     ///
     /// - Parameter newElement: The element to append to the array.
-    mutating func append(_ newElement: Element) {
+    public mutating func append(_ newElement: Element) {
         cleanUp()
         guard let weakObject = WeakObject(newElement) else {
             return
@@ -52,7 +52,7 @@ struct WeakArray<Element> {
     }
 
     /// Removes the deallocated items from the collection.
-    mutating func cleanUp() {
+    public mutating func cleanUp() {
         elements = elements.compactMap { item in
             guard item.object != nil else { return nil }
             return item
@@ -71,16 +71,12 @@ struct WeakArray<Element> {
         return contains { $0 as AnyObject === element as AnyObject }
     }
 
-}
-
-extension WeakArray: Sequence {
-
-    func makeIterator() -> WeakIterator<Element> {
+    public func makeIterator() -> WeakIterator<Element> {
         return WeakIterator(weakArray: self)
     }
 }
 
-extension WeakArray {
+public extension WeakArray {
     mutating func appendUnique(_ element: Element) {
         cleanUp()
 
@@ -92,7 +88,7 @@ extension WeakArray {
     }
 }
 
-struct WeakIterator<Element: Any>: IteratorProtocol {
+public struct WeakIterator<Element: Any>: IteratorProtocol {
 
     let weakArray: WeakArray<Element>
 
@@ -103,7 +99,7 @@ struct WeakIterator<Element: Any>: IteratorProtocol {
         index = 0
     }
 
-    mutating func next() -> Element? {
+    public mutating func next() -> Element? {
         guard index < weakArray.elements.count else { return nil }
 
         if let item = weakArray.elements[index].object as? Element {

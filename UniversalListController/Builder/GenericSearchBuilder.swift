@@ -5,6 +5,7 @@
 
 import DifferenceKit
 import Foundation
+import ReusableView
 import UIKit
 
 struct GenericSearchBuilder<DataCell: ConfigurableReusableView,

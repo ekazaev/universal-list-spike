@@ -5,6 +5,7 @@
 
 import DifferenceKit
 import Foundation
+import ReusableView
 import UIKit
 
 enum ListCellType<Data> {

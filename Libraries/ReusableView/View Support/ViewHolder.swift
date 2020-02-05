@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol ViewHolder {
+public protocol ViewHolder {
 
     associatedtype View: UIView
 

@@ -6,15 +6,15 @@
 import Foundation
 import UIKit
 
-struct AnyTableCellAdapter: CellAdapter {
+public struct AnyTableCellAdapter: CellAdapter {
 
     private let box: AnyCellAdapterBox
 
-    init<CA: CellAdapter>(with cellAdapter: CA) where CA.Cell: UITableViewCell {
+    public init<CA: CellAdapter>(with cellAdapter: CA) where CA.Cell: UITableViewCell {
         box = CellAdapterBox(with: cellAdapter)
     }
 
-    func getView(with factory: ReusableViewFactory) -> UITableViewCell {
+    public func getView(with factory: ReusableViewFactory) -> UITableViewCell {
         return box.build(with: factory)
     }
 

@@ -5,6 +5,7 @@
 
 import DifferenceKit
 import Foundation
+import ReusableView
 import UIKit
 
 final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: ReusableViewListUpdater

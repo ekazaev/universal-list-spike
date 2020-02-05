@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol ConfigurableReusableView: ReusableView {
+public protocol ConfigurableReusableView: ReusableView {
 
     associatedtype Data
 

@@ -6,13 +6,13 @@
 import Foundation
 import UIKit
 
-final class TableViewFactory: ViewHolder, ViewFactory {
+public final class TableViewFactory: ViewHolder, ViewFactory {
 
-    var isViewLoaded: Bool {
+    public var isViewLoaded: Bool {
         return tableView != nil
     }
 
-    lazy var view: UITableView = {
+    public lazy var view: UITableView = {
         guard let tableView = tableView else {
             assertionFailure(
                 """
@@ -29,7 +29,7 @@ final class TableViewFactory: ViewHolder, ViewFactory {
     private var tableView: UITableView?
     private let style: UITableView.Style
 
-    weak var delegate: UITableViewDelegate? {
+    public weak var delegate: UITableViewDelegate? {
         didSet {
             guard isViewLoaded else {
                 return
@@ -38,7 +38,7 @@ final class TableViewFactory: ViewHolder, ViewFactory {
         }
     }
 
-    weak var dataSource: UITableViewDataSource? {
+    public weak var dataSource: UITableViewDataSource? {
         didSet {
             guard isViewLoaded else {
                 return
@@ -47,15 +47,15 @@ final class TableViewFactory: ViewHolder, ViewFactory {
         }
     }
 
-    init(style: UITableView.Style = .plain,
-         delegate: UITableViewDelegate? = nil,
-         dataSource: UITableViewDataSource? = nil) {
+    public init(style: UITableView.Style = .plain,
+                delegate: UITableViewDelegate? = nil,
+                dataSource: UITableViewDataSource? = nil) {
         self.style = style
         self.delegate = delegate
         self.dataSource = dataSource
     }
 
-    func build() -> UITableView {
+    public func build() -> UITableView {
         if let tableView = tableView {
             assertionFailure("Factory method called more then one time")
             return tableView

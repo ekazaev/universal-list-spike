@@ -6,13 +6,13 @@
 import Foundation
 import UIKit
 
-final class CollectionViewFactory: ViewHolder, ViewFactory {
+public final class CollectionViewFactory: ViewHolder, ViewFactory {
 
-    var isViewLoaded: Bool {
+    public var isViewLoaded: Bool {
         return collectionView != nil
     }
 
-    lazy var view: UICollectionView = {
+    public lazy var view: UICollectionView = {
         guard let collectionView = collectionView else {
             assertionFailure(
                 """
@@ -30,7 +30,7 @@ final class CollectionViewFactory: ViewHolder, ViewFactory {
 
     private(set) var layout: UICollectionViewLayout
 
-    weak var delegate: UICollectionViewDelegate? {
+    public weak var delegate: UICollectionViewDelegate? {
         didSet {
             guard isViewLoaded else {
                 return
@@ -39,7 +39,7 @@ final class CollectionViewFactory: ViewHolder, ViewFactory {
         }
     }
 
-    weak var dataSource: UICollectionViewDataSource? {
+    public weak var dataSource: UICollectionViewDataSource? {
         didSet {
             guard isViewLoaded else {
                 return
@@ -48,13 +48,13 @@ final class CollectionViewFactory: ViewHolder, ViewFactory {
         }
     }
 
-    init(collectionViewLayout layout: UICollectionViewLayout, delegate: UICollectionViewDelegate? = nil, dataSource: UICollectionViewDataSource? = nil) {
+    public init(collectionViewLayout layout: UICollectionViewLayout, delegate: UICollectionViewDelegate? = nil, dataSource: UICollectionViewDataSource? = nil) {
         self.layout = layout
         self.dataSource = dataSource
         self.delegate = delegate
     }
 
-    func build() -> UICollectionView {
+    public func build() -> UICollectionView {
         if let collectionView = collectionView {
             assertionFailure("Factory method called more then one time")
             return collectionView

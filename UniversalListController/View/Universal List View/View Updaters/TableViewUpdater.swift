@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import ReusableView
 import UIKit
 
 final class TableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: ReusableViewListUpdater

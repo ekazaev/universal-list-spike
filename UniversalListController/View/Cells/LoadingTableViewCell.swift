@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import ReusableView
 import UIKit
 
 class LoadingTableViewCell: UITableViewCell, ReusableView {

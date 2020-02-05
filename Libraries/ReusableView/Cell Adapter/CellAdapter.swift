@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-protocol CellAdapter {
+public protocol CellAdapter {
 
     associatedtype Cell
 

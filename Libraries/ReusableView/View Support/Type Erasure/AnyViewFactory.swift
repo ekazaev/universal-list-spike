@@ -6,15 +6,15 @@
 import Foundation
 import UIKit
 
-final class AnyViewFactory: ViewFactory {
+public final class AnyViewFactory: ViewFactory {
 
     private var box: AnyViewFactoryBox
 
-    init<F: ViewFactory>(with factory: F) {
+    public init<F: ViewFactory>(with factory: F) {
         box = ViewFactoryBox(with: factory)
     }
 
-    func build() -> UIView {
+    public func build() -> UIView {
         return box.build()
     }
 

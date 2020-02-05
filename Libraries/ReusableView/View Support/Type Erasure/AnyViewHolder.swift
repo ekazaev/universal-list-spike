@@ -6,15 +6,15 @@
 import Foundation
 import UIKit
 
-final class AnyViewHolder: ViewHolder {
+public final class AnyViewHolder: ViewHolder {
 
-    typealias View = UIView
+    public typealias View = UIView
 
-    lazy var isViewLoaded: Bool = {
+    public lazy var isViewLoaded: Bool = {
         return box.isViewLoaded
     }()
 
-    lazy var view: UIView = {
+    public lazy var view: UIView = {
         return box.view
     }()
 

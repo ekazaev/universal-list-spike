@@ -7,6 +7,7 @@
 //
 
 import CustomTabViewController
+import ReusableView
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

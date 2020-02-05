@@ -33,7 +33,7 @@ final class PaginatingDataProvider<DP: DataProvider, Element>: PageableDataProvi
         }
     }
 
-    func getNextPage(completion: @escaping (Result<DP.Data, Error>) -> ()) {
+    func getNextPage(completion: @escaping (Result<DP.Data, Error>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(Int.random(in: 0...2))) { [weak self] in
             guard let self = self else {
                 return

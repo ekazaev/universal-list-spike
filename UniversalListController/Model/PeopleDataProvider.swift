@@ -9,7 +9,7 @@ final class PeopleDataProvider: DataProvider {
 
     func getData(with query: String, completion: @escaping (Result<[Person], Error>) -> Void) {
         delay {
-            let people = PeopleDataMock.people.sorted(by: { $0.name < $1.name} )
+            let people = PeopleDataMock.people.sorted(by: { $0.name < $1.name })
             guard !query.isEmpty else {
                 return completion(.success(people))
             }

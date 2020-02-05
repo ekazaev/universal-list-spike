@@ -6,7 +6,7 @@
 import Foundation
 
 /// Single weak object container.
-final private class WeakObject {
+private final class WeakObject {
 
     weak var object: AnyObject?
 
@@ -24,7 +24,7 @@ final private class WeakObject {
 /**
  # Weak Array Collection
  A weak reference collection for **multicast delegation**.
- 
+
  **Note:** *Element*s should be **non-optional** class objects, otherwise they will be ignored.
  */
 struct WeakArray<Element> {
@@ -39,7 +39,7 @@ struct WeakArray<Element> {
             return weakObject
         }
     }
-    
+
     /// Adds a new element at the end of the array.
     ///
     /// - Parameter newElement: The element to append to the array.
@@ -83,11 +83,11 @@ extension WeakArray: Sequence {
 extension WeakArray {
     mutating func appendUnique(_ element: Element) {
         cleanUp()
-        
+
         guard !contains(weakElement: element) else {
             return
         }
-        
+
         append(element)
     }
 }
@@ -97,20 +97,20 @@ struct WeakIterator<Element: Any>: IteratorProtocol {
     let weakArray: WeakArray<Element>
 
     private var index: Int
-    
+
     init(weakArray: WeakArray<Element>) {
         self.weakArray = weakArray
-        self.index = 0
+        index = 0
     }
-    
+
     mutating func next() -> Element? {
         guard index < weakArray.elements.count else { return nil }
-        
+
         if let item = weakArray.elements[index].object as? Element {
             index += 1
             return item
         }
-        
+
         index += 1
         return next()
     }

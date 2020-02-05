@@ -113,7 +113,7 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: ReusableViewListUpdat
         isFullyLoaded = newItems.isEmpty
         filteredItems.append(contentsOf: newItems)
 
-        delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : self.filteredItems.isEmpty ? .noResults : .someResults)
+        delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : filteredItems.isEmpty ? .noResults : .someResults)
 
         reloadView()
     }

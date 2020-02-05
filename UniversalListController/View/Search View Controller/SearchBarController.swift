@@ -25,7 +25,7 @@ final class SearchBarController: NSObject, UISearchBarDelegate {
             guard let self = self,
                 let query = searchBar.text?.trimmingCharacters(in: CharacterSet.whitespaces),
                 query != self.previousQuery else {
-                return
+                    return
             }
             self.previousQuery = query
             self.delegates.forEach { $0.search(for: query) }

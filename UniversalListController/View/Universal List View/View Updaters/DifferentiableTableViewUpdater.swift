@@ -8,13 +8,13 @@ import Foundation
 import UIKit
 
 final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourceController & UITableViewDataSource, ListHolder: ViewHolder>: ReusableViewListUpdater
-        where
-        ListHolder.View: UITableView,
-        DataSource.View: UITableView,
-        DataSource.SectionContext == Void,
-        DataSource.CellContext: CellAdapter,
-        DataSource.CellContext: Differentiable,
-        DataSource.CellContext.Cell: UITableViewCell {
+    where
+    ListHolder.View: UITableView,
+    DataSource.View: UITableView,
+    DataSource.SectionContext == Void,
+    DataSource.CellContext: CellAdapter,
+    DataSource.CellContext: Differentiable,
+    DataSource.CellContext.Cell: UITableViewCell {
 
     private weak var dataSource: DataSource?
 
@@ -44,15 +44,15 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
                 self.dataSource?.data = data
                 return
             }
-            let source = holder.data.getAsDifferentiableArray()//previousData.getAsDifferentiableArray()
+            let source = holder.data.getAsDifferentiableArray() // previousData.getAsDifferentiableArray()
             let target = data.getAsDifferentiableArray()
             let changeSet = StagedChangeset(source: source, target: target)
             self.tableView.reload(using: changeSet, with: .fade) { data in
                 let changedData = ListData(
-                        sections: data.map {
-                            SectionData(
-                                    cells: $0.elements.map {
-                                        CellData(context: $0)
+                    sections: data.map {
+                        SectionData(
+                            cells: $0.elements.map {
+                                CellData(context: $0)
                                     })
                         })
                 holder.data = changedData
@@ -60,5 +60,3 @@ final class DifferentiableTableViewUpdater<DataSource: ReusableViewListDataSourc
         }
     }
 }
-
-

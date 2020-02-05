@@ -14,4 +14,3 @@ protocol DataProvider {
     func getData(with request: Request, completion: @escaping (Result<Data, Error>) -> Void)
 
 }
-

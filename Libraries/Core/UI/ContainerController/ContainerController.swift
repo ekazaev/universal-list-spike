@@ -6,9 +6,9 @@
 import Foundation
 import UIKit
 
-final class ContainerController {
+public final class ContainerController {
 
-    var selectedIndex: Int = 0 {
+    public var selectedIndex: Int = 0 {
         didSet {
             guard oldValue != selectedIndex else {
                 return
@@ -21,7 +21,7 @@ final class ContainerController {
 
     private weak var containerView: UIView?
 
-    var viewControllers: [UIViewController] = [] {
+    public var viewControllers: [UIViewController] = [] {
         didSet {
             updateStack()
         }
@@ -31,15 +31,15 @@ final class ContainerController {
 
     private var delayedViewBlock: (() -> Void)?
 
-    init(for containerViewController: UIViewController,
-         containerView: @escaping @autoclosure () -> UIView? = nil) {
+    public init(for containerViewController: UIViewController,
+                containerView: @escaping @autoclosure () -> UIView? = nil) {
         self.containerViewController = containerViewController
         delayedViewBlock = { [weak self] in
             self?.containerView = containerView() ?? containerViewController.view
         }
     }
 
-    func setup() {
+    public func setup() {
         guard let delayedViewBlock = delayedViewBlock else {
             return
         }
@@ -80,4 +80,5 @@ final class ContainerController {
             containerViewController?.remove(child: $0)
         }
     }
+
 }

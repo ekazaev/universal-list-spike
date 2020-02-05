@@ -3,6 +3,7 @@
 // UniversalListController
 //
 
+import Core
 import Foundation
 import ReusableView
 import UIKit

@@ -461,11 +461,19 @@
 			path = CustomTabViewController;
 			sourceTree = "<group>";
 		};
+		454D7C7123EA421500CE790A /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				4508236E23E8B6FC008D604C /* CustomTabViewController */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
 		45C9139523DF3D830021602D = {
 			isa = PBXGroup;
 			children = (
+				454D7C7123EA421500CE790A /* Libraries */,
 				45C913A023DF3D830021602D /* UniversalListController */,
-				4508236E23E8B6FC008D604C /* CustomTabViewController */,
 				45C9139F23DF3D830021602D /* Products */,
 				38F3AD4316CC9B239D85FE49 /* Pods */,
 				E245457EA72F4C4AC12F9178 /* Frameworks */,
@@ -769,7 +777,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CustomTabViewController/Info.plist;
+				INFOPLIST_FILE = Libraries/CustomTabViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -797,7 +805,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = CustomTabViewController/Info.plist;
+				INFOPLIST_FILE = Libraries/CustomTabViewController/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

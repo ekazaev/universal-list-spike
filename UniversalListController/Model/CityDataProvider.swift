@@ -13,7 +13,7 @@ final class CityDataProvider: DataProvider {
             guard !query.isEmpty else {
                 return completion(.success(cities))
             }
-            var filteredCities = cities.filter {
+            let filteredCities = cities.filter {
                 $0.city.lowercased().contains(query.lowercased()) || $0.description.lowercased().contains(query.lowercased())
             }
             completion(.success(filteredCities))

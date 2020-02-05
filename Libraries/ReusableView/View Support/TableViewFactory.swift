@@ -6,7 +6,7 @@
 import Foundation
 import UIKit
 
-public final class TableViewFactory: ViewHolder {
+public final class TableViewFactory: ViewHolder, ViewBuilder {
 
     public var isViewLoaded: Bool {
         return tableView != nil

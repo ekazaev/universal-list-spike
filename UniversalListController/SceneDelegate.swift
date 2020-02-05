@@ -49,37 +49,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         searchContainerController.containingViewController = customTabBarController
 
-        // Second:
-        let tableViewFactory = TableViewFactory(style: .grouped)
-        let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<CityTableCell>, TableViewFactory>(holder: tableViewFactory)
-
-        let viewUpdater = DifferentiableTableViewUpdater(holder: tableViewFactory, dataSource: tableDataSource)
-        let tableDataTransformer = ConfigurableDataTransformer<[[City]], CityTableCell>()
-
-        let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
-        let tableViewController = UniversalListViewController(
-            view: tableViewFactory.build(),
-            dataSourceController: tableDataSource,
-            delegateController: SimpleTableViewDelegateController()
-        )
-        tableViewController.eventHandler = tableEventHandler
-
-        // Third:
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 200)
-        let collectionViewFactory = CollectionViewFactory(collectionViewLayout: layout)
-        let collectionDataSource = CollectionViewDataSourceController<Void, ConfigurableCellAdapter<CityCollectionCell>, CollectionViewFactory>(holder: collectionViewFactory)
-
-        let collectionViewUpdater = DifferentiableCollectionViewUpdater(holder: collectionViewFactory, dataSource: collectionDataSource)
-        let collectionDataTransformer = ConfigurableDataTransformer<[[City]], CityCollectionCell>()
-
-        let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
-        let collectionViewController = UniversalListViewController(
-            view: collectionViewFactory.build(),
-            dataSourceController: collectionDataSource,
-            delegateController: SimpleCollectionViewDelegateController()
-        )
-        collectionViewController.eventHandler = collectionEventHandler
+        let tableViewController = RandomizingTableDemoBuilder<PeopleDataProvider, PersonTableCell>(dataProvider: PeopleDataProvider()).build()
+        let collectionViewController = RandomizingCollectionDemoBuilder<CityDataProvider, CityCollectionCell>(dataProvider: CityDataProvider()).build()
 
         tabBarController.viewControllers = [
             UINavigationController(rootViewController: searchContainerController),

@@ -15,3 +15,13 @@ public protocol ViewHolder {
     var view: View { get }
 
 }
+
+public protocol ViewBuilder {
+
+    associatedtype View: UIView
+
+    var view: View { get }
+
+    func build() -> View
+
+}

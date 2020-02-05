@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import UniversalList
+import UniversalListViewController
 
 final class RandomizingEventHandler<ViewUpdater: UniversalListUpdater, Provider: DataProvider, Transformer: DataTransformer>: UniversalListViewControllerEventHandler
     where

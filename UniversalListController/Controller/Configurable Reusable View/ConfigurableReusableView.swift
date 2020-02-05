@@ -4,9 +4,10 @@
 //
 
 import Foundation
+import ReusableView
 import UIKit
 
-public protocol ConfigurableReusableView: ReusableView {
+protocol ConfigurableReusableView: ReusableView {
 
     associatedtype Data
 

@@ -6,20 +6,21 @@
 import Foundation
 import ReusableView
 import UIKit
+import UniversalList
 
-public struct DirectDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
+struct ConfigurableDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
     where
     Data: Collection,
     Data.Element: Collection,
     Data.Element.Element == Cell.Data {
 
-    public typealias SectionContext = Void
+    typealias SectionContext = Void
 
-    public typealias CellContext = ConfigurableCellAdapter<Cell>
+    typealias CellContext = ConfigurableCellAdapter<Cell>
 
-    public init() {}
+    init() {}
 
-    public func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
+    func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
             return SectionData(cells: $0.map {
                 CellData(context: ConfigurableCellAdapter<Cell>(with: $0))

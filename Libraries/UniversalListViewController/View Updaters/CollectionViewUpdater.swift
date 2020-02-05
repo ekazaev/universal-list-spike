@@ -6,6 +6,7 @@
 import Foundation
 import ReusableView
 import UIKit
+import UniversalList
 
 public final class CollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, ListHolder: ViewHolder>: UniversalListUpdater
     where

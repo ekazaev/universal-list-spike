@@ -5,6 +5,7 @@
 
 import Foundation
 import UniversalList
+import UniversalListViewController
 
 protocol GenericSearchEventHandlerDelegate: AnyObject {
 

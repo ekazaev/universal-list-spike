@@ -8,6 +8,7 @@ import Foundation
 import ReusableView
 import UIKit
 import UniversalList
+import UniversalListViewController
 
 struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
                             DP: PageableDataProvider>
@@ -43,7 +44,7 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         searchTableViewFactory.delegate = delegateController
 
         let searchTableViewController = UniversalListViewController(
-            view: searchTableViewFactory.view,
+            view: searchTableViewFactory.build(),
             dataSourceController: searchDataSource,
             delegateController: delegateController
         )

@@ -5,6 +5,7 @@
 
 import Foundation
 import UIKit
+import UniversalList
 
 public protocol UniversalListDataSourceController: AnyObject {
 

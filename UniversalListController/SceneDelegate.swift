@@ -10,6 +10,7 @@ import CustomTabViewController
 import ReusableView
 import UIKit
 import UniversalList
+import UniversalListViewController
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -53,11 +54,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<CityTableCell>, TableViewFactory>(holder: tableViewFactory)
 
         let viewUpdater = DifferentiableTableViewUpdater(holder: tableViewFactory, dataSource: tableDataSource)
-        let tableDataTransformer = DirectDataTransformer<[[City]], CityTableCell>()
+        let tableDataTransformer = ConfigurableDataTransformer<[[City]], CityTableCell>()
 
         let tableEventHandler = RandomizingEventHandler(viewUpdater: viewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: tableDataTransformer)
         let tableViewController = UniversalListViewController(
-            view: tableViewFactory.view,
+            view: tableViewFactory.build(),
             dataSourceController: tableDataSource,
             delegateController: SimpleTableViewDelegateController()
         )
@@ -70,12 +71,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let collectionDataSource = CollectionViewDataSourceController<Void, ConfigurableCellAdapter<CityCollectionCell>, CollectionViewFactory>(holder: collectionViewFactory)
 
         let collectionViewUpdater = DifferentiableCollectionViewUpdater(holder: collectionViewFactory, dataSource: collectionDataSource)
-        let collectionDataTransformer = DirectDataTransformer<[[City]], CityCollectionCell>()
+        let collectionDataTransformer = ConfigurableDataTransformer<[[City]], CityCollectionCell>()
 
         let collectionEventHandler = RandomizingEventHandler(viewUpdater: collectionViewUpdater, dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: CityDataProvider())), dataTransformer: collectionDataTransformer)
-        let collectionViewController = UniversalListViewController(view: collectionViewFactory.view,
-                                                                   dataSourceController: collectionDataSource,
-                                                                   delegateController: SimpleCollectionViewDelegateController())
+        let collectionViewController = UniversalListViewController(
+            view: collectionViewFactory.build(),
+            dataSourceController: collectionDataSource,
+            delegateController: SimpleCollectionViewDelegateController()
+        )
         collectionViewController.eventHandler = collectionEventHandler
 
         tabBarController.viewControllers = [

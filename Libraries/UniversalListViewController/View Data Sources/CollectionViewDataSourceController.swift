@@ -6,6 +6,7 @@
 import Foundation
 import ReusableView
 import UIKit
+import UniversalList
 
 public final class CollectionViewDataSourceController<SectionContext, CellContext, ListHolder: ViewHolder>: NSObject, UniversalListDataSourceController, UICollectionViewDataSource
     where

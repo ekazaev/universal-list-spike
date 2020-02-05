@@ -8,6 +8,7 @@ import Foundation
 import ReusableView
 import UIKit
 import UniversalList
+import UniversalListViewController
 
 final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, ListHolder: ViewHolder>: UniversalListUpdater
     where

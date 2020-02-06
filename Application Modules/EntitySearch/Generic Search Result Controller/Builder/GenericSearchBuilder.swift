@@ -12,8 +12,7 @@ import UIKit
 import UniversalList
 import UniversalListViewController
 
-public struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
-                                   DP: PageableDataProvider>
+public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: PageableDataProvider>: InstanceBuilder
     where
     DataCell: UITableViewCell,
     DataCell.Data: Identifiable & Differentiable,
@@ -27,7 +26,7 @@ public struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         self.dataProvider = dataProvider
     }
 
-    public func build() -> UIViewController & SearchBarControllerDelegate {
+    public func build(with _: Void) -> UIViewController & SearchBarControllerDelegate {
         let viewFactory = TableViewFactory(style: .grouped)
         let dataSource = TableViewDataSourceController<Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>, TableViewFactory>(viewProxy: viewFactory)
 

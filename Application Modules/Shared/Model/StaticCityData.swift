@@ -6,12 +6,6 @@
 import DifferenceKit
 import Foundation
 
-public struct City: Identifiable {
-    public var id: Int
-    public var city: String
-    public var description: String
-}
-
 enum StaticCityData {
 
     static var cities = [

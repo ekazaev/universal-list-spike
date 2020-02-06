@@ -10,29 +10,43 @@ import Shared
 import SharedUI
 import UIKit
 
-public struct GlobalSearchBuilder {
+public struct GlobalSearchBuilder<B: InstanceBuilder> where B.Input == Void, B.Output == UIViewController & SearchBarControllerDelegate {
 
-    public init() {}
+    public struct Configuration {
+
+        public var title: String
+
+        public var builder: B
+
+        public init(title: String, builder: B) {
+            self.title = title
+            self.builder = builder
+        }
+    }
+
+    private let configuration: [Configuration]
+
+    public init(builders: [Configuration]) {
+        configuration = builders
+    }
 
     public func build() -> UIViewController {
         let searchContainerController = SearchBarContainerViewController()
 
-        let citiesSearchViewController = GenericSearchBuilder<CityTableCell, PaginatingDataProvider<CityDataProvider, City>>(dataProvider: PaginatingDataProvider(for: CityDataProvider(), itemsPerPage: 5)).build()
-        let personSearchViewController = GenericSearchBuilder<PersonTableCell, PaginatingDataProvider<PeopleDataProvider, Person>>(dataProvider: PaginatingDataProvider(for: PeopleDataProvider(), itemsPerPage: 20)).build()
+        let viewControllers = configuration.map { config -> B.Output in
+            let viewController = config.builder.build()
+            viewController.title = config.title
+            return viewController
+        }
 
-        citiesSearchViewController.title = "Cities"
-        personSearchViewController.title = "Peoples"
-
-        searchContainerController.searchBarController.add(delegate: citiesSearchViewController)
-        searchContainerController.searchBarController.add(delegate: personSearchViewController)
+        viewControllers.forEach {
+            searchContainerController.searchBarController.add(delegate: $0)
+        }
 
         // Custom tab Bar
         let tabBarController = CustomTabViewController(nibName: "CustomTabViewController",
                                                        bundle: Bundle(for: CustomTabViewController.self))
-        tabBarController.viewControllers = [
-            citiesSearchViewController,
-            personSearchViewController
-        ]
+        tabBarController.viewControllers = viewControllers
 
         searchContainerController.containingViewController = tabBarController
 

@@ -187,6 +187,10 @@
 		62D42BA5BFB3AFEF6BE00232 /* Pods_Modules_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333463B049A94E0F8AD63BC2 /* Pods_Modules_Search.framework */; };
 		94C5C5B5C29D00A43D26F06A /* Pods_Modules_EntitySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EC692D30384C4D80847E0B /* Pods_Modules_EntitySearch.framework */; };
 		CC77E5906C04334EEAF96B0C /* Pods_Modules_RandomList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A890E194526A30F931B140D5 /* Pods_Modules_RandomList.framework */; };
+		EF1586E7A89382848A7FFB64 /* InstanceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */; };
+		EF1588DB998CC62132E3F5C2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158783369056AAAE6B1082 /* Person.swift */; };
+		EF158B331450DB44E4B7686F /* AnyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D2719A223CCD195CA42 /* AnyBuilder.swift */; };
+		EF158BFC048AF6F0935186D7 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158F94A3F905D0FF0C20BD /* City.swift */; };
 		EF158F4D955D57EE463AF7E8 /* ScrollViewNextPageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158BFE9370E8D2CB429C1B /* ScrollViewNextPageRequester.swift */; };
 /* End PBXBuildFile section */
 
@@ -722,6 +726,7 @@
 		EF1586A803354552618B7FCA /* SimpleCollectionViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewDelegateController.swift; sourceTree = "<group>"; };
 		EF15870EEEB2CE72281832E0 /* TableViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFactory.swift; sourceTree = "<group>"; };
 		EF15871F15219BBA31FFBD87 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		EF158783369056AAAE6B1082 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		EF1587974B9453F56503FFD3 /* UniversalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListViewController.swift; sourceTree = "<group>"; };
 		EF1589A1C14445FDE9050A63 /* SectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionData.swift; sourceTree = "<group>"; };
 		EF1589C840C529E134891376 /* UniversalListUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListUpdater.swift; sourceTree = "<group>"; };
@@ -732,7 +737,10 @@
 		EF158BFE9370E8D2CB429C1B /* ScrollViewNextPageRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewNextPageRequester.swift; sourceTree = "<group>"; };
 		EF158C28175143A700FC6BE2 /* TableReusableCellDequeuer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableReusableCellDequeuer.swift; sourceTree = "<group>"; };
 		EF158C616003879A443B0284 /* CellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceBuilder.swift; sourceTree = "<group>"; };
+		EF158D2719A223CCD195CA42 /* AnyBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyBuilder.swift; sourceTree = "<group>"; };
 		EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewUpdater.swift; sourceTree = "<group>"; };
+		EF158F94A3F905D0FF0C20BD /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		EF158FC7601781B1CA14CD49 /* ListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
 		EF158FECD66ED66E2562C04B /* DefaultScrollViewNextPageRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScrollViewNextPageRequester.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -877,6 +885,8 @@
 				1BE548F58778C3A1A0569E2E /* CityDataProvider.swift */,
 				1BE54C2400DB32F102324FAF /* StaticPeopleData.swift */,
 				1BE54813D7E8BC8D090C298E /* PeopleDataProvider.swift */,
+				EF158783369056AAAE6B1082 /* Person.swift */,
+				EF158F94A3F905D0FF0C20BD /* City.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1215,6 +1225,7 @@
 				1BE54FE5F78121FCB38BACB3 /* Configurable Reusable View */,
 				457783C623EC21BA0095E07A /* Shared.h */,
 				457783C723EC21BA0095E07A /* Info.plist */,
+				EF15820B041909EAFB3DC3BE /* Builder */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1357,6 +1368,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		EF15803676FDD1D9714B1AFD /* Type Erasure */ = {
+			isa = PBXGroup;
+			children = (
+				EF158D2719A223CCD195CA42 /* AnyBuilder.swift */,
+			);
+			path = "Type Erasure";
+			sourceTree = "<group>";
+		};
 		EF158128348D52E91992BC9A /* View Data Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -1375,6 +1394,15 @@
 				EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */,
 			);
 			path = "View Updaters";
+			sourceTree = "<group>";
+		};
+		EF15820B041909EAFB3DC3BE /* Builder */ = {
+			isa = PBXGroup;
+			children = (
+				EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */,
+				EF15803676FDD1D9714B1AFD /* Type Erasure */,
+			);
+			path = Builder;
 			sourceTree = "<group>";
 		};
 		EF1584595DB739698803641C /* Type Erasure */ = {
@@ -2232,6 +2260,10 @@
 				45BA338E23EC28950027AB80 /* PeopleDataProvider.swift in Sources */,
 				45BA338B23EC28950027AB80 /* StaticCityData.swift in Sources */,
 				45BA338923EC27960027AB80 /* PaginatingDataProvider.swift in Sources */,
+				EF1586E7A89382848A7FFB64 /* InstanceBuilder.swift in Sources */,
+				EF158B331450DB44E4B7686F /* AnyBuilder.swift in Sources */,
+				EF1588DB998CC62132E3F5C2 /* Person.swift in Sources */,
+				EF158BFC048AF6F0935186D7 /* City.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

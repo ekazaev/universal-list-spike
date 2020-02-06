@@ -5,11 +5,13 @@
 
 import Foundation
 
-final class CityDataProvider: DataProvider {
+public final class CityDataProvider: DataProvider {
 
-    func getData(with query: String, completion: @escaping (Result<[City], Error>) -> Void) {
+    public init() {}
+
+    public func getData(with query: String, completion: @escaping (Result<[City], Error>) -> Void) {
         delay {
-            let cities = CityDataMock.cities.sorted(by: { $0.city < $1.city })
+            let cities = StaticCityData.cities.sorted(by: { $0.city < $1.city })
             guard !query.isEmpty else {
                 return completion(.success(cities))
             }

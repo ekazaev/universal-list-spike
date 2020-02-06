@@ -5,6 +5,7 @@
 
 import CustomTabViewController
 import Foundation
+import Shared
 import UIKit
 
 struct GlobalSearchBuilder {

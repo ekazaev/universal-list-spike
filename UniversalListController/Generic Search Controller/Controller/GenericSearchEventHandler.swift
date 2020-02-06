@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import Shared
 import UniversalList
 import UniversalListViewController
 

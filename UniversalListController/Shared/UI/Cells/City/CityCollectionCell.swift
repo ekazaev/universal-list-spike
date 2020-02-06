@@ -5,6 +5,7 @@
 
 import Foundation
 import ReusableView
+import Shared
 import UIKit
 
 final class CityCollectionCell: UICollectionViewCell {

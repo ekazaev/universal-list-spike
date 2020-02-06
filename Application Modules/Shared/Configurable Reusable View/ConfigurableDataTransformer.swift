@@ -8,19 +8,19 @@ import ReusableView
 import UIKit
 import UniversalList
 
-struct ConfigurableDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
+public struct ConfigurableDataTransformer<Data, Cell: ConfigurableReusableView>: DataTransformer
     where
     Data: Collection,
     Data.Element: Collection,
     Data.Element.Element == Cell.Data {
 
-    typealias SectionContext = Void
+    public typealias SectionContext = Void
 
-    typealias CellContext = ConfigurableCellAdapter<Cell>
+    public typealias CellContext = ConfigurableCellAdapter<Cell>
 
-    init() {}
+    public init() {}
 
-    func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
+    public func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
             return SectionData(cells: $0.map {
                 CellData(context: ConfigurableCellAdapter<Cell>(with: $0))

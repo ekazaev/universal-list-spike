@@ -10,7 +10,7 @@ import UIKit
 import UniversalList
 import UniversalListViewController
 
-final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
+public final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSourceController & UICollectionViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
     where
     Proxy.View: UICollectionView,
     DataSource.View: UICollectionView,
@@ -30,12 +30,12 @@ final class DifferentiableCollectionViewUpdater<DataSource: UniversalListDataSou
         return collection
     }()
 
-    init(viewProxy: Proxy, dataSource: DataSource) {
+    public init(viewProxy: Proxy, dataSource: DataSource) {
         self.dataSource = dataSource
         self.viewProxy = viewProxy
     }
 
-    func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
+    public func update(with data: ListData<DataSource.SectionContext, DataSource.CellContext>) {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else {
                 return

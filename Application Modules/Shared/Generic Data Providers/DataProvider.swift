@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol DataProvider {
+public protocol DataProvider {
 
     associatedtype Data
 

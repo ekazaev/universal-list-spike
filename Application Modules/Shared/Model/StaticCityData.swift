@@ -6,21 +6,13 @@
 import DifferenceKit
 import Foundation
 
-struct City: Identifiable {
-    var id: Int
-    var city: String
-    var description: String
+public struct City: Identifiable {
+    public var id: Int
+    public var city: String
+    public var description: String
 }
 
-extension City: Differentiable {
-    public var differenceIdentifier: Int { return id }
-
-    public func isContentEqual(to source: City) -> Bool {
-        return id == source.id
-    }
-}
-
-enum CityDataMock {
+enum StaticCityData {
 
     static var cities = [
         City(id: 1, city: "Dublin", description: "Dublin, capital of the Republic of Ireland, is on Ireland’s east " +

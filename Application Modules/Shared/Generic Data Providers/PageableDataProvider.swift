@@ -5,7 +5,7 @@
 
 import Foundation
 
-protocol PageableDataProvider: DataProvider {
+public protocol PageableDataProvider: DataProvider {
 
     func getNextPage(completion: @escaping (Result<Data, Error>) -> Void)
 

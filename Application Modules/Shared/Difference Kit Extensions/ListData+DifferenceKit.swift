@@ -7,7 +7,7 @@ import DifferenceKit
 import Foundation
 import UniversalList
 
-extension ListData where SectionContext == Void, CellContext: Differentiable {
+public extension ListData where SectionContext == Void, CellContext: Differentiable {
 
     func getAsDifferentiableArray() -> [ArraySection<Int, CellContext>] {
         return sections.enumerated().map {
@@ -18,4 +18,5 @@ extension ListData where SectionContext == Void, CellContext: Differentiable {
 }
 
 extension Int: Differentiable {}
+
 extension String: Differentiable {}

@@ -6,27 +6,17 @@
 import DifferenceKit
 import Foundation
 
-struct Person: Identifiable {
+public struct Person: Identifiable {
 
-    var id: Int
+    public var id: Int
 
-    var name: String
+    public var name: String
 
-    var description: String
-
-}
-
-extension Person: Differentiable {
-
-    public var differenceIdentifier: Int { return id }
-
-    public func isContentEqual(to source: Person) -> Bool {
-        return id == source.id
-    }
+    public var description: String
 
 }
 
-enum PeopleDataMock {
+enum StaticPeopleData {
 
     static var people = [
         Person(id: 1, name: "Eugene Kazaev", description: "IOS Developer"),

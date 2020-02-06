@@ -6,6 +6,7 @@
 import DifferenceKit
 import Foundation
 import ReusableView
+import Shared
 import UIKit
 import UniversalList
 import UniversalListViewController

@@ -8,9 +8,9 @@ import Foundation
 import SharedUI
 import UIKit
 
-final class SearchBarContainerViewController: UIViewController {
+public final class SearchBarContainerViewController: UIViewController {
 
-    var containingViewController: UIViewController? {
+    public var containingViewController: UIViewController? {
         didSet {
             guard let containingViewController = containingViewController else {
                 containerController.viewControllers = []
@@ -27,9 +27,9 @@ final class SearchBarContainerViewController: UIViewController {
                                    containerView: self.containerView)
     }()
 
-    private(set) var searchBarController: SearchBarController = SearchBarController()
+    public private(set) var searchBarController: SearchBarController = SearchBarController()
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         containerController.setup()
         view.backgroundColor = .white

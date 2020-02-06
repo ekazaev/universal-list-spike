@@ -7,6 +7,7 @@ import DifferenceKit
 import Foundation
 import ReusableView
 import Shared
+import UIKit
 import UniversalList
 
 // Option one: Translate cells in the adapter

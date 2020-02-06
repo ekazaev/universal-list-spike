@@ -12,8 +12,8 @@ import UIKit
 import UniversalList
 import UniversalListViewController
 
-struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
-                            DP: PageableDataProvider>
+public struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
+                                   DP: PageableDataProvider>
     where
     DataCell: UITableViewCell,
     DataCell.Data: Identifiable & Differentiable,
@@ -23,11 +23,11 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
 
     private let dataProvider: DP
 
-    init(dataProvider: DP) {
+    public init(dataProvider: DP) {
         self.dataProvider = dataProvider
     }
 
-    func build() -> UIViewController & SearchBarControllerDelegate {
+    public func build() -> UIViewController & SearchBarControllerDelegate {
         let viewFactory = TableViewFactory(style: .grouped)
         let dataSource = TableViewDataSourceController<Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>, TableViewFactory>(viewProxy: viewFactory)
 
@@ -57,8 +57,8 @@ struct GenericSearchBuilder<DataCell: ConfigurableReusableView,
         // Container Controller
         let containerController = SearchResultsContainerViewController(eventHandler: eventHandler)
 
-        let initialViewController = UIViewController(nibName: "StartTypingViewController", bundle: nil)
-        let noResultsViewController = UIViewController(nibName: "NoResultsAvailableViewController", bundle: nil)
+        let initialViewController = UIViewController(nibName: "StartTypingViewController", bundle: Bundle(for: SearchBarContainerViewController.self))
+        let noResultsViewController = UIViewController(nibName: "NoResultsAvailableViewController", bundle: Bundle(for: SearchBarContainerViewController.self))
         containerController.viewControllers = [initialViewController, searchTableViewController, noResultsViewController]
 
         eventHandler.delegate = containerController

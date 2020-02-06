@@ -4,6 +4,7 @@
 //
 
 import CustomTabViewController
+import EntitySearch
 import Foundation
 import Shared
 import SharedUI

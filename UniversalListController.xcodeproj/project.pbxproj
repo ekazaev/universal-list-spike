@@ -39,20 +39,6 @@
 		454D7CA723EA4AB300CE790A /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158FC7601781B1CA14CD49 /* ListData.swift */; };
 		454D7CA823EA4AB300CE790A /* SectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589A1C14445FDE9050A63 /* SectionData.swift */; };
 		454D7CAA23EA4BAC00CE790A /* DataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158A1606C478A92B398600 /* DataTransformer.swift */; };
-		454D7CC723EA516C00CE790A /* UniversalListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D7CC523EA516C00CE790A /* UniversalListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		454D7CCA23EA516C00CE790A /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
-		454D7CCB23EA516C00CE790A /* UniversalListViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		454D7CCF23EA51F400CE790A /* UniversalList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; };
-		454D7CD023EA51F400CE790A /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		454D7CD423EA520400CE790A /* UniversalListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589C840C529E134891376 /* UniversalListUpdater.swift */; };
-		454D7CD523EA520400CE790A /* TableViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15842F8C45449C17256395 /* TableViewUpdater.swift */; };
-		454D7CD623EA520400CE790A /* CollectionViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */; };
-		454D7CD723EA520400CE790A /* UniversalListDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158A1E8C0ADF217790807B /* UniversalListDelegateController.swift */; };
-		454D7CDC23EA520400CE790A /* UniversalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587974B9453F56503FFD3 /* UniversalListViewController.swift */; };
-		454D7CDD23EA520400CE790A /* UniversalListViewControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1584856F619E29AF0D23B9 /* UniversalListViewControllerEventHandler.swift */; };
-		454D7CDE23EA520400CE790A /* TableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1583EAC2BD8948530F8C2F /* TableViewDataSourceController.swift */; };
-		454D7CDF23EA520400CE790A /* CollectionViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1585121AD84F3FF2326DFD /* CollectionViewDataSourceController.swift */; };
-		454D7CE023EA520400CE790A /* UniversalListDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1580840D316D2E9DB133FD /* UniversalListDataSourceController.swift */; };
 		457783C823EC21BA0095E07A /* Shared.h in Headers */ = {isa = PBXBuildFile; fileRef = 457783C623EC21BA0095E07A /* Shared.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		457783CB23EC21BA0095E07A /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457783C423EC21BA0095E07A /* Shared.framework */; };
 		457783CC23EC21BA0095E07A /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 457783C423EC21BA0095E07A /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -63,6 +49,8 @@
 		457783D423EC22EE0095E07A /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		457783D823EC22F60095E07A /* ReusableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; };
 		457783D923EC22F60095E07A /* ReusableView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		457E659023EC9A6800E3427E /* ReusableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; };
+		457E659123EC9A6800E3427E /* ReusableView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		458154D623EAD3FB00EBF59A /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458154CD23EAD3FB00EBF59A /* Core.framework */; };
 		458154DF23EAD3FC00EBF59A /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 458154CF23EAD3FB00EBF59A /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		458154E223EAD3FC00EBF59A /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458154CD23EAD3FB00EBF59A /* Core.framework */; };
@@ -117,12 +105,8 @@
 		45BA33EB23EC38CE0027AB80 /* RandomizingTableDemoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545F2DCBD23C505D80EC8 /* RandomizingTableDemoBuilder.swift */; };
 		45BA33EC23EC38CE0027AB80 /* RandomizingCollectionDemoBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54FC00BD93E4227FA40A0 /* RandomizingCollectionDemoBuilder.swift */; };
 		45BA33ED23EC38CE0027AB80 /* TabBarConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54180710237D411764094 /* TabBarConfiguration.swift */; };
-		45BA340A23EC46570027AB80 /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
-		45BA340B23EC46570027AB80 /* UniversalListViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA340E23EC46B20027AB80 /* UniversalList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; };
 		45BA340F23EC46B20027AB80 /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45BA341223EC46B20027AB80 /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
-		45BA341323EC46B20027AB80 /* UniversalListViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA341623EC46C40027AB80 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457783C423EC21BA0095E07A /* Shared.framework */; };
 		45BA341723EC46C40027AB80 /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 457783C423EC21BA0095E07A /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA341A23EC46C40027AB80 /* SharedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BA339A23EC2F270027AB80 /* SharedUI.framework */; };
@@ -131,12 +115,8 @@
 		45BA342023EC46C90027AB80 /* ReusableView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA342323EC46D50027AB80 /* UniversalList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; };
 		45BA342423EC46D50027AB80 /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45BA342723EC46D50027AB80 /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
-		45BA342823EC46D50027AB80 /* UniversalListViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA342B23EC46E00027AB80 /* UniversalList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; };
 		45BA342C23EC46E00027AB80 /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45BA342F23EC46E00027AB80 /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
-		45BA343023EC46E00027AB80 /* UniversalListViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA343423EC46E40027AB80 /* ReusableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; };
 		45BA343523EC46E40027AB80 /* ReusableView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA343823EC46EB0027AB80 /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 457783C423EC21BA0095E07A /* Shared.framework */; };
@@ -163,38 +143,43 @@
 		45BA346523EC487F0027AB80 /* SharedUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45BA339A23EC2F270027AB80 /* SharedUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA346823EC487F0027AB80 /* UniversalList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; };
 		45BA346923EC487F0027AB80 /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		45BA346C23EC487F0027AB80 /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
-		45BA346D23EC487F0027AB80 /* UniversalListViewController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		45BA347223EC49830027AB80 /* SearchResultsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54F30041D51D2A6B6D2F4 /* SearchResultsContainerViewController.swift */; };
 		45BA347323EC49830027AB80 /* SearchBarContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE54E6F5545F0CFE4E9C503 /* SearchBarContainerViewController.swift */; };
 		45BA347423EC49830027AB80 /* SearchResultStateDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE5465480F0D062A0C5A45F /* SearchResultStateDelegate.swift */; };
 		45BA347523EC49830027AB80 /* SearchResultState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE545B5C9C2EC2D30F67729 /* SearchResultState.swift */; };
 		45BA347623EC49AE0027AB80 /* EntitySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45BA344523EC479A0027AB80 /* EntitySearch.framework */; };
 		45BA347723EC49AE0027AB80 /* EntitySearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 45BA344523EC479A0027AB80 /* EntitySearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		45BA350C23EC982B0027AB80 /* UniversalListUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589C840C529E134891376 /* UniversalListUpdater.swift */; };
+		45BA350D23EC982B0027AB80 /* TableViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15842F8C45449C17256395 /* TableViewUpdater.swift */; };
+		45BA350E23EC982B0027AB80 /* CollectionViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */; };
+		45BA350F23EC982B0027AB80 /* UniversalListDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158A1E8C0ADF217790807B /* UniversalListDelegateController.swift */; };
+		45BA351023EC982B0027AB80 /* SimpleTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589F98D94C1E8DCD38B16 /* SimpleTableViewDelegateController.swift */; };
+		45BA351123EC982B0027AB80 /* SimpleCollectionViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158BBBD59C8D9DC27601D8 /* SimpleCollectionViewDelegateController.swift */; };
+		45BA351223EC982B0027AB80 /* SimpleDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588B950768CCA17C33649 /* SimpleDelegateControllerEventHandler.swift */; };
+		45BA351323EC982B0027AB80 /* HeterogeneousTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1585F0DFF6BEBF0C92A184 /* HeterogeneousTableViewDelegateController.swift */; };
+		45BA351423EC982B0027AB80 /* HeterogeneousDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158F0924CC2DA00400E7D5 /* HeterogeneousDelegateControllerEventHandler.swift */; };
+		45BA351523EC982B0027AB80 /* DataProvidingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158E7ED2EBF55DAC9356FC /* DataProvidingCell.swift */; };
+		45BA351623EC982B0027AB80 /* DefaultScrollViewNextPageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D49A144924A0DB7AF01 /* DefaultScrollViewNextPageRequester.swift */; };
+		45BA351723EC982B0027AB80 /* UITableViewDelegateSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158AC505AF1B517C0348D5 /* UITableViewDelegateSplitter.swift */; };
+		45BA351823EC982B0027AB80 /* UICollectionViewDelegateSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158EE5C3C4A9B387D79614 /* UICollectionViewDelegateSplitter.swift */; };
+		45BA351923EC982B0027AB80 /* UniversalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587974B9453F56503FFD3 /* UniversalListViewController.swift */; };
+		45BA351A23EC982B0027AB80 /* UniversalListViewControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1584856F619E29AF0D23B9 /* UniversalListViewControllerEventHandler.swift */; };
+		45BA351B23EC982B0027AB80 /* TableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1583EAC2BD8948530F8C2F /* TableViewDataSourceController.swift */; };
+		45BA351C23EC982B0027AB80 /* CollectionViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1585121AD84F3FF2326DFD /* CollectionViewDataSourceController.swift */; };
+		45BA351D23EC982B0027AB80 /* UniversalListDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1580840D316D2E9DB133FD /* UniversalListDataSourceController.swift */; };
 		45C913A223DF3D830021602D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C913A123DF3D830021602D /* AppDelegate.swift */; };
 		45C913A423DF3D830021602D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C913A323DF3D830021602D /* SceneDelegate.swift */; };
 		45C913AB23DF3D850021602D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45C913AA23DF3D850021602D /* Assets.xcassets */; };
 		45C913AE23DF3D850021602D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45C913AC23DF3D850021602D /* LaunchScreen.storyboard */; };
-		45ECE51223EA56D200C96802 /* ReusableView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; };
-		45ECE51323EA56D200C96802 /* ReusableView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C7723EA429B00CE790A /* ReusableView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		51863B8EFD9A9D9983C8A02D /* Pods_Modules_Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F022FA0E9790B64C5AFE5F /* Pods_Modules_Shared.framework */; };
 		518E8BF19FF251DC5D4F1219 /* Pods_Modules_SharedUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AD3C4A2500CB7716DD23E5 /* Pods_Modules_SharedUI.framework */; };
 		62D42BA5BFB3AFEF6BE00232 /* Pods_Modules_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333463B049A94E0F8AD63BC2 /* Pods_Modules_Search.framework */; };
 		94C5C5B5C29D00A43D26F06A /* Pods_Modules_EntitySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EC692D30384C4D80847E0B /* Pods_Modules_EntitySearch.framework */; };
 		CC77E5906C04334EEAF96B0C /* Pods_Modules_RandomList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A890E194526A30F931B140D5 /* Pods_Modules_RandomList.framework */; };
-		EF15832634AE73A0F8300363 /* UICollectionViewDelegateSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158EE5C3C4A9B387D79614 /* UICollectionViewDelegateSplitter.swift */; };
-		EF1583E254AF7C9A215168A2 /* DefaultScrollViewNextPageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D49A144924A0DB7AF01 /* DefaultScrollViewNextPageRequester.swift */; };
-		EF1586E1914646D2B2AD4543 /* DataProvidingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158E7ED2EBF55DAC9356FC /* DataProvidingCell.swift */; };
 		EF1586E7A89382848A7FFB64 /* InstanceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */; };
-		EF15876B39876317312C9F6F /* UITableViewDelegateSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158AC505AF1B517C0348D5 /* UITableViewDelegateSplitter.swift */; };
-		EF1588690CAA290BBE18E06D /* HeterogeneousDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158F0924CC2DA00400E7D5 /* HeterogeneousDelegateControllerEventHandler.swift */; };
 		EF1588DB998CC62132E3F5C2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158783369056AAAE6B1082 /* Person.swift */; };
-		EF1589255A89084FBF4954FF /* SimpleDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588B950768CCA17C33649 /* SimpleDelegateControllerEventHandler.swift */; };
-		EF158962F669BAB36BCFF722 /* HeterogeneousTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1585F0DFF6BEBF0C92A184 /* HeterogeneousTableViewDelegateController.swift */; };
 		EF158B331450DB44E4B7686F /* AnyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D2719A223CCD195CA42 /* AnyBuilder.swift */; };
 		EF158BFC048AF6F0935186D7 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158F94A3F905D0FF0C20BD /* City.swift */; };
-		EF158C2A76DD272AFD16D875 /* SimpleTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589F98D94C1E8DCD38B16 /* SimpleTableViewDelegateController.swift */; };
-		EF158F79A1672FAFCA6DFFD8 /* SimpleCollectionViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158BBBD59C8D9DC27601D8 /* SimpleCollectionViewDelegateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -219,20 +204,6 @@
 			remoteGlobalIDString = 454D7C9A23EA471000CE790A;
 			remoteInfo = UniversalList;
 		};
-		454D7CC823EA516C00CE790A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7CC223EA516C00CE790A;
-			remoteInfo = UniversalListViewController;
-		};
-		454D7CD123EA51F400CE790A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7C9A23EA471000CE790A;
-			remoteInfo = UniversalList;
-		};
 		457783C923EC21BA0095E07A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45C9139623DF3D830021602D /* Project object */;
@@ -248,6 +219,13 @@
 			remoteInfo = UniversalList;
 		};
 		457783DA23EC22F60095E07A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45C9139623DF3D830021602D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 454D7C7623EA429B00CE790A;
+			remoteInfo = ReusableView;
+		};
+		457E659223EC9A6800E3427E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45C9139623DF3D830021602D /* Project object */;
 			proxyType = 1;
@@ -324,26 +302,12 @@
 			remoteGlobalIDString = 45BA33DD23EC38A60027AB80;
 			remoteInfo = RandomList;
 		};
-		45BA340C23EC46570027AB80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7CC223EA516C00CE790A;
-			remoteInfo = UniversalListViewController;
-		};
 		45BA341023EC46B20027AB80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45C9139623DF3D830021602D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 454D7C9A23EA471000CE790A;
 			remoteInfo = UniversalList;
-		};
-		45BA341423EC46B20027AB80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7CC223EA516C00CE790A;
-			remoteInfo = UniversalListViewController;
 		};
 		45BA341823EC46C40027AB80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -373,26 +337,12 @@
 			remoteGlobalIDString = 454D7C9A23EA471000CE790A;
 			remoteInfo = UniversalList;
 		};
-		45BA342923EC46D50027AB80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7CC223EA516C00CE790A;
-			remoteInfo = UniversalListViewController;
-		};
 		45BA342D23EC46E00027AB80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45C9139623DF3D830021602D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 454D7C9A23EA471000CE790A;
 			remoteInfo = UniversalList;
-		};
-		45BA343123EC46E00027AB80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7CC223EA516C00CE790A;
-			remoteInfo = UniversalListViewController;
 		};
 		45BA343623EC46E40027AB80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -457,26 +407,12 @@
 			remoteGlobalIDString = 454D7C9A23EA471000CE790A;
 			remoteInfo = UniversalList;
 		};
-		45BA346E23EC487F0027AB80 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7CC223EA516C00CE790A;
-			remoteInfo = UniversalListViewController;
-		};
 		45BA347823EC49AE0027AB80 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 45C9139623DF3D830021602D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 45BA344423EC479A0027AB80;
 			remoteInfo = EntitySearch;
-		};
-		45ECE51423EA56D200C96802 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 45C9139623DF3D830021602D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 454D7C7623EA429B00CE790A;
-			remoteInfo = ReusableView;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -491,24 +427,11 @@
 				457783CC23EC21BA0095E07A /* Shared.framework in Embed Frameworks */,
 				45BA33C923EC33520027AB80 /* Search.framework in Embed Frameworks */,
 				45BA33A223EC2F270027AB80 /* SharedUI.framework in Embed Frameworks */,
-				454D7CCB23EA516C00CE790A /* UniversalListViewController.framework in Embed Frameworks */,
 				454D7CA323EA471000CE790A /* UniversalList.framework in Embed Frameworks */,
 				458154E323EAD3FC00EBF59A /* Core.framework in Embed Frameworks */,
 				4508237523E8B6FC008D604C /* CustomTabViewController.framework in Embed Frameworks */,
 				45BA33E623EC38A60027AB80 /* RandomList.framework in Embed Frameworks */,
 				45BA344D23EC479A0027AB80 /* EntitySearch.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		454D7CD323EA51F400CE790A /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				45ECE51323EA56D200C96802 /* ReusableView.framework in Embed Frameworks */,
-				454D7CD023EA51F400CE790A /* UniversalList.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +444,17 @@
 			files = (
 				457783D923EC22F60095E07A /* ReusableView.framework in Embed Frameworks */,
 				457783D423EC22EE0095E07A /* UniversalList.framework in Embed Frameworks */,
-				45BA340B23EC46570027AB80 /* UniversalListViewController.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		457E659423EC9A6800E3427E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				457E659123EC9A6800E3427E /* ReusableView.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,7 +476,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				45BA341323EC46B20027AB80 /* UniversalListViewController.framework in Embed Frameworks */,
 				45BA340F23EC46B20027AB80 /* UniversalList.framework in Embed Frameworks */,
 				45BA33B523EC306E0027AB80 /* ReusableView.framework in Embed Frameworks */,
 				45BA33B923EC307D0027AB80 /* Shared.framework in Embed Frameworks */,
@@ -558,7 +490,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				45BA342823EC46D50027AB80 /* UniversalListViewController.framework in Embed Frameworks */,
 				45BA342423EC46D50027AB80 /* UniversalList.framework in Embed Frameworks */,
 				45BA341723EC46C40027AB80 /* Shared.framework in Embed Frameworks */,
 				45BA347723EC49AE0027AB80 /* EntitySearch.framework in Embed Frameworks */,
@@ -577,7 +508,6 @@
 				45BA343D23EC46EC0027AB80 /* SharedUI.framework in Embed Frameworks */,
 				45BA342C23EC46E00027AB80 /* UniversalList.framework in Embed Frameworks */,
 				45BA343523EC46E40027AB80 /* ReusableView.framework in Embed Frameworks */,
-				45BA343023EC46E00027AB80 /* UniversalListViewController.framework in Embed Frameworks */,
 				45BA343923EC46EB0027AB80 /* Shared.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -594,7 +524,6 @@
 				45BA346123EC487F0027AB80 /* Shared.framework in Embed Frameworks */,
 				45BA345923EC487F0027AB80 /* Core.framework in Embed Frameworks */,
 				45BA346523EC487F0027AB80 /* SharedUI.framework in Embed Frameworks */,
-				45BA346D23EC487F0027AB80 /* UniversalListViewController.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,9 +595,6 @@
 		454D7C9B23EA471000CE790A /* UniversalList.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UniversalList.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		454D7C9D23EA471000CE790A /* UniversalList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniversalList.h; sourceTree = "<group>"; };
 		454D7C9E23EA471000CE790A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		454D7CC323EA516C00CE790A /* UniversalListViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UniversalListViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		454D7CC523EA516C00CE790A /* UniversalListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UniversalListViewController.h; sourceTree = "<group>"; };
-		454D7CC623EA516C00CE790A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		457783C423EC21BA0095E07A /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		457783C623EC21BA0095E07A /* Shared.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shared.h; sourceTree = "<group>"; };
 		457783C723EC21BA0095E07A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -771,15 +697,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		454D7CC023EA516C00CE790A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				45ECE51223EA56D200C96802 /* ReusableView.framework in Frameworks */,
-				454D7CCF23EA51F400CE790A /* UniversalList.framework in Frameworks */,
+				457E659023EC9A6800E3427E /* ReusableView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -788,7 +706,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				457783D823EC22F60095E07A /* ReusableView.framework in Frameworks */,
-				45BA340A23EC46570027AB80 /* UniversalListViewController.framework in Frameworks */,
 				457783D323EC22EE0095E07A /* UniversalList.framework in Frameworks */,
 				51863B8EFD9A9D9983C8A02D /* Pods_Modules_Shared.framework in Frameworks */,
 			);
@@ -817,7 +734,6 @@
 				45BA340E23EC46B20027AB80 /* UniversalList.framework in Frameworks */,
 				45BA33B823EC307D0027AB80 /* Shared.framework in Frameworks */,
 				45BA33AF23EC305C0027AB80 /* Core.framework in Frameworks */,
-				45BA341223EC46B20027AB80 /* UniversalListViewController.framework in Frameworks */,
 				518E8BF19FF251DC5D4F1219 /* Pods_Modules_SharedUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -831,7 +747,6 @@
 				45BA341A23EC46C40027AB80 /* SharedUI.framework in Frameworks */,
 				45BA347623EC49AE0027AB80 /* EntitySearch.framework in Frameworks */,
 				45BA341623EC46C40027AB80 /* Shared.framework in Frameworks */,
-				45BA342723EC46D50027AB80 /* UniversalListViewController.framework in Frameworks */,
 				62D42BA5BFB3AFEF6BE00232 /* Pods_Modules_Search.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -844,7 +759,6 @@
 				45BA343423EC46E40027AB80 /* ReusableView.framework in Frameworks */,
 				45BA342B23EC46E00027AB80 /* UniversalList.framework in Frameworks */,
 				45BA343C23EC46EC0027AB80 /* SharedUI.framework in Frameworks */,
-				45BA342F23EC46E00027AB80 /* UniversalListViewController.framework in Frameworks */,
 				CC77E5906C04334EEAF96B0C /* Pods_Modules_RandomList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,7 +768,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				45BA346423EC487F0027AB80 /* SharedUI.framework in Frameworks */,
-				45BA346C23EC487F0027AB80 /* UniversalListViewController.framework in Frameworks */,
 				45BA345C23EC487F0027AB80 /* ReusableView.framework in Frameworks */,
 				45BA345823EC487F0027AB80 /* Core.framework in Frameworks */,
 				45BA346823EC487F0027AB80 /* UniversalList.framework in Frameworks */,
@@ -867,7 +780,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				454D7CCA23EA516C00CE790A /* UniversalListViewController.framework in Frameworks */,
 				45BA33E523EC38A60027AB80 /* RandomList.framework in Frameworks */,
 				458154E223EAD3FC00EBF59A /* Core.framework in Frameworks */,
 				454D7CA223EA471000CE790A /* UniversalList.framework in Frameworks */,
@@ -1164,7 +1076,6 @@
 				4508236E23E8B6FC008D604C /* CustomTabViewController */,
 				454D7C7823EA429B00CE790A /* ReusableView */,
 				454D7C9C23EA471000CE790A /* UniversalList */,
-				454D7CC423EA516C00CE790A /* UniversalListViewController */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -1193,21 +1104,12 @@
 				454D7C9E23EA471000CE790A /* Info.plist */,
 				EF158A2DAD4265F634A168B4 /* Data Structure */,
 				EF158499F41B2CB4EF3748F5 /* Data Transformers */,
-			);
-			path = UniversalList;
-			sourceTree = "<group>";
-		};
-		454D7CC423EA516C00CE790A /* UniversalListViewController */ = {
-			isa = PBXGroup;
-			children = (
-				454D7CC523EA516C00CE790A /* UniversalListViewController.h */,
-				454D7CC623EA516C00CE790A /* Info.plist */,
 				EF15820030F50477F8F0792E /* View Updaters */,
 				EF158C7A9F1337838D2188B8 /* View Delegates */,
 				EF1586122D6C6348F38D8985 /* View Controller */,
 				EF158128348D52E91992BC9A /* View Data Sources */,
 			);
-			path = UniversalListViewController;
+			path = UniversalList;
 			sourceTree = "<group>";
 		};
 		457783BE23EC1F440095E07A /* Application Modules */ = {
@@ -1336,7 +1238,6 @@
 				4508236D23E8B6FC008D604C /* CustomTabViewController.framework */,
 				454D7C7723EA429B00CE790A /* ReusableView.framework */,
 				454D7C9B23EA471000CE790A /* UniversalList.framework */,
-				454D7CC323EA516C00CE790A /* UniversalListViewController.framework */,
 				458154CD23EAD3FB00EBF59A /* Core.framework */,
 				458154D523EAD3FB00EBF59A /* CoreTests.xctest */,
 				457783C423EC21BA0095E07A /* Shared.framework */,
@@ -1389,8 +1290,9 @@
 				EF1585121AD84F3FF2326DFD /* CollectionViewDataSourceController.swift */,
 				EF1580840D316D2E9DB133FD /* UniversalListDataSourceController.swift */,
 			);
-			path = "View Data Sources";
-			sourceTree = "<group>";
+			name = "View Data Sources";
+			path = "Libraries/UniversalListViewController/View Data Sources";
+			sourceTree = SOURCE_ROOT;
 		};
 		EF15820030F50477F8F0792E /* View Updaters */ = {
 			isa = PBXGroup;
@@ -1399,8 +1301,9 @@
 				EF15842F8C45449C17256395 /* TableViewUpdater.swift */,
 				EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */,
 			);
-			path = "View Updaters";
-			sourceTree = "<group>";
+			name = "View Updaters";
+			path = "Libraries/UniversalListViewController/View Updaters";
+			sourceTree = SOURCE_ROOT;
 		};
 		EF15820B041909EAFB3DC3BE /* Builder */ = {
 			isa = PBXGroup;
@@ -1453,8 +1356,9 @@
 				EF1587974B9453F56503FFD3 /* UniversalListViewController.swift */,
 				EF1584856F619E29AF0D23B9 /* UniversalListViewControllerEventHandler.swift */,
 			);
-			path = "View Controller";
-			sourceTree = "<group>";
+			name = "View Controller";
+			path = "Libraries/UniversalListViewController/View Controller";
+			sourceTree = SOURCE_ROOT;
 		};
 		EF1587C6222FD6195C26D1E3 /* Dequeuers */ = {
 			isa = PBXGroup;
@@ -1501,8 +1405,9 @@
 				EF158CCBEED65EAC024BF1C3 /* Scroll */,
 				EF1582DF8C3D91FB13B1276C /* Splitter */,
 			);
-			path = "View Delegates";
-			sourceTree = "<group>";
+			name = "View Delegates";
+			path = "Libraries/UniversalListViewController/View Delegates";
+			sourceTree = SOURCE_ROOT;
 		};
 		EF158CCBEED65EAC024BF1C3 /* Scroll */ = {
 			isa = PBXGroup;
@@ -1557,14 +1462,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				454D7C9F23EA471000CE790A /* UniversalList.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		454D7CBE23EA516C00CE790A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				454D7CC723EA516C00CE790A /* UniversalListViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1665,35 +1562,16 @@
 				454D7C9723EA471000CE790A /* Sources */,
 				454D7C9823EA471000CE790A /* Frameworks */,
 				454D7C9923EA471000CE790A /* Resources */,
+				457E659423EC9A6800E3427E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				457E659323EC9A6800E3427E /* PBXTargetDependency */,
 			);
 			name = UniversalList;
 			productName = UniversalList;
 			productReference = 454D7C9B23EA471000CE790A /* UniversalList.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		454D7CC223EA516C00CE790A /* UniversalListViewController */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 454D7CCE23EA516C00CE790A /* Build configuration list for PBXNativeTarget "UniversalListViewController" */;
-			buildPhases = (
-				454D7CBE23EA516C00CE790A /* Headers */,
-				454D7CBF23EA516C00CE790A /* Sources */,
-				454D7CC023EA516C00CE790A /* Frameworks */,
-				454D7CC123EA516C00CE790A /* Resources */,
-				454D7CD323EA51F400CE790A /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				454D7CD223EA51F400CE790A /* PBXTargetDependency */,
-				45ECE51523EA56D200C96802 /* PBXTargetDependency */,
-			);
-			name = UniversalListViewController;
-			productName = UniversalListViewController;
-			productReference = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		457783C323EC21BA0095E07A /* Shared */ = {
@@ -1712,7 +1590,6 @@
 			dependencies = (
 				457783D623EC22EE0095E07A /* PBXTargetDependency */,
 				457783DB23EC22F60095E07A /* PBXTargetDependency */,
-				45BA340D23EC46570027AB80 /* PBXTargetDependency */,
 			);
 			name = Shared;
 			productName = Shared;
@@ -1774,7 +1651,6 @@
 				45BA33B723EC306E0027AB80 /* PBXTargetDependency */,
 				45BA33BB23EC307D0027AB80 /* PBXTargetDependency */,
 				45BA341123EC46B20027AB80 /* PBXTargetDependency */,
-				45BA341523EC46B20027AB80 /* PBXTargetDependency */,
 			);
 			name = SharedUI;
 			productName = SharedUI;
@@ -1799,7 +1675,6 @@
 				45BA341D23EC46C40027AB80 /* PBXTargetDependency */,
 				45BA342223EC46C90027AB80 /* PBXTargetDependency */,
 				45BA342623EC46D50027AB80 /* PBXTargetDependency */,
-				45BA342A23EC46D50027AB80 /* PBXTargetDependency */,
 				45BA347923EC49AE0027AB80 /* PBXTargetDependency */,
 			);
 			name = Search;
@@ -1822,7 +1697,6 @@
 			);
 			dependencies = (
 				45BA342E23EC46E00027AB80 /* PBXTargetDependency */,
-				45BA343223EC46E00027AB80 /* PBXTargetDependency */,
 				45BA343723EC46E40027AB80 /* PBXTargetDependency */,
 				45BA343B23EC46EB0027AB80 /* PBXTargetDependency */,
 				45BA343F23EC46EC0027AB80 /* PBXTargetDependency */,
@@ -1851,7 +1725,6 @@
 				45BA346323EC487F0027AB80 /* PBXTargetDependency */,
 				45BA346723EC487F0027AB80 /* PBXTargetDependency */,
 				45BA346B23EC487F0027AB80 /* PBXTargetDependency */,
-				45BA346F23EC487F0027AB80 /* PBXTargetDependency */,
 			);
 			name = EntitySearch;
 			productName = EntitySearch;
@@ -1875,7 +1748,6 @@
 				4508237323E8B6FC008D604C /* PBXTargetDependency */,
 				454D7C7D23EA429B00CE790A /* PBXTargetDependency */,
 				454D7CA123EA471000CE790A /* PBXTargetDependency */,
-				454D7CC923EA516C00CE790A /* PBXTargetDependency */,
 				458154E123EAD3FC00EBF59A /* PBXTargetDependency */,
 				457783CA23EC21BA0095E07A /* PBXTargetDependency */,
 				45BA33A023EC2F270027AB80 /* PBXTargetDependency */,
@@ -1906,9 +1778,6 @@
 						CreatedOnToolsVersion = 11.3.1;
 					};
 					454D7C9A23EA471000CE790A = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
-					454D7CC223EA516C00CE790A = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
 					457783C323EC21BA0095E07A = {
@@ -1955,7 +1824,6 @@
 				4508236C23E8B6FC008D604C /* CustomTabViewController */,
 				454D7C7623EA429B00CE790A /* ReusableView */,
 				454D7C9A23EA471000CE790A /* UniversalList */,
-				454D7CC223EA516C00CE790A /* UniversalListViewController */,
 				458154CC23EAD3FB00EBF59A /* Core */,
 				458154D423EAD3FB00EBF59A /* CoreTests */,
 				457783C323EC21BA0095E07A /* Shared */,
@@ -1984,13 +1852,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		454D7C9923EA471000CE790A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		454D7CC123EA516C00CE790A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2251,34 +2112,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45BA351523EC982B0027AB80 /* DataProvidingCell.swift in Sources */,
+				45BA351D23EC982B0027AB80 /* UniversalListDataSourceController.swift in Sources */,
+				45BA351423EC982B0027AB80 /* HeterogeneousDelegateControllerEventHandler.swift in Sources */,
+				45BA350F23EC982B0027AB80 /* UniversalListDelegateController.swift in Sources */,
+				45BA350D23EC982B0027AB80 /* TableViewUpdater.swift in Sources */,
+				45BA351B23EC982B0027AB80 /* TableViewDataSourceController.swift in Sources */,
 				454D7CA723EA4AB300CE790A /* ListData.swift in Sources */,
+				45BA350E23EC982B0027AB80 /* CollectionViewUpdater.swift in Sources */,
+				45BA351A23EC982B0027AB80 /* UniversalListViewControllerEventHandler.swift in Sources */,
+				45BA351923EC982B0027AB80 /* UniversalListViewController.swift in Sources */,
+				45BA351C23EC982B0027AB80 /* CollectionViewDataSourceController.swift in Sources */,
+				45BA351623EC982B0027AB80 /* DefaultScrollViewNextPageRequester.swift in Sources */,
 				454D7CAA23EA4BAC00CE790A /* DataTransformer.swift in Sources */,
+				45BA351823EC982B0027AB80 /* UICollectionViewDelegateSplitter.swift in Sources */,
 				454D7CA823EA4AB300CE790A /* SectionData.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		454D7CBF23EA516C00CE790A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				454D7CD723EA520400CE790A /* UniversalListDelegateController.swift in Sources */,
-				454D7CDF23EA520400CE790A /* CollectionViewDataSourceController.swift in Sources */,
-				454D7CDE23EA520400CE790A /* TableViewDataSourceController.swift in Sources */,
-				454D7CD423EA520400CE790A /* UniversalListUpdater.swift in Sources */,
-				454D7CDC23EA520400CE790A /* UniversalListViewController.swift in Sources */,
-				454D7CD523EA520400CE790A /* TableViewUpdater.swift in Sources */,
-				454D7CE023EA520400CE790A /* UniversalListDataSourceController.swift in Sources */,
-				454D7CDD23EA520400CE790A /* UniversalListViewControllerEventHandler.swift in Sources */,
-				454D7CD623EA520400CE790A /* CollectionViewUpdater.swift in Sources */,
-				EF158962F669BAB36BCFF722 /* HeterogeneousTableViewDelegateController.swift in Sources */,
-				EF1588690CAA290BBE18E06D /* HeterogeneousDelegateControllerEventHandler.swift in Sources */,
-				EF1583E254AF7C9A215168A2 /* DefaultScrollViewNextPageRequester.swift in Sources */,
-				EF158C2A76DD272AFD16D875 /* SimpleTableViewDelegateController.swift in Sources */,
-				EF158F79A1672FAFCA6DFFD8 /* SimpleCollectionViewDelegateController.swift in Sources */,
-				EF1589255A89084FBF4954FF /* SimpleDelegateControllerEventHandler.swift in Sources */,
-				EF1586E1914646D2B2AD4543 /* DataProvidingCell.swift in Sources */,
-				EF15876B39876317312C9F6F /* UITableViewDelegateSplitter.swift in Sources */,
-				EF15832634AE73A0F8300363 /* UICollectionViewDelegateSplitter.swift in Sources */,
+				45BA351323EC982B0027AB80 /* HeterogeneousTableViewDelegateController.swift in Sources */,
+				45BA351123EC982B0027AB80 /* SimpleCollectionViewDelegateController.swift in Sources */,
+				45BA351023EC982B0027AB80 /* SimpleTableViewDelegateController.swift in Sources */,
+				45BA351223EC982B0027AB80 /* SimpleDelegateControllerEventHandler.swift in Sources */,
+				45BA351723EC982B0027AB80 /* UITableViewDelegateSplitter.swift in Sources */,
+				45BA350C23EC982B0027AB80 /* UniversalListUpdater.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2404,16 +2258,6 @@
 			target = 454D7C9A23EA471000CE790A /* UniversalList */;
 			targetProxy = 454D7CA023EA471000CE790A /* PBXContainerItemProxy */;
 		};
-		454D7CC923EA516C00CE790A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7CC223EA516C00CE790A /* UniversalListViewController */;
-			targetProxy = 454D7CC823EA516C00CE790A /* PBXContainerItemProxy */;
-		};
-		454D7CD223EA51F400CE790A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7C9A23EA471000CE790A /* UniversalList */;
-			targetProxy = 454D7CD123EA51F400CE790A /* PBXContainerItemProxy */;
-		};
 		457783CA23EC21BA0095E07A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 457783C323EC21BA0095E07A /* Shared */;
@@ -2428,6 +2272,11 @@
 			isa = PBXTargetDependency;
 			target = 454D7C7623EA429B00CE790A /* ReusableView */;
 			targetProxy = 457783DA23EC22F60095E07A /* PBXContainerItemProxy */;
+		};
+		457E659323EC9A6800E3427E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 454D7C7623EA429B00CE790A /* ReusableView */;
+			targetProxy = 457E659223EC9A6800E3427E /* PBXContainerItemProxy */;
 		};
 		458154D823EAD3FB00EBF59A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2479,20 +2328,10 @@
 			target = 45BA33DD23EC38A60027AB80 /* RandomList */;
 			targetProxy = 45BA33E323EC38A60027AB80 /* PBXContainerItemProxy */;
 		};
-		45BA340D23EC46570027AB80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7CC223EA516C00CE790A /* UniversalListViewController */;
-			targetProxy = 45BA340C23EC46570027AB80 /* PBXContainerItemProxy */;
-		};
 		45BA341123EC46B20027AB80 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 454D7C9A23EA471000CE790A /* UniversalList */;
 			targetProxy = 45BA341023EC46B20027AB80 /* PBXContainerItemProxy */;
-		};
-		45BA341523EC46B20027AB80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7CC223EA516C00CE790A /* UniversalListViewController */;
-			targetProxy = 45BA341423EC46B20027AB80 /* PBXContainerItemProxy */;
 		};
 		45BA341923EC46C40027AB80 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2514,20 +2353,10 @@
 			target = 454D7C9A23EA471000CE790A /* UniversalList */;
 			targetProxy = 45BA342523EC46D50027AB80 /* PBXContainerItemProxy */;
 		};
-		45BA342A23EC46D50027AB80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7CC223EA516C00CE790A /* UniversalListViewController */;
-			targetProxy = 45BA342923EC46D50027AB80 /* PBXContainerItemProxy */;
-		};
 		45BA342E23EC46E00027AB80 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 454D7C9A23EA471000CE790A /* UniversalList */;
 			targetProxy = 45BA342D23EC46E00027AB80 /* PBXContainerItemProxy */;
-		};
-		45BA343223EC46E00027AB80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7CC223EA516C00CE790A /* UniversalListViewController */;
-			targetProxy = 45BA343123EC46E00027AB80 /* PBXContainerItemProxy */;
 		};
 		45BA343723EC46E40027AB80 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2574,20 +2403,10 @@
 			target = 454D7C9A23EA471000CE790A /* UniversalList */;
 			targetProxy = 45BA346A23EC487F0027AB80 /* PBXContainerItemProxy */;
 		};
-		45BA346F23EC487F0027AB80 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7CC223EA516C00CE790A /* UniversalListViewController */;
-			targetProxy = 45BA346E23EC487F0027AB80 /* PBXContainerItemProxy */;
-		};
 		45BA347923EC49AE0027AB80 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 45BA344423EC479A0027AB80 /* EntitySearch */;
 			targetProxy = 45BA347823EC49AE0027AB80 /* PBXContainerItemProxy */;
-		};
-		45ECE51523EA56D200C96802 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 454D7C7623EA429B00CE790A /* ReusableView */;
-			targetProxy = 45ECE51423EA56D200C96802 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2760,62 +2579,6 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ie.saks.UniversalList;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		454D7CCC23EA516C00CE790A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Libraries/UniversalListViewController/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ie.saks.UniversalListViewController;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SUPPORTS_MACCATALYST = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		454D7CCD23EA516C00CE790A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Libraries/UniversalListViewController/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = ie.saks.UniversalListViewController;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -3378,15 +3141,6 @@
 			buildConfigurations = (
 				454D7CA423EA471000CE790A /* Debug */,
 				454D7CA523EA471000CE790A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		454D7CCE23EA516C00CE790A /* Build configuration list for PBXNativeTarget "UniversalListViewController" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				454D7CCC23EA516C00CE790A /* Debug */,
-				454D7CCD23EA516C00CE790A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

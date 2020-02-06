@@ -6,7 +6,6 @@
 import Foundation
 import ReusableView
 import UIKit
-import UniversalList
 
 public final class TableViewUpdater<DataSource: UniversalListDataSourceController & UITableViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
     where

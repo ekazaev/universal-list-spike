@@ -6,7 +6,7 @@
 import Foundation
 import Shared
 import UniversalList
-import UniversalListViewController
+import UniversalList
 
 final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater, DP: PageableDataProvider, Transformer: DataTransformer>:
     SearchContainerViewControllerEventHandler,
@@ -55,7 +55,11 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
         case 0:
             selectedItems.remove(at: indexPath.item)
         case 1:
-            let city = itemsWithoutSelected()[indexPath.item]
+            let items = itemsWithoutSelected()
+            guard items.count > indexPath.item else {
+                return
+            }
+            let city = items[indexPath.item]
             selectedItems.append(city)
         default:
             return
@@ -110,8 +114,12 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
     }
 
     private func reloadView() {
-        let selectedItemsState = selectedItems.map { ListCellType.dataCell($0) }
-        var unselectedItemsState = itemsWithoutSelected().map { ListCellType.dataCell($0) }
+        let selectedItemsState = selectedItems.map {
+            ListCellType.dataCell($0)
+        }
+        var unselectedItemsState = itemsWithoutSelected().map {
+            ListCellType.dataCell($0)
+        }
 
         if isDataLoading {
             unselectedItemsState.append(.loading)

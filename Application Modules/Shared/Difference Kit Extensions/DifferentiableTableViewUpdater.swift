@@ -8,7 +8,6 @@ import Foundation
 import ReusableView
 import UIKit
 import UniversalList
-import UniversalListViewController
 
 public final class DifferentiableTableViewUpdater<DataSource: UniversalListDataSourceController & UITableViewDataSource, Proxy: ViewAccessProxy>: UniversalListUpdater
     where

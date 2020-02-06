@@ -10,7 +10,6 @@ import Shared
 import SharedUI
 import UIKit
 import UniversalList
-import UniversalListViewController
 
 public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: PageableDataProvider>: InstanceBuilder
     where

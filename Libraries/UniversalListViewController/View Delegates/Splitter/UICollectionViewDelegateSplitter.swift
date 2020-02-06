@@ -107,8 +107,7 @@ class UICollectionViewDelegateSplitter: NSObject, UniversalListDelegateControlle
         fatalError("collectionView(_:shouldUpdateFocusIn:) has not been implemented")
     }
 
-    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-    }
+    func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {}
 
     func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
         fatalError("indexPathForPreferredFocusedView(in:) has not been implemented")
@@ -130,11 +129,9 @@ class UICollectionViewDelegateSplitter: NSObject, UniversalListDelegateControlle
         fatalError("collectionView(_:shouldBeginMultipleSelectionInteractionAt:) has not been implemented")
     }
 
-    func collectionView(_ collectionView: UICollectionView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {
-    }
+    func collectionView(_ collectionView: UICollectionView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {}
 
-    func collectionViewDidEndMultipleSelectionInteraction(_ collectionView: UICollectionView) {
-    }
+    func collectionViewDidEndMultipleSelectionInteraction(_ collectionView: UICollectionView) {}
 
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         fatalError("collectionView(_:contextMenuConfigurationForItemAt:point:) has not been implemented")
@@ -148,8 +145,7 @@ class UICollectionViewDelegateSplitter: NSObject, UniversalListDelegateControlle
         fatalError("collectionView(_:previewForDismissingContextMenuWithConfiguration:) has not been implemented")
     }
 
-    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-    }
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {}
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollViewDelegate?.scrollViewDidScroll?(scrollView)

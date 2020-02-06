@@ -7,7 +7,6 @@ import Foundation
 import ReusableView
 import Shared
 import UIKit
-import UniversalListViewController
 
 public final class PersonTableCell: UITableViewCell {
 
@@ -24,14 +23,6 @@ extension PersonTableCell: ConfigurableReusableView {
         self.person = person
         titleLabel.text = person.name
         descriptionLabel.text = person.description
-    }
-
-}
-
-extension PersonTableCell: DataProvidingCell {
-
-    public func getData() -> Person? {
-        return person
     }
 
 }

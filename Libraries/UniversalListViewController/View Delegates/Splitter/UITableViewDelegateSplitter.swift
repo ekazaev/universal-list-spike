@@ -92,11 +92,11 @@ public final class UITableViewDelegateSplitter: NSObject, UniversalListDelegateC
     }
 
     public func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        return tableViewDelegate?.tableView?(tableView, willSelectRowAt: indexPath)
+        return tableViewDelegate?.tableView?(tableView, willSelectRowAt: indexPath) ?? indexPath
     }
 
     public func tableView(_ tableView: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
-        return tableViewDelegate?.tableView?(tableView, willDeselectRowAt: indexPath)
+        return tableViewDelegate?.tableView?(tableView, willDeselectRowAt: indexPath) ?? indexPath
     }
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -160,11 +160,11 @@ public final class UITableViewDelegateSplitter: NSObject, UniversalListDelegateC
     }
 
     public func tableView(_ tableView: UITableView, shouldSpringLoadRowAt indexPath: IndexPath, with context: UISpringLoadedInteractionContext) -> Bool {
-        return tableViewDelegate?.tableView?(tableView, shouldSpringLoadRowAt: indexPath, with: context) ?? true
+        return tableViewDelegate?.tableView?(tableView, shouldSpringLoadRowAt: indexPath, with: context) ?? false
     }
 
     public func tableView(_ tableView: UITableView, shouldBeginMultipleSelectionInteractionAt indexPath: IndexPath) -> Bool {
-        return tableViewDelegate?.tableView?(tableView, shouldBeginMultipleSelectionInteractionAt: indexPath) ?? true
+        return tableViewDelegate?.tableView?(tableView, shouldBeginMultipleSelectionInteractionAt: indexPath) ?? false
     }
 
     public func tableView(_ tableView: UITableView, didBeginMultipleSelectionInteractionAt indexPath: IndexPath) {

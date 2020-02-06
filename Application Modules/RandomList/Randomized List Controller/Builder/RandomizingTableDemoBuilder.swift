@@ -8,7 +8,7 @@ import Foundation
 import ReusableView
 import Shared
 import UIKit
-import UniversalListViewController
+import UniversalList
 
 public struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & ConfigurableReusableView>
     where

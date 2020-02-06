@@ -10,7 +10,6 @@ import CustomTabViewController
 import ReusableView
 import UIKit
 import UniversalList
-import UniversalListViewController
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

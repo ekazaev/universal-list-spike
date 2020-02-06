@@ -19,12 +19,12 @@ struct RootControllerBuilder {
 
         let randomTableController = RandomizingTableDemoBuilder<PeopleDataProvider, PersonTableCell>(
             dataProvider: PeopleDataProvider(),
-            tabBarConfiguration: .init(image: UIImage(systemName: "globe"), title: "Cities")
+            tabBarConfiguration: .init(image: UIImage(systemName: "person"), title: "People")
         ).build()
 
         let randomCollectionController = RandomizingCollectionDemoBuilder<CityDataProvider, CityCollectionCell>(
             dataProvider: CityDataProvider(),
-            tabBarConfiguration: .init(image: UIImage(systemName: "person"), title: "People")
+            tabBarConfiguration: .init(image: UIImage(systemName: "globe"), title: "Cities")
         ).build()
 
         tabBarController.viewControllers = [

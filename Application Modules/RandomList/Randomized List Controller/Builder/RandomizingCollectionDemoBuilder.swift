@@ -8,7 +8,7 @@ import Foundation
 import ReusableView
 import Shared
 import UIKit
-import UniversalListViewController
+import UniversalList
 
 public class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollectionViewCell & ConfigurableReusableView>
     where

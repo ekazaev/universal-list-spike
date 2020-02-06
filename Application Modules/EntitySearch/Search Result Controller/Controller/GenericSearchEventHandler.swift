@@ -18,8 +18,8 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
     Entity: Identifiable,
     DP.Data == [Entity],
     DP.Request == String,
-    Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Source == [[ListCellType<DP.Data.Element>]] {
+    Transformer.Output == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
+    Transformer.Input == [[ListCellType<DP.Data.Element>]] {
 
     weak var resultDelegate: SearchResultStateDelegate?
 

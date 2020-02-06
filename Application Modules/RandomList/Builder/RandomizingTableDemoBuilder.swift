@@ -26,7 +26,7 @@ public struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCel
 
     public func build() -> UIViewController {
         let viewFactory = TableViewFactory(style: .grouped)
-        let dataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, TableViewFactory>(viewProxy: viewFactory)
+        let dataSource = TableViewDataSourceController<TableViewFactory, Void, ConfigurableCellAdapter<Cell>>(viewProxy: viewFactory)
 
         let viewUpdater = DifferentiableTableViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
         let dataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()

@@ -34,7 +34,7 @@ public final class ContainerController {
     private weak var currentView: UIView?
 
     private var delayedViewBlock: (() -> Void)?
-    
+
     /// Constructor
     /// - Parameters:
     ///   - containerViewController: Enclosing `UIViewController`
@@ -47,7 +47,6 @@ public final class ContainerController {
         }
     }
 
-    
     /// Call this method for the initial initialization of `ContainerController`
     public func setup() {
         guard let delayedViewBlock = delayedViewBlock else {

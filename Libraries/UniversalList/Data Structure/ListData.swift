@@ -5,16 +5,21 @@
 
 import Foundation
 
+/// Data structure to hold structured list representation
 public struct ListData<SectionContext, CellContext>: CustomStringConvertible {
 
+    /// An `Array` of section data
     public var sections: [SectionData<SectionContext, CellContext>]
 
+    /// Constructor
+    /// - Parameter sections: An `Array` of section data of `SectionData` type
     public init(sections: [SectionData<SectionContext, CellContext>]) {
         self.sections = sections
     }
 
     public var description: String {
-        return "ListData\n" + sections.map { "    \($0.section)\n        \($0.items.count)" }.joined(separator: "\n")
+        return "ListData<\(String(describing: SectionContext.self)), \(String(describing: CellContext.self))>\n" +
+            sections.map { "  \($0.section): \($0.items.count)\n\($0.items.map { "    " + String(describing: $0) }.joined(separator: "\n"))" }.joined(separator: "\n")
     }
 
 }

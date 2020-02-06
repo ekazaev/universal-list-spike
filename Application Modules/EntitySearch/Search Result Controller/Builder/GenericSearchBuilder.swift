@@ -27,7 +27,7 @@ public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: Pagea
 
     public func build(with _: Void) -> UIViewController & SearchBarControllerDelegate {
         let viewFactory = TableViewFactory(style: .grouped)
-        let dataSource = TableViewDataSourceController<Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>, TableViewFactory>(viewProxy: viewFactory)
+        let dataSource = TableViewDataSourceController<TableViewFactory, Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>>(viewProxy: viewFactory)
 
         let viewUpdater = DifferentiableTableViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
         let dataTransformer = ListStateDataTransformer<DataCell, LoadingTableViewCell>()

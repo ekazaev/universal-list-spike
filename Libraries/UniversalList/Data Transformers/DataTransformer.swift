@@ -7,10 +7,10 @@ import Foundation
 
 public protocol DataTransformer {
 
-    associatedtype Source
+    associatedtype Input
 
-    associatedtype Target
+    associatedtype Output
 
-    func transform(_ data: Source) -> Target
+    func transform(_ data: Input) -> Output
 
 }

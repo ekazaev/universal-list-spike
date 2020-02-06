@@ -24,7 +24,7 @@ public final class PeopleDataProvider: DataProvider {
 
     private func delay(completion: @escaping () -> Void) {
         let mainQueue = DispatchQueue.main
-        let deadline = DispatchTime.now() + .seconds(Int.random(in: 0...2))
+        let deadline = DispatchTime.now() + .milliseconds(Int.random(in: 0...500))
         mainQueue.asyncAfter(deadline: deadline) {
             completion()
         }

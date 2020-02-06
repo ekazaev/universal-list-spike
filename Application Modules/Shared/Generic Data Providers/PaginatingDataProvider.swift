@@ -16,6 +16,8 @@ public final class PaginatingDataProvider<DP: DataProvider, Element>: PageableDa
 
     private var data: DP.Data?
 
+    private var lastRequest: DP.Request?
+
     public init(for provider: DP, itemsPerPage: Int) {
         self.provider = provider
         self.itemsPerPage = itemsPerPage
@@ -23,9 +25,13 @@ public final class PaginatingDataProvider<DP: DataProvider, Element>: PageableDa
 
     public func getData(with request: DP.Request,
                         completion: @escaping (Result<DP.Data, Error>) -> Void) {
+        self.lastRequest = request
+        let lastRequest: DP.Request? = request
         provider.getData(with: request) { [weak self] result in
-            guard let self = self, let data = try? result.get() else {
-                return
+            guard let self = self,
+                lastRequest == nil || lastRequest == self.lastRequest,
+                let data = try? result.get() else {
+                    return
             }
             self.data = data
             let pagedData = self.getPagedData()
@@ -34,9 +40,12 @@ public final class PaginatingDataProvider<DP: DataProvider, Element>: PageableDa
     }
 
     public func getNextPage(completion: @escaping (Result<DP.Data, Error>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(Int.random(in: 0...2))) { [weak self] in
-            guard let self = self else {
-                return
+        let lastRequest = self.lastRequest
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(Int.random(in: 0...500))) { [weak self] in
+            guard let self = self,
+                lastRequest == nil || lastRequest == self.lastRequest
+                else {
+                    return
             }
             let pagedData = self.getPagedData()
             completion(.success(pagedData))

@@ -7,20 +7,20 @@ import Foundation
 import ReusableView
 import UIKit
 
-public final class TableViewDataSourceController<SectionContext, CellContext, Proxy: ViewAccessProxy>: NSObject, UniversalListDataSourceController, UITableViewDataSource
+public final class TableViewDataSourceController<ViewProxy: ViewAccessProxy, SectionContext, CellContext>: NSObject, UniversalListDataSourceController, UITableViewDataSource
     where
-    Proxy.View: UITableView,
+    ViewProxy.View: UITableView,
     CellContext: CellAdapter,
     CellContext.Cell: UITableViewCell {
 
-    public typealias View = Proxy.View
+    public typealias View = ViewProxy.View
 
     public var data: ListData<SectionContext, CellContext> = ListData(sections: [])
 
-    private let viewProxy: Proxy
-    private let cellDequeuer: TableReusableCellDequeuer<Proxy>
+    private let viewProxy: ViewProxy
+    private let cellDequeuer: TableReusableCellDequeuer<ViewProxy>
 
-    public init(viewProxy: Proxy) {
+    public init(viewProxy: ViewProxy) {
         self.viewProxy = viewProxy
         cellDequeuer = TableReusableCellDequeuer(viewProxy: viewProxy)
 

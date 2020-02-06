@@ -12,8 +12,8 @@ import UniversalList
 final class RandomizingEventHandler<ViewUpdater: UniversalListUpdater, Provider: DataProvider, Transformer: DataTransformer>: UniversalListViewControllerEventHandler
     where
     Provider.Request == String,
-    Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Source == Provider.Data {
+    Transformer.Output == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
+    Transformer.Input == Provider.Data {
 
     private var viewUpdater: ViewUpdater
 

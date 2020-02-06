@@ -14,7 +14,7 @@ public struct ListData<SectionContext, CellContext>: CustomStringConvertible {
     }
 
     public var description: String {
-        return "ListData\n" + sections.map { "    \($0.context)\n        \($0.cells.count)" }.joined(separator: "\n")
+        return "ListData\n" + sections.map { "    \($0.section)\n        \($0.items.count)" }.joined(separator: "\n")
     }
 
 }
@@ -28,23 +28,23 @@ public extension ListData {
                 fatalError()
             }
             let sectionData = sections[section]
-            guard item < sectionData.cells.count else {
+            guard item < sectionData.items.count else {
                 fatalError()
             }
-            return sectionData.cells[item].context
+            return sectionData.items[item]
         }
         set {
             guard section < sections.count else {
                 return
             }
             var sectionData = sections[section]
-            guard item < sectionData.cells.count else {
+            guard item < sectionData.items.count else {
                 return
             }
-            var cells = sectionData.cells
+            var cells = sectionData.items
             cells.remove(at: item)
-            cells.insert(CellData(context: newValue), at: item)
-            sectionData.cells = cells
+            cells.insert(newValue, at: item)
+            sectionData.items = cells
         }
     }
 

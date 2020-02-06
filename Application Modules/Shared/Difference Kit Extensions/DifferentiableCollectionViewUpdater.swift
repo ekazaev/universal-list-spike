@@ -53,9 +53,7 @@ public final class DifferentiableCollectionViewUpdater<DataSource: UniversalList
             let changeSet = StagedChangeset(source: source, target: target)
             self.collectionView.reload(using: changeSet) { data in
                 let sections = data.map {
-                    SectionData(cells: $0.elements.map {
-                        CellData(context: $0)
-                    })
+                    SectionData(items: $0.elements)
                 }
                 dataSource.data = ListData(sections: sections)
             }

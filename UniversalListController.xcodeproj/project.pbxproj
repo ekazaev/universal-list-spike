@@ -38,7 +38,6 @@
 		454D7CA323EA471000CE790A /* UniversalList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7C9B23EA471000CE790A /* UniversalList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		454D7CA723EA4AB300CE790A /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158FC7601781B1CA14CD49 /* ListData.swift */; };
 		454D7CA823EA4AB300CE790A /* SectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589A1C14445FDE9050A63 /* SectionData.swift */; };
-		454D7CA923EA4AB300CE790A /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158C616003879A443B0284 /* CellData.swift */; };
 		454D7CAA23EA4BAC00CE790A /* DataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158A1606C478A92B398600 /* DataTransformer.swift */; };
 		454D7CC723EA516C00CE790A /* UniversalListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 454D7CC523EA516C00CE790A /* UniversalListViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		454D7CCA23EA516C00CE790A /* UniversalListViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 454D7CC323EA516C00CE790A /* UniversalListViewController.framework */; };
@@ -741,7 +740,6 @@
 		EF158BB37A040DA53032272C /* ViewAccessProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAccessProxy.swift; sourceTree = "<group>"; };
 		EF158BBBD59C8D9DC27601D8 /* SimpleCollectionViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewDelegateController.swift; sourceTree = "<group>"; };
 		EF158C28175143A700FC6BE2 /* TableReusableCellDequeuer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableReusableCellDequeuer.swift; sourceTree = "<group>"; };
-		EF158C616003879A443B0284 /* CellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 		EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceBuilder.swift; sourceTree = "<group>"; };
 		EF158D2719A223CCD195CA42 /* AnyBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyBuilder.swift; sourceTree = "<group>"; };
 		EF158D49A144924A0DB7AF01 /* DefaultScrollViewNextPageRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScrollViewNextPageRequester.swift; sourceTree = "<group>"; };
@@ -1480,7 +1478,6 @@
 			children = (
 				EF158FC7601781B1CA14CD49 /* ListData.swift */,
 				EF1589A1C14445FDE9050A63 /* SectionData.swift */,
-				EF158C616003879A443B0284 /* CellData.swift */,
 			);
 			path = "Data Structure";
 			sourceTree = "<group>";
@@ -2257,7 +2254,6 @@
 				454D7CA723EA4AB300CE790A /* ListData.swift in Sources */,
 				454D7CAA23EA4BAC00CE790A /* DataTransformer.swift in Sources */,
 				454D7CA823EA4AB300CE790A /* SectionData.swift in Sources */,
-				454D7CA923EA4AB300CE790A /* CellData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@ public extension ListData where SectionContext == Void, CellContext: Differentia
 
     func getAsDifferentiableArray() -> [ArraySection<Int, CellContext>] {
         return sections.enumerated().map {
-            ArraySection(model: $0.offset, elements: $0.element.cells.map { $0.context })
+            ArraySection(model: $0.offset, elements: $0.element.items.map { $0 })
         }
     }
 

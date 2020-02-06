@@ -39,12 +39,12 @@ public final class TableViewDataSourceController<SectionContext, CellContext, Pr
         guard viewProxy.isViewLoaded else {
             return 0
         }
-        return data.sections[section].cells.count
+        return data.sections[section].items.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellData = data.sections[indexPath.section].cells[indexPath.item]
-        let cell = cellData.context.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
+        let adapter = data.sections[indexPath.section].items[indexPath.item]
+        let cell = adapter.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
         return cell
     }
 

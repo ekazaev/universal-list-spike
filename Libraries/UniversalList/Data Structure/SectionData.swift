@@ -7,22 +7,22 @@ import Foundation
 
 public struct SectionData<SectionContext, CellContext> {
 
-    public var context: SectionContext
+    public var section: SectionContext
 
-    public var cells: [CellData<CellContext>]
+    public var items: [CellContext]
 
-    init(context: SectionContext, cells: [CellData<CellContext>]) {
-        self.context = context
-        self.cells = cells
+    init(section: SectionContext, items: [CellContext]) {
+        self.section = section
+        self.items = items
     }
 
 }
 
 public extension SectionData where SectionContext == Void {
 
-    init(cells: [CellData<CellContext>]) {
-        context = ()
-        self.cells = cells
+    init(items: [CellContext]) {
+        section = ()
+        self.items = items
     }
 
 }

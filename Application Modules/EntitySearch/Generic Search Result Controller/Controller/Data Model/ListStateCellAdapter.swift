@@ -46,8 +46,8 @@ struct ListStateDataTransformer<DataCell: ConfigurableReusableView, LoadingCell:
 
     func transform(_ data: [[ListCellType<DataCell.Data>]]) -> ListData<Void, ListStateCellAdapter<DataCell, LoadingCell>> {
         return ListData(sections: data.map {
-            return SectionData(cells: $0.map {
-                return CellData(context: ListStateCellAdapter(with: $0))
+            return SectionData(items: $0.map {
+                return ListStateCellAdapter(with: $0)
             })
         })
     }
@@ -61,12 +61,12 @@ struct ListStateTableDataTransformer<DataCell: UITableViewCell & ConfigurableReu
 
     func transform(_ data: [[ListCellType<DataCell.Data>]]) -> ListData<Void, AnyTableCellAdapter> {
         let listData = ListData<Void, AnyTableCellAdapter>(sections: data.map {
-            return SectionData(cells: $0.map {
+            return SectionData(items: $0.map {
                 switch $0 {
                 case let .dataCell(cellData):
-                    return CellData(context: AnyTableCellAdapter(with: ConfigurableCellAdapter<DataCell>(with: cellData)))
+                    return AnyTableCellAdapter(with: ConfigurableCellAdapter<DataCell>(with: cellData))
                 case .loading:
-                    return CellData(context: AnyTableCellAdapter(with: ConcreteCellAdapter<LoadingCell>()))
+                    return AnyTableCellAdapter(with: ConcreteCellAdapter<LoadingCell>())
                 }
             })
         })

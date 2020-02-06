@@ -54,9 +54,7 @@ public final class DifferentiableTableViewUpdater<DataSource: UniversalListDataS
                 let changedData = ListData(
                     sections: data.map {
                         SectionData(
-                            cells: $0.elements.map {
-                                CellData(context: $0)
-                                    })
+                            items: $0.elements)
                         })
                 viewProxy.data = changedData
             }

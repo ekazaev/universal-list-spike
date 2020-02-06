@@ -1,0 +1,5 @@
+clean: true
+author: Evgeny Kazaev
+author_url: https://github.com/ekazaev
+output: docs
+theme: fullwidth

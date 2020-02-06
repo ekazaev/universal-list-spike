@@ -6,8 +6,11 @@
 import Foundation
 import UIKit
 
+/// Simple Container Controller that helps to correctly maintain appearance of the child view controllers
+/// in the single container view
 public final class ContainerController {
 
+    /// Index of currently selected view controller
     public var selectedIndex: Int = 0 {
         didSet {
             guard oldValue != selectedIndex else {
@@ -21,6 +24,7 @@ public final class ContainerController {
 
     private weak var containerView: UIView?
 
+    /// View controllers
     public var viewControllers: [UIViewController] = [] {
         didSet {
             updateStack()
@@ -30,7 +34,11 @@ public final class ContainerController {
     private weak var currentView: UIView?
 
     private var delayedViewBlock: (() -> Void)?
-
+    
+    /// Constructor
+    /// - Parameters:
+    ///   - containerViewController: Enclosing `UIViewController`
+    ///   - containerView: `UIView` where selected child `UIViewController` will be integrated
     public init(for containerViewController: UIViewController,
                 containerView: @escaping @autoclosure () -> UIView? = nil) {
         self.containerViewController = containerViewController
@@ -39,6 +47,8 @@ public final class ContainerController {
         }
     }
 
+    
+    /// Call this method for the initial initialization of `ContainerController`
     public func setup() {
         guard let delayedViewBlock = delayedViewBlock else {
             return

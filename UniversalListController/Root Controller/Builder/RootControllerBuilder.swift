@@ -4,6 +4,8 @@
 //
 
 import Foundation
+import RandomList
+import Search
 import Shared
 import SharedUI
 import UIKit

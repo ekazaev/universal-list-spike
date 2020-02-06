@@ -10,7 +10,7 @@ import Shared
 import UIKit
 import UniversalListViewController
 
-struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & ConfigurableReusableView>
+public struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & ConfigurableReusableView>
     where
     DP.Request == String,
     Cell.Data: Differentiable,
@@ -19,12 +19,12 @@ struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & Con
     private let dataProvider: DP
     private let tabBarConfiguration: TabBarConfiguration
 
-    init(dataProvider: DP, tabBarConfiguration: TabBarConfiguration) {
+    public init(dataProvider: DP, tabBarConfiguration: TabBarConfiguration) {
         self.dataProvider = dataProvider
         self.tabBarConfiguration = tabBarConfiguration
     }
 
-    func build() -> UIViewController {
+    public func build() -> UIViewController {
         let tableViewFactory = TableViewFactory(style: .grouped)
         let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, TableViewFactory>(viewProxy: tableViewFactory)
 

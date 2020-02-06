@@ -10,7 +10,7 @@ import Shared
 import UIKit
 import UniversalListViewController
 
-class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollectionViewCell & ConfigurableReusableView>
+public class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollectionViewCell & ConfigurableReusableView>
     where
     DP.Request == String,
     Cell.Data: Differentiable,
@@ -19,12 +19,12 @@ class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollectionViewC
     private let dataProvider: DP
     private let tabBarConfiguration: TabBarConfiguration
 
-    init(dataProvider: DP, tabBarConfiguration: TabBarConfiguration) {
+    public init(dataProvider: DP, tabBarConfiguration: TabBarConfiguration) {
         self.dataProvider = dataProvider
         self.tabBarConfiguration = tabBarConfiguration
     }
 
-    func build() -> UIViewController {
+    public func build() -> UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 200)
         let collectionViewFactory = CollectionViewFactory(collectionViewLayout: layout)

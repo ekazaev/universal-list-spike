@@ -9,9 +9,11 @@ import Shared
 import SharedUI
 import UIKit
 
-struct GlobalSearchBuilder {
+public struct GlobalSearchBuilder {
 
-    func build() -> UIViewController {
+    public init() {}
+
+    public func build() -> UIViewController {
         let searchContainerController = SearchBarContainerViewController()
 
         let citiesSearchViewController = GenericSearchBuilder<CityTableCell, PaginatingDataProvider<CityDataProvider, City>>(dataProvider: PaginatingDataProvider(for: CityDataProvider(), itemsPerPage: 5)).build()

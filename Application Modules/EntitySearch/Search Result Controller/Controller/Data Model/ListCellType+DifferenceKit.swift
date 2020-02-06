@@ -13,7 +13,7 @@ extension ListCellType: Differentiable where Data: Differentiable, Data.Differen
         switch self {
         case let .dataCell(data):
             return data.differenceIdentifier
-        case .loading:
+        case .loadingCell:
             return Int.max
         }
     }
@@ -22,11 +22,11 @@ extension ListCellType: Differentiable where Data: Differentiable, Data.Differen
         switch (self, source) {
         case let (.dataCell(data), .dataCell(sourceData)):
             return data.isContentEqual(to: sourceData)
-        case (.loading, .loading):
+        case (.loadingCell, .loadingCell):
             return true
-        case (.loading, .dataCell(_)):
+        case (.loadingCell, .dataCell(_)):
             return false
-        case (.dataCell(_), .loading):
+        case (.dataCell(_), .loadingCell):
             return false
         }
     }

@@ -31,7 +31,7 @@ public struct GlobalSearchBuilder<B: InstanceBuilder> where B.Input == Void, B.O
     }
 
     public func build() -> UIViewController {
-        let searchContainerController = SearchBarContainerViewController()
+        let searchBarViewController = SearchBarContainerViewController()
 
         let viewControllers = configuration.map { config -> B.Output in
             let viewController = config.builder.build()
@@ -40,19 +40,19 @@ public struct GlobalSearchBuilder<B: InstanceBuilder> where B.Input == Void, B.O
         }
 
         viewControllers.forEach {
-            searchContainerController.searchBarController.add(delegate: $0)
+            searchBarViewController.searchBarController.add(delegate: $0)
         }
 
-        // Custom tab Bar
         let tabBarController = CustomTabViewController(nibName: "CustomTabViewController",
                                                        bundle: Bundle(for: CustomTabViewController.self))
         tabBarController.viewControllers = viewControllers
 
-        searchContainerController.containingViewController = tabBarController
+        searchBarViewController.containingViewController = tabBarController
 
-        searchContainerController.tabBarItem.image = UIImage(systemName: "magnifyingglass")
-        searchContainerController.tabBarItem.title = "Search"
-        return searchContainerController
+        searchBarViewController.tabBarItem.image = UIImage(systemName: "magnifyingglass")
+        searchBarViewController.tabBarItem.title = "Search"
+
+        return searchBarViewController
     }
 
 }

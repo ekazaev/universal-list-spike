@@ -3,6 +3,7 @@
 // UniversalListController
 //
 
+import Core
 import Foundation
 import UIKit
 
@@ -44,12 +45,8 @@ private extension UniversalListViewController {
 
     private func setupView() {
         let listView = viewFactory()
-        listView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(listView)
-        listView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        listView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        listView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        listView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        listView.addConstraints(equalToSuperview())
     }
 
 }

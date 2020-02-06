@@ -22,9 +22,7 @@ public struct ConfigurableDataTransformer<Data, Cell: ConfigurableReusableView>:
 
     public func transform(_ data: Data) -> ListData<SectionContext, CellContext> {
         let listData = ListData(sections: data.map {
-            return SectionData(items: $0.map {
-                ConfigurableCellAdapter<Cell>(with: $0)
-            })
+            return SectionData(items: $0.map { ConfigurableCellAdapter<Cell>(with: $0) })
         })
         return listData
     }

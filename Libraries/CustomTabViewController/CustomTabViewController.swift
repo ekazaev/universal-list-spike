@@ -3,6 +3,7 @@
 // Copyright (c) 2019 Eugene Kazaev. All rights reserved.
 //
 
+import Core
 import Foundation
 import UIKit
 
@@ -114,12 +115,8 @@ public class CustomTabViewController: UIViewController {
         }
         currentView?.removeFromSuperview()
         containerView.addSubview(viewController.view)
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
         viewController.view.frame = containerView.bounds
-        viewController.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-        viewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-        viewController.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-        viewController.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+        viewController.view.addConstraints(equalToSuperview())
         currentView = viewController.view
         title = viewController.title
     }

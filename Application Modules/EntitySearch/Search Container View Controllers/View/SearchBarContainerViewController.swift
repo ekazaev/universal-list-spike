@@ -41,12 +41,8 @@ public final class SearchBarContainerViewController: UIViewController {
 
     private func setupContainerView() -> UIView {
         let containerView = UIView(frame: view.bounds)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
-        containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        containerView.addConstraints(equalToSuperview())
         return containerView
     }
 

@@ -21,7 +21,7 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
     Transformer.Target == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
     Transformer.Source == [[ListCellType<DP.Data.Element>]] {
 
-    weak var delegate: SearchResultStateDelegate?
+    weak var resultDelegate: SearchResultStateDelegate?
 
     private(set) var isDataLoading: Bool = false
 
@@ -94,7 +94,7 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
             isFullyLoaded = false
             filteredItems = []
         }
-        delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : .someResults)
+        resultDelegate?.searchResultStateChanged(to: query.isEmpty ? .initial : .someResults)
         itemsProvider.getData(with: query, completion: { [weak self] result in
             self?.handleDataLoad(result: result)
         })
@@ -108,37 +108,33 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
         isFullyLoaded = newItems.isEmpty
         filteredItems.append(contentsOf: newItems)
 
-        delegate?.searchResultStateChanged(to: query.isEmpty ? .initial : filteredItems.isEmpty ? .noResults : .someResults)
+        resultDelegate?.searchResultStateChanged(to: query.isEmpty ? .initial : filteredItems.isEmpty ? .noResults : .someResults)
 
         reloadView()
     }
 
     private func reloadView() {
-        let selectedItemsState = selectedItems.map {
+        let selectedCells = selectedItems.map {
             ListCellType.dataCell($0)
         }
-        var unselectedItemsState = itemsWithoutSelected().map {
+        var unselectedCells = itemsWithoutSelected().map {
             ListCellType.dataCell($0)
         }
 
         if isDataLoading {
-            unselectedItemsState.append(.loading)
+            unselectedCells.append(.loadingCell)
         }
 
         let resultItems = [
-            selectedItemsState,
-            unselectedItemsState
+            selectedCells,
+            unselectedCells
         ]
         let itemsAsListData = dataTransformer.transform(resultItems)
         viewUpdater.update(with: itemsAsListData)
     }
 
     private func itemsWithoutSelected() -> DP.Data {
-        filteredItems.filter {
-            !selectedItems.map {
-                $0.id
-            }.contains($0.id)
-        }
+        filteredItems.filter { !selectedItems.map { $0.id }.contains($0.id) }
     }
 
 }

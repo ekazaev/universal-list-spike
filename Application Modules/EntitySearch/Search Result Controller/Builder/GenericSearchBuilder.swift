@@ -60,7 +60,7 @@ public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: Pagea
         let noResultsViewController = UIViewController(nibName: "NoResultsAvailableViewController", bundle: Bundle(for: SearchBarContainerViewController.self))
         containerController.viewControllers = [initialViewController, searchTableViewController, noResultsViewController]
 
-        eventHandler.delegate = containerController
+        eventHandler.resultDelegate = containerController
 
         return containerController
     }

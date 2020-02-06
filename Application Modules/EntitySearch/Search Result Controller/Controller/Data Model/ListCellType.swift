@@ -13,6 +13,6 @@ enum ListCellType<Data> {
 
     case dataCell(Data)
 
-    case loading
+    case loadingCell
 
 }

@@ -14,12 +14,8 @@ extension UIViewController {
             child.willMove(toParent: self)
         }
         if let containerView = containerView {
-            child.view.translatesAutoresizingMaskIntoConstraints = false
             containerView.addSubview(child.view)
-            child.view.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
-            child.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-            child.view.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-            child.view.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+            child.view.addConstraints(equalToSuperview())
         }
         if isAlreadyChild {
             child.didMove(toParent: self)

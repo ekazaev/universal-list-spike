@@ -25,31 +25,31 @@ public struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCel
     }
 
     public func build() -> UIViewController {
-        let tableViewFactory = TableViewFactory(style: .grouped)
-        let tableDataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, TableViewFactory>(viewProxy: tableViewFactory)
+        let viewFactory = TableViewFactory(style: .grouped)
+        let dataSource = TableViewDataSourceController<Void, ConfigurableCellAdapter<Cell>, TableViewFactory>(viewProxy: viewFactory)
 
-        let viewUpdater = DifferentiableTableViewUpdater(viewProxy: tableViewFactory, dataSource: tableDataSource)
-        let tableDataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
+        let viewUpdater = DifferentiableTableViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
+        let dataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
 
         let tableEventHandler = RandomizingEventHandler(
             viewUpdater: viewUpdater,
             dataProvider: EnclosingArrayDataProvider(for: ShufflingDataProvider(for: dataProvider)),
-            dataTransformer: tableDataTransformer
+            dataTransformer: dataTransformer
         )
 
-        tableViewFactory.dataSource = tableDataSource
+        viewFactory.dataSource = dataSource
 
-        let tableViewController = UniversalListViewController(
-            view: tableViewFactory.build(),
+        let viewController = UniversalListViewController(
+            view: viewFactory.build(),
             eventHandler: tableEventHandler,
-            dataSourceController: tableDataSource,
+            dataSourceController: dataSource,
             delegateController: SimpleTableViewDelegateController()
         )
 
-        tableViewController.tabBarItem.image = tabBarConfiguration.image
-        tableViewController.tabBarItem.title = tabBarConfiguration.title
+        viewController.tabBarItem.image = tabBarConfiguration.image
+        viewController.tabBarItem.title = tabBarConfiguration.title
 
-        return tableViewController
+        return viewController
     }
 
 }

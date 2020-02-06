@@ -13,14 +13,14 @@ public final class AnyBuilder<Input, Output>: InstanceBuilder {
         box = ViewProxyBox(with: builder)
     }
 
-    public func build(with context: Input) -> Output {
-        return box.build(with: context)
+    public func build(with input: Input) -> Output {
+        return box.build(with: input)
     }
 }
 
 private protocol AnyBuilderBox {
 
-    func build<I, O>(with context: I) -> O
+    func build<I, O>(with input: I) -> O
 
 }
 
@@ -32,9 +32,9 @@ private final class ViewProxyBox<Builder: InstanceBuilder>: AnyBuilderBox {
         self.builder = builder
     }
 
-    func build<I, O>(with context: I) -> O {
-        guard let typedContext = context as? Builder.Input,
-            let typedOutput = builder.build(with: typedContext) as? O else {
+    func build<I, O>(with input: I) -> O {
+        guard let typedInput = input as? Builder.Input,
+            let typedOutput = builder.build(with: typedInput) as? O else {
                 fatalError("Impossible situation")
         }
         return typedOutput

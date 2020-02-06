@@ -11,7 +11,9 @@ import UIKit
 import UniversalList
 
 // Option one: Translate cells in the adapter
-struct ListStateCellAdapter<DataCell: ConfigurableReusableView, LoadingCell: ReusableView>: CellAdapter where DataCell: UITableViewCell, LoadingCell: UITableViewCell {
+struct ListStateCellAdapter<DataCell: ConfigurableReusableView, LoadingCell: ReusableView>: CellAdapter
+    where
+    DataCell: UITableViewCell, LoadingCell: UITableViewCell {
 
     private let listState: ListCellType<DataCell.Data>
 
@@ -23,14 +25,16 @@ struct ListStateCellAdapter<DataCell: ConfigurableReusableView, LoadingCell: Reu
         switch listState {
         case let .dataCell(data):
             return ConfigurableCellAdapter<DataCell>(with: data).getView(with: factory)
-        case .loading:
+        case .loadingCell:
             return ConcreteCellAdapter<LoadingCell>().getView(with: factory)
         }
     }
 
 }
 
-extension ListStateCellAdapter: Differentiable where DataCell.Data: Differentiable, DataCell.Data.DifferenceIdentifier == Int {
+extension ListStateCellAdapter: Differentiable
+    where
+    DataCell.Data: Differentiable, DataCell.Data.DifferenceIdentifier == Int {
 
     var differenceIdentifier: DataCell.Data.DifferenceIdentifier {
         return listState.differenceIdentifier
@@ -42,7 +46,9 @@ extension ListStateCellAdapter: Differentiable where DataCell.Data: Differentiab
 
 }
 
-struct ListStateDataTransformer<DataCell: ConfigurableReusableView, LoadingCell: ReusableView>: DataTransformer where DataCell: UITableViewCell, LoadingCell: UITableViewCell {
+struct ListStateDataTransformer<DataCell: ConfigurableReusableView, LoadingCell: ReusableView>: DataTransformer
+    where
+    DataCell: UITableViewCell, LoadingCell: UITableViewCell {
 
     func transform(_ data: [[ListCellType<DataCell.Data>]]) -> ListData<Void, ListStateCellAdapter<DataCell, LoadingCell>> {
         return ListData(sections: data.map {
@@ -65,7 +71,7 @@ struct ListStateTableDataTransformer<DataCell: UITableViewCell & ConfigurableReu
                 switch $0 {
                 case let .dataCell(cellData):
                     return AnyTableCellAdapter(with: ConfigurableCellAdapter<DataCell>(with: cellData))
-                case .loading:
+                case .loadingCell:
                     return AnyTableCellAdapter(with: ConcreteCellAdapter<LoadingCell>())
                 }
             })

@@ -11,7 +11,7 @@ public protocol InstanceBuilder {
 
     associatedtype Output
 
-    func build(with context: Input) -> Output
+    func build(with input: Input) -> Output
 
 }
 

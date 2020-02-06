@@ -7,6 +7,7 @@ import Foundation
 import ReusableView
 import Shared
 import UIKit
+import UniversalListViewController
 
 public final class CityTableCell: UITableViewCell {
 
@@ -23,6 +24,14 @@ extension CityTableCell: ConfigurableReusableView {
         self.city = city
         titleLabel.text = city.city
         descriptionLabel.text = city.description
+    }
+
+}
+
+extension CityTableCell: DataProvidingCell {
+
+    public func getData() -> City? {
+        return city
     }
 
 }

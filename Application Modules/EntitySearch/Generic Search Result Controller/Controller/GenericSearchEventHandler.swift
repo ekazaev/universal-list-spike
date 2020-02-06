@@ -12,7 +12,7 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
     SearchContainerViewControllerEventHandler,
     SimpleDelegateControllerEventHandler,
     NextPageEventHandler,
-    DataLoadingStateHandler,
+    DataLoadingSource,
     UniversalListViewControllerEventHandler
     where
     Entity: Identifiable,

@@ -39,9 +39,10 @@ public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: Pagea
 
         let nextPageRequester = DefaultScrollViewNextPageRequester(nextPageEventInset: 10,
                                                                    nextPageEventHandler: eventHandler,
-                                                                   loadingStateEventHandler: eventHandler)
+                                                                   loadingStateSource: eventHandler)
 
-        let delegateController = SimpleTableViewDelegateController(nextPageRequester: nextPageRequester, eventHandler: eventHandler)
+        let delegateController = UITableViewDelegateSplitter(tableViewDelegate: SimpleTableViewDelegateController(eventHandler: eventHandler),
+                                                             scrollViewDelegate: nextPageRequester)
 
         viewFactory.delegate = delegateController
         viewFactory.dataSource = dataSource

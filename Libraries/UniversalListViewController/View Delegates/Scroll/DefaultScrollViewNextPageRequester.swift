@@ -12,30 +12,30 @@ public protocol NextPageEventHandler {
 
 }
 
-public protocol DataLoadingStateHandler {
+public protocol DataLoadingSource {
 
     var isDataLoading: Bool { get }
 
 }
 
-public final class DefaultScrollViewNextPageRequester: ScrollViewNextPageRequester {
+public final class DefaultScrollViewNextPageRequester: NSObject, UIScrollViewDelegate {
 
     public let nextPageEventInset: CGFloat
 
     private var nextPageEventHandler: NextPageEventHandler
 
-    private var loadingStateEventHandler: DataLoadingStateHandler
+    private var loadingStateSource: DataLoadingSource
 
     public init(nextPageEventInset: CGFloat,
                 nextPageEventHandler: NextPageEventHandler,
-                loadingStateEventHandler: DataLoadingStateHandler) {
+                loadingStateSource: DataLoadingSource) {
         self.nextPageEventInset = nextPageEventInset
         self.nextPageEventHandler = nextPageEventHandler
-        self.loadingStateEventHandler = loadingStateEventHandler
+        self.loadingStateSource = loadingStateSource
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard !loadingStateEventHandler.isDataLoading else {
+        guard !loadingStateSource.isDataLoading else {
             return
         }
 

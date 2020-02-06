@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -49,10 +49,6 @@
 		454D7CD523EA520400CE790A /* TableViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15842F8C45449C17256395 /* TableViewUpdater.swift */; };
 		454D7CD623EA520400CE790A /* CollectionViewUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */; };
 		454D7CD723EA520400CE790A /* UniversalListDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158A1E8C0ADF217790807B /* UniversalListDelegateController.swift */; };
-		454D7CD823EA520400CE790A /* SimpleTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158B6B606399CBD5648512 /* SimpleTableViewDelegateController.swift */; };
-		454D7CD923EA520400CE790A /* SimpleCollectionViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1586A803354552618B7FCA /* SimpleCollectionViewDelegateController.swift */; };
-		454D7CDA23EA520400CE790A /* SimpleDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158621230C404FA0548D5C /* SimpleDelegateControllerEventHandler.swift */; };
-		454D7CDB23EA520400CE790A /* DefaultScrollViewNextPageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158FECD66ED66E2562C04B /* DefaultScrollViewNextPageRequester.swift */; };
 		454D7CDC23EA520400CE790A /* UniversalListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1587974B9453F56503FFD3 /* UniversalListViewController.swift */; };
 		454D7CDD23EA520400CE790A /* UniversalListViewControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1584856F619E29AF0D23B9 /* UniversalListViewControllerEventHandler.swift */; };
 		454D7CDE23EA520400CE790A /* TableViewDataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1583EAC2BD8948530F8C2F /* TableViewDataSourceController.swift */; };
@@ -187,11 +183,19 @@
 		62D42BA5BFB3AFEF6BE00232 /* Pods_Modules_Search.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333463B049A94E0F8AD63BC2 /* Pods_Modules_Search.framework */; };
 		94C5C5B5C29D00A43D26F06A /* Pods_Modules_EntitySearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49EC692D30384C4D80847E0B /* Pods_Modules_EntitySearch.framework */; };
 		CC77E5906C04334EEAF96B0C /* Pods_Modules_RandomList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A890E194526A30F931B140D5 /* Pods_Modules_RandomList.framework */; };
+		EF15832634AE73A0F8300363 /* UICollectionViewDelegateSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158EE5C3C4A9B387D79614 /* UICollectionViewDelegateSplitter.swift */; };
+		EF1583E254AF7C9A215168A2 /* DefaultScrollViewNextPageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D49A144924A0DB7AF01 /* DefaultScrollViewNextPageRequester.swift */; };
+		EF1586E1914646D2B2AD4543 /* DataProvidingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158E7ED2EBF55DAC9356FC /* DataProvidingCell.swift */; };
 		EF1586E7A89382848A7FFB64 /* InstanceBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */; };
+		EF15876B39876317312C9F6F /* UITableViewDelegateSplitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158AC505AF1B517C0348D5 /* UITableViewDelegateSplitter.swift */; };
+		EF1588690CAA290BBE18E06D /* HeterogeneousDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158F0924CC2DA00400E7D5 /* HeterogeneousDelegateControllerEventHandler.swift */; };
 		EF1588DB998CC62132E3F5C2 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158783369056AAAE6B1082 /* Person.swift */; };
+		EF1589255A89084FBF4954FF /* SimpleDelegateControllerEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1588B950768CCA17C33649 /* SimpleDelegateControllerEventHandler.swift */; };
+		EF158962F669BAB36BCFF722 /* HeterogeneousTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1585F0DFF6BEBF0C92A184 /* HeterogeneousTableViewDelegateController.swift */; };
 		EF158B331450DB44E4B7686F /* AnyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158D2719A223CCD195CA42 /* AnyBuilder.swift */; };
 		EF158BFC048AF6F0935186D7 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158F94A3F905D0FF0C20BD /* City.swift */; };
-		EF158F4D955D57EE463AF7E8 /* ScrollViewNextPageRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158BFE9370E8D2CB429C1B /* ScrollViewNextPageRequester.swift */; };
+		EF158C2A76DD272AFD16D875 /* SimpleTableViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1589F98D94C1E8DCD38B16 /* SimpleTableViewDelegateController.swift */; };
+		EF158F79A1672FAFCA6DFFD8 /* SimpleCollectionViewDelegateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF158BBBD59C8D9DC27601D8 /* SimpleCollectionViewDelegateController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -722,27 +726,31 @@
 		EF1585121AD84F3FF2326DFD /* CollectionViewDataSourceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSourceController.swift; sourceTree = "<group>"; };
 		EF1585426B5C33E4EFF18411 /* AnyCollectionCellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCollectionCellAdapter.swift; sourceTree = "<group>"; };
 		EF1585787A1EACF137269018 /* ConcreteCellAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConcreteCellAdapter.swift; sourceTree = "<group>"; };
-		EF158621230C404FA0548D5C /* SimpleDelegateControllerEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDelegateControllerEventHandler.swift; sourceTree = "<group>"; };
-		EF1586A803354552618B7FCA /* SimpleCollectionViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewDelegateController.swift; sourceTree = "<group>"; };
+		EF1585F0DFF6BEBF0C92A184 /* HeterogeneousTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeterogeneousTableViewDelegateController.swift; sourceTree = "<group>"; };
 		EF15870EEEB2CE72281832E0 /* TableViewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewFactory.swift; sourceTree = "<group>"; };
 		EF15871F15219BBA31FFBD87 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
 		EF158783369056AAAE6B1082 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		EF1587974B9453F56503FFD3 /* UniversalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListViewController.swift; sourceTree = "<group>"; };
+		EF1588B950768CCA17C33649 /* SimpleDelegateControllerEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleDelegateControllerEventHandler.swift; sourceTree = "<group>"; };
 		EF1589A1C14445FDE9050A63 /* SectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionData.swift; sourceTree = "<group>"; };
 		EF1589C840C529E134891376 /* UniversalListUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListUpdater.swift; sourceTree = "<group>"; };
+		EF1589F98D94C1E8DCD38B16 /* SimpleTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewDelegateController.swift; sourceTree = "<group>"; };
 		EF158A1606C478A92B398600 /* DataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataTransformer.swift; sourceTree = "<group>"; };
 		EF158A1E8C0ADF217790807B /* UniversalListDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalListDelegateController.swift; sourceTree = "<group>"; };
-		EF158B6B606399CBD5648512 /* SimpleTableViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTableViewDelegateController.swift; sourceTree = "<group>"; };
+		EF158AC505AF1B517C0348D5 /* UITableViewDelegateSplitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewDelegateSplitter.swift; sourceTree = "<group>"; };
 		EF158BB37A040DA53032272C /* ViewAccessProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAccessProxy.swift; sourceTree = "<group>"; };
-		EF158BFE9370E8D2CB429C1B /* ScrollViewNextPageRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewNextPageRequester.swift; sourceTree = "<group>"; };
+		EF158BBBD59C8D9DC27601D8 /* SimpleCollectionViewDelegateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCollectionViewDelegateController.swift; sourceTree = "<group>"; };
 		EF158C28175143A700FC6BE2 /* TableReusableCellDequeuer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableReusableCellDequeuer.swift; sourceTree = "<group>"; };
 		EF158C616003879A443B0284 /* CellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 		EF158D091BAB80F0A7C46234 /* InstanceBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstanceBuilder.swift; sourceTree = "<group>"; };
 		EF158D2719A223CCD195CA42 /* AnyBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyBuilder.swift; sourceTree = "<group>"; };
+		EF158D49A144924A0DB7AF01 /* DefaultScrollViewNextPageRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScrollViewNextPageRequester.swift; sourceTree = "<group>"; };
 		EF158E162886386BCCA50652 /* CollectionViewUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewUpdater.swift; sourceTree = "<group>"; };
+		EF158E7ED2EBF55DAC9356FC /* DataProvidingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvidingCell.swift; sourceTree = "<group>"; };
+		EF158EE5C3C4A9B387D79614 /* UICollectionViewDelegateSplitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewDelegateSplitter.swift; sourceTree = "<group>"; };
+		EF158F0924CC2DA00400E7D5 /* HeterogeneousDelegateControllerEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeterogeneousDelegateControllerEventHandler.swift; sourceTree = "<group>"; };
 		EF158F94A3F905D0FF0C20BD /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		EF158FC7601781B1CA14CD49 /* ListData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
-		EF158FECD66ED66E2562C04B /* DefaultScrollViewNextPageRequester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultScrollViewNextPageRequester.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1313,9 +1321,9 @@
 		45C9139523DF3D830021602D = {
 			isa = PBXGroup;
 			children = (
+				457783BE23EC1F440095E07A /* Application Modules */,
 				45C913A023DF3D830021602D /* UniversalListController */,
 				45C9139F23DF3D830021602D /* Products */,
-				457783BE23EC1F440095E07A /* Application Modules */,
 				454D7C7123EA421500CE790A /* Libraries */,
 				458154F423EAD57D00EBF59A /* Tests */,
 				38F3AD4316CC9B239D85FE49 /* Pods */,
@@ -1405,6 +1413,15 @@
 			path = Builder;
 			sourceTree = "<group>";
 		};
+		EF1582DF8C3D91FB13B1276C /* Splitter */ = {
+			isa = PBXGroup;
+			children = (
+				EF158AC505AF1B517C0348D5 /* UITableViewDelegateSplitter.swift */,
+				EF158EE5C3C4A9B387D79614 /* UICollectionViewDelegateSplitter.swift */,
+			);
+			path = Splitter;
+			sourceTree = "<group>";
+		};
 		EF1584595DB739698803641C /* Type Erasure */ = {
 			isa = PBXGroup;
 			children = (
@@ -1420,6 +1437,16 @@
 				EF158A1606C478A92B398600 /* DataTransformer.swift */,
 			);
 			path = "Data Transformers";
+			sourceTree = "<group>";
+		};
+		EF158555ECB3535CA038A6E7 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+				EF1589F98D94C1E8DCD38B16 /* SimpleTableViewDelegateController.swift */,
+				EF158BBBD59C8D9DC27601D8 /* SimpleCollectionViewDelegateController.swift */,
+				EF1588B950768CCA17C33649 /* SimpleDelegateControllerEventHandler.swift */,
+			);
+			path = Simple;
 			sourceTree = "<group>";
 		};
 		EF1586122D6C6348F38D8985 /* View Controller */ = {
@@ -1458,17 +1485,34 @@
 			path = "Data Structure";
 			sourceTree = "<group>";
 		};
+		EF158C67E5066F88046F6EA3 /* Heterogeneous */ = {
+			isa = PBXGroup;
+			children = (
+				EF1585F0DFF6BEBF0C92A184 /* HeterogeneousTableViewDelegateController.swift */,
+				EF158F0924CC2DA00400E7D5 /* HeterogeneousDelegateControllerEventHandler.swift */,
+				EF158E7ED2EBF55DAC9356FC /* DataProvidingCell.swift */,
+			);
+			path = Heterogeneous;
+			sourceTree = "<group>";
+		};
 		EF158C7A9F1337838D2188B8 /* View Delegates */ = {
 			isa = PBXGroup;
 			children = (
 				EF158A1E8C0ADF217790807B /* UniversalListDelegateController.swift */,
-				EF158B6B606399CBD5648512 /* SimpleTableViewDelegateController.swift */,
-				EF1586A803354552618B7FCA /* SimpleCollectionViewDelegateController.swift */,
-				EF158621230C404FA0548D5C /* SimpleDelegateControllerEventHandler.swift */,
-				EF158FECD66ED66E2562C04B /* DefaultScrollViewNextPageRequester.swift */,
-				EF158BFE9370E8D2CB429C1B /* ScrollViewNextPageRequester.swift */,
+				EF158555ECB3535CA038A6E7 /* Simple */,
+				EF158C67E5066F88046F6EA3 /* Heterogeneous */,
+				EF158CCBEED65EAC024BF1C3 /* Scroll */,
+				EF1582DF8C3D91FB13B1276C /* Splitter */,
 			);
 			path = "View Delegates";
+			sourceTree = "<group>";
+		};
+		EF158CCBEED65EAC024BF1C3 /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				EF158D49A144924A0DB7AF01 /* DefaultScrollViewNextPageRequester.swift */,
+			);
+			path = Scroll;
 			sourceTree = "<group>";
 		};
 		EF158D61CA8769D87FBD27EB /* View Support */ = {
@@ -2223,18 +2267,22 @@
 			files = (
 				454D7CD723EA520400CE790A /* UniversalListDelegateController.swift in Sources */,
 				454D7CDF23EA520400CE790A /* CollectionViewDataSourceController.swift in Sources */,
-				454D7CD823EA520400CE790A /* SimpleTableViewDelegateController.swift in Sources */,
-				454D7CDA23EA520400CE790A /* SimpleDelegateControllerEventHandler.swift in Sources */,
 				454D7CDE23EA520400CE790A /* TableViewDataSourceController.swift in Sources */,
 				454D7CD423EA520400CE790A /* UniversalListUpdater.swift in Sources */,
-				454D7CD923EA520400CE790A /* SimpleCollectionViewDelegateController.swift in Sources */,
 				454D7CDC23EA520400CE790A /* UniversalListViewController.swift in Sources */,
 				454D7CD523EA520400CE790A /* TableViewUpdater.swift in Sources */,
 				454D7CE023EA520400CE790A /* UniversalListDataSourceController.swift in Sources */,
-				454D7CDB23EA520400CE790A /* DefaultScrollViewNextPageRequester.swift in Sources */,
 				454D7CDD23EA520400CE790A /* UniversalListViewControllerEventHandler.swift in Sources */,
 				454D7CD623EA520400CE790A /* CollectionViewUpdater.swift in Sources */,
-				EF158F4D955D57EE463AF7E8 /* ScrollViewNextPageRequester.swift in Sources */,
+				EF158962F669BAB36BCFF722 /* HeterogeneousTableViewDelegateController.swift in Sources */,
+				EF1588690CAA290BBE18E06D /* HeterogeneousDelegateControllerEventHandler.swift in Sources */,
+				EF1583E254AF7C9A215168A2 /* DefaultScrollViewNextPageRequester.swift in Sources */,
+				EF158C2A76DD272AFD16D875 /* SimpleTableViewDelegateController.swift in Sources */,
+				EF158F79A1672FAFCA6DFFD8 /* SimpleCollectionViewDelegateController.swift in Sources */,
+				EF1589255A89084FBF4954FF /* SimpleDelegateControllerEventHandler.swift in Sources */,
+				EF1586E1914646D2B2AD4543 /* DataProvidingCell.swift in Sources */,
+				EF15876B39876317312C9F6F /* UITableViewDelegateSplitter.swift in Sources */,
+				EF15832634AE73A0F8300363 /* UICollectionViewDelegateSplitter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

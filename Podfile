@@ -8,4 +8,9 @@ target 'UniversalListController' do
   target 'Shared' do
     pod 'DifferenceKit', '1.1.5'
   end
+
+  target 'SharedUI' do
+    pod 'DifferenceKit', '1.1.5'
+  end
+
 end

@@ -7,6 +7,7 @@ import DifferenceKit
 import Foundation
 import ReusableView
 import Shared
+import SharedUI
 import UIKit
 import UniversalList
 import UniversalListViewController

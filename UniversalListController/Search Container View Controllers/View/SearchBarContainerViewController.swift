@@ -5,6 +5,7 @@
 
 import Core
 import Foundation
+import SharedUI
 import UIKit
 
 final class SearchBarContainerViewController: UIViewController {

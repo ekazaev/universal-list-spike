@@ -5,6 +5,7 @@
 
 import Core
 import Foundation
+import SharedUI
 import UIKit
 
 protocol SearchContainerViewControllerEventHandler: SearchBarControllerDelegate {}

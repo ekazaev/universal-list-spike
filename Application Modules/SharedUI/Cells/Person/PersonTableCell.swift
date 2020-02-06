@@ -8,7 +8,7 @@ import ReusableView
 import Shared
 import UIKit
 
-final class PersonTableCell: UITableViewCell {
+public final class PersonTableCell: UITableViewCell {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
@@ -19,7 +19,7 @@ final class PersonTableCell: UITableViewCell {
 
 extension PersonTableCell: ConfigurableReusableView {
 
-    func setup(with person: Person) {
+    public func setup(with person: Person) {
         self.person = person
         titleLabel.text = person.name
         descriptionLabel.text = person.description

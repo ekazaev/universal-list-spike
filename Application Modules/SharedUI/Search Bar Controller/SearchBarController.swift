@@ -8,19 +8,19 @@ import Foundation
 import ReusableView
 import UIKit
 
-protocol SearchBarControllerDelegate: AnyObject {
+public protocol SearchBarControllerDelegate: AnyObject {
 
     func search(for query: String)
 
 }
 
-final class SearchBarController: NSObject, UISearchBarDelegate {
+public final class SearchBarController: NSObject, UISearchBarDelegate {
 
     private var delegates = WeakArray<SearchBarControllerDelegate>()
 
     private var previousQuery = ""
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let mainQueue = DispatchQueue.main
         let deadline = DispatchTime.now() + .milliseconds(500)
         mainQueue.asyncAfter(deadline: deadline) { [weak self] in
@@ -34,7 +34,7 @@ final class SearchBarController: NSObject, UISearchBarDelegate {
         }
     }
 
-    func add(delegate: SearchBarControllerDelegate) {
+    public func add(delegate: SearchBarControllerDelegate) {
         delegates.appendUnique(delegate)
     }
 

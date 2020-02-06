@@ -7,11 +7,11 @@ import Foundation
 import ReusableView
 import UIKit
 
-class LoadingTableViewCell: UITableViewCell, ReusableView {
+public class LoadingTableViewCell: UITableViewCell, ReusableView {
 
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
 
-    override func prepareForReuse() {
+    public override func prepareForReuse() {
         activityIndicator.startAnimating()
     }
 

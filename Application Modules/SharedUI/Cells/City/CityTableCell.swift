@@ -1,5 +1,5 @@
 //
-// CityCollectionView.swift
+// CityTableCell.swift
 // UniversalListController
 //
 
@@ -8,17 +8,18 @@ import ReusableView
 import Shared
 import UIKit
 
-final class CityCollectionCell: UICollectionViewCell {
+public final class CityTableCell: UITableViewCell {
 
     @IBOutlet private var titleLabel: UILabel!
     @IBOutlet private var descriptionLabel: UILabel!
+
     private(set) var city: City?
 
 }
 
-extension CityCollectionCell: ConfigurableReusableView {
+extension CityTableCell: ConfigurableReusableView {
 
-    func setup(with city: City) {
+    public func setup(with city: City) {
         self.city = city
         titleLabel.text = city.city
         descriptionLabel.text = city.description

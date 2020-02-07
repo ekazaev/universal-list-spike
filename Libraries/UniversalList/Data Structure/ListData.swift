@@ -24,32 +24,78 @@ public struct ListData<SectionContext, CellContext>: CustomStringConvertible {
 
 }
 
-// Not finished
 public extension ListData {
 
-    subscript(section: Int, item: Int) -> CellContext {
+    subscript(sectionIndex: Int) -> SectionData<SectionContext, CellContext>? {
         get {
-            guard section < sections.count else {
-                fatalError()
+            guard sectionIndex < sections.count else {
+                return nil
             }
-            let sectionData = sections[section]
-            guard item < sectionData.items.count else {
-                fatalError()
-            }
-            return sectionData.items[item]
+            return sections[sectionIndex]
         }
         set {
-            guard section < sections.count else {
+            guard sectionIndex < sections.count else {
                 return
             }
-            var sectionData = sections[section]
-            guard item < sectionData.items.count else {
+            guard let sectionData = newValue else {
+                assertionFailure("Attempt to set an empty value instead of \(String(describing: SectionData<SectionContext, CellContext>.self))")
                 return
             }
-            var cells = sectionData.items
-            cells.remove(at: item)
-            cells.insert(newValue, at: item)
-            sectionData.items = cells
+            sections.remove(at: sectionIndex)
+            sections.insert(sectionData, at: sectionIndex)
+        }
+    }
+
+    subscript(itemsAt sectionIndex: Int) -> [CellContext]? {
+        get {
+            return self[sectionIndex]?.items
+        }
+        set {
+            guard let items = newValue else {
+                assertionFailure("Attempt to set an empty value instead of \(String(describing: [CellContext].self))")
+                return
+            }
+            guard sectionIndex < sections.count else {
+                return
+            }
+            self[sectionIndex]?.items = items
+        }
+    }
+
+    subscript(section sectionIndex: Int, item itemIndex: Int) -> CellContext? {
+        get {
+            guard sectionIndex < sections.count else {
+                return nil
+            }
+            let sectionData = sections[sectionIndex]
+            guard itemIndex < sectionData.items.count else {
+                return nil
+            }
+            return sectionData.items[itemIndex]
+        }
+        set {
+            guard sectionIndex < sections.count else {
+                return
+            }
+            var sectionData = sections[sectionIndex]
+            guard itemIndex < sectionData.items.count else {
+                return
+            }
+            sectionData.items.remove(at: itemIndex)
+            guard let cellContext = newValue else {
+                assertionFailure("Attempt to set an empty value instead of \(String(describing: CellContext.self))")
+                return
+            }
+            sectionData.items.insert(cellContext, at: itemIndex)
+        }
+    }
+
+    subscript(indexPath: IndexPath) -> CellContext? {
+        get {
+            return self[section: indexPath.section, item: indexPath.item]
+        }
+        set {
+            self[section: indexPath.section, item: indexPath.item] = newValue
         }
     }
 

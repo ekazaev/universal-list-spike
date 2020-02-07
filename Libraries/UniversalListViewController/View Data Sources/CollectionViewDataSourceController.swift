@@ -42,9 +42,7 @@ public final class CollectionViewDataSourceController<ViewProxy: ViewAccessProxy
     }
 
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let adapter = data.sections[indexPath.section].items[indexPath.item]
-        let cell = adapter.getView(with: DequeuingFactory(using: cellDequeuer, with: indexPath))
-        return cell
+        return buildCell(for: indexPath, using: DequeuingFactory(using: cellDequeuer, with: indexPath))
     }
 
 }

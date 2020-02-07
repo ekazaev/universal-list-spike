@@ -8,10 +8,10 @@ import ReusableView
 import UIKit
 
 public final class CollectionViewDataSourceController<ViewProxy: ViewAccessProxy, SectionContext, CellContext>: NSObject, UniversalListDataSourceController, UICollectionViewDataSource
-        where
-        ViewProxy.View: UICollectionView,
-        CellContext: CellAdapter,
-        CellContext.Cell: UICollectionViewCell {
+    where
+    ViewProxy.View: UICollectionView,
+    CellContext: CellAdapter,
+    CellContext.Cell: UICollectionViewCell {
 
     public typealias View = ViewProxy.View
 

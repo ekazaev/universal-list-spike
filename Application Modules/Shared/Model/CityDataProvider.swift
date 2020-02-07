@@ -9,7 +9,8 @@ public final class CityDataProvider: DataProvider {
 
     public init() {}
 
-    public func getData(with query: String, completion: @escaping (Result<[City], Error>) -> Void) {
+    public func getData(with query: String,
+                        completion: @escaping (Result<[City], Error>) -> Void) {
         delay {
             let cities = StaticCityData.cities.sorted(by: { $0.city < $1.city })
             guard !query.isEmpty else {

@@ -16,10 +16,10 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
     UniversalListViewControllerEventHandler
     where
     Entity: Identifiable,
-    DP.Data == [Entity],
     DP.Request == String,
-    Transformer.Output == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext>,
-    Transformer.Input == [[ListCellType<DP.Data.Element>]] {
+    DP.Data == [Entity],
+    Transformer.Input == [[ListCellType<Entity>]],
+    Transformer.Output == ListData<ViewUpdater.SectionContext, ViewUpdater.CellContext> {
 
     weak var resultDelegate: SearchResultStateDelegate?
 
@@ -67,21 +67,6 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
         reloadView()
     }
 
-    func requestNewPage() {
-        guard !isDataLoading, !isFullyLoaded else {
-            return
-        }
-        isDataLoading = true
-        reloadView()
-        let query = self.query
-        itemsProvider.getNextPage { [weak self] result in
-            guard query == self?.query else {
-                return
-            }
-            self?.handleDataLoad(result: result)
-        }
-    }
-
     func search(for query: String) {
         let isNewRequest = self.query != query
         self.query = query
@@ -98,6 +83,21 @@ final class GenericSearchEventHandler<Entity, ViewUpdater: UniversalListUpdater,
         itemsProvider.getData(with: query, completion: { [weak self] result in
             self?.handleDataLoad(result: result)
         })
+    }
+
+    func requestNewPage() {
+        guard !isDataLoading, !isFullyLoaded else {
+            return
+        }
+        isDataLoading = true
+        reloadView()
+        let query = self.query
+        itemsProvider.getNextPage { [weak self] result in
+            guard query == self?.query else {
+                return
+            }
+            self?.handleDataLoad(result: result)
+        }
     }
 
     private func handleDataLoad(result: Result<DP.Data, Error>) {

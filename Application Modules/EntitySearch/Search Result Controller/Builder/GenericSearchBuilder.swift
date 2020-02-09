@@ -15,7 +15,6 @@ public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: Pagea
     where
     DataCell: UITableViewCell,
     DataCell.Data: Identifiable & Differentiable,
-    DataCell.Data.DifferenceIdentifier == Int,
     DP.Data == [DataCell.Data],
     DP.Request == String {
 
@@ -27,10 +26,12 @@ public struct GenericSearchBuilder<DataCell: ConfigurableReusableView, DP: Pagea
 
     public func build(with _: Void) -> UIViewController & SearchBarControllerDelegate {
         let viewFactory = TableViewFactory(style: .grouped)
-        let dataSource = TableViewDataSourceController<TableViewFactory, Void, ListStateCellAdapter<DataCell, LoadingTableViewCell>>(viewProxy: viewFactory)
+
+        let dataTransformer = ListStateDataTransformer<ConfigurableCellAdapter<DataCell>, LoadingAccessoryTableCellAdapter>()
+
+        let dataSource = TableViewDataSourceController(viewProxy: viewFactory, usingWith: dataTransformer)
 
         let viewUpdater = DifferentiableTableViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
-        let dataTransformer = ListStateDataTransformer<DataCell, LoadingTableViewCell>()
 
         let eventHandler = GenericSearchEventHandler(viewUpdater: viewUpdater,
                                                      citiesProvider: dataProvider,

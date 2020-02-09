@@ -7,7 +7,19 @@ import Foundation
 import ReusableView
 import UIKit
 
-public struct ConfigurableCellAdapter<Cell: ConfigurableReusableView>: CellAdapter {
+public protocol DataConfigurableCellAdapter: CellAdapter {
+
+    associatedtype Data
+
+    init(with data: Data)
+
+}
+
+public struct ConfigurableCellAdapter<ConfigurableCell: ConfigurableReusableView>: DataConfigurableCellAdapter {
+
+    public typealias Data = Cell.Data
+
+    public typealias Cell = ConfigurableCell
 
     public let data: Cell.Data
 
@@ -15,8 +27,8 @@ public struct ConfigurableCellAdapter<Cell: ConfigurableReusableView>: CellAdapt
         self.data = data
     }
 
-    public func getView(with factory: ReusableViewFactory) -> Cell {
-        let cell: Cell = factory.build()
+    public func getView(with factory: ReusableViewFactory) -> ConfigurableCell {
+        let cell: ConfigurableCell = factory.build()
         cell.setup(with: data)
         return cell
     }

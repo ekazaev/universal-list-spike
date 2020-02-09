@@ -10,7 +10,8 @@ import Shared
 import UIKit
 import UniversalList
 
-public struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCell & ConfigurableReusableView>
+public struct RandomizingTableDemoBuilder<DP: DataProvider,
+                                          Cell: UITableViewCell & ConfigurableReusableView>
     where
     DP.Request == String,
     Cell.Data: Differentiable,
@@ -26,10 +27,12 @@ public struct RandomizingTableDemoBuilder<DP: DataProvider, Cell: UITableViewCel
 
     public func build() -> UIViewController {
         let viewFactory = TableViewFactory(style: .grouped)
-        let dataSource = TableViewDataSourceController<TableViewFactory, Void, ConfigurableCellAdapter<Cell>>(viewProxy: viewFactory)
+
+        let dataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
+
+        let dataSource = TableViewDataSourceController(viewProxy: viewFactory, usingWith: dataTransformer)
 
         let viewUpdater = DifferentiableTableViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
-        let dataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
 
         let tableEventHandler = RandomizingEventHandler(
             viewUpdater: viewUpdater,

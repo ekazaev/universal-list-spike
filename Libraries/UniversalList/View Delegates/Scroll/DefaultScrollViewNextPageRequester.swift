@@ -14,7 +14,15 @@ public protocol NextPageEventHandler {
 
 public protocol DataLoadingSource {
 
-    var isDataLoading: Bool { get }
+    var shouldRequestNextPage: Bool { get }
+
+}
+
+public extension DataLoadingSource {
+
+    var shouldRequestNextPage: Bool {
+        return true
+    }
 
 }
 
@@ -35,7 +43,7 @@ public final class DefaultScrollViewNextPageRequester: NSObject, UIScrollViewDel
     }
 
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard !loadingStateSource.isDataLoading else {
+        guard loadingStateSource.shouldRequestNextPage else {
             return
         }
 

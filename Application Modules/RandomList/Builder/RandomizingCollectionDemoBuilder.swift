@@ -28,10 +28,12 @@ public class RandomizingCollectionDemoBuilder<DP: DataProvider, Cell: UICollecti
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 200)
         let viewFactory = CollectionViewFactory(collectionViewLayout: layout)
-        let dataSource = CollectionViewDataSourceController<CollectionViewFactory, Void, ConfigurableCellAdapter<Cell>>(viewProxy: viewFactory)
+
+        let dataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
+
+        let dataSource = CollectionViewDataSourceController(viewProxy: viewFactory, usingWith: dataTransformer)
 
         let viewUpdater = DifferentiableCollectionViewUpdater(viewProxy: viewFactory, dataSource: dataSource)
-        let dataTransformer = ConfigurableDataTransformer<[[Cell.Data]], Cell>()
 
         viewFactory.dataSource = dataSource
 

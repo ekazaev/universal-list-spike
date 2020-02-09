@@ -6,6 +6,7 @@
 import Foundation
 import ReusableView
 import UIKit
+import UniversalList
 
 public protocol ConfigurableReusableView: ReusableView {
 
